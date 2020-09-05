@@ -1,6 +1,6 @@
 {
   {{- $first:= true}}
-  {{- range $index, $page := where .Site.Pages "Kind" "in" (slice "page" "section") }}
+  {{- range $index, $page := where .Site.Pages "Kind" "in" (slice "home" "page" "section") }}
     {{- $i :=add $index 1 }}
     {{- if $page.Content }}
     {{- if not $first }}
