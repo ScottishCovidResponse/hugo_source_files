@@ -19,20 +19,15 @@
 {{- $styles := resources.Get "book.scss" | resources.ExecuteAsTemplate "book.scss" . | resources.ToCSS | resources.Fingerprint }}
 <link rel="stylesheet" href="{{ $styles.RelPermalink }}" integrity="{{ $styles.Data.Integrity }}">
 
-{{- if default true .Site.Params.BookSearch }}
-{{- $searchJSFile := printf "%s.search.js" .Language.Lang }}
-{{- $searchJS := resources.Get "search.js" | resources.ExecuteAsTemplate $searchJSFile . | resources.Minify | resources.Fingerprint }}
-<script defer src="{{ $searchJS.RelPermalink }}" integrity="{{ $searchJS.Data.Integrity }}"></script>
+{{- if default true .Site.Params.SearchEnabled }}
+{{- $lunr := resources.Get "lunr.min.js" | resources.ExecuteAsTemplate "lunr.min.js" . | resources.Fingerprint}}
+    <script defer type="text/javascript" src="{{ $lunr.RelPermalink }}"></script>
 {{ end -}}
 
 {{- if default true .Site.Params.SearchEnabled }}
 {{- $searchJSFile := printf "%s.search.js" .Language.Lang }}
 {{- $searchJS := resources.Get "search.js" | resources.ExecuteAsTemplate $searchJSFile . | resources.Fingerprint }}
 <script defer src="{{ $searchJS.RelPermalink }}" integrity="{{ $searchJS.Data.Integrity }}"></script>
-{{ end -}}
-
-{{- if default true .Site.Params.SearchEnabled }}
-    <script defer type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.9/lunr.min.js"></script>
 {{ end -}}
 
 {{- if .Site.Params.BookServiceWorker }}
