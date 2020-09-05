@@ -3,7 +3,7 @@ title: Introduction
 type: docs
 ---
 
-# Acerbo datus maxime
+# Welcome to SCRC
 
 {{< columns >}}
 ## Astris ipse furtiva
