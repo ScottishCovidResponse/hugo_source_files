@@ -2,7 +2,7 @@
 
 baseURL = 'https://example.com/'
 title = 'SCRC'
-theme = 'custom'
+theme = 'book'
 
 # Book configuration
 disablePathToLower = true
