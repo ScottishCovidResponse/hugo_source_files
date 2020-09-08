@@ -2,13 +2,19 @@
 headless: true
 ---
 
-- [**Example Site**]({{< relref "/docs/example" >}})
-- [Table of Contents]({{< relref "/docs/example/table-of-contents" >}})
-  - [With ToC]({{< relref "/docs/example/table-of-contents/available_data" >}})
-  - [Without ToC]({{< relref "/docs/example/table-of-contents/sources_and_products" >}})
-- [Collapsed]({{< relref "/docs/example/collapsed" >}})
-  - [3rd]({{< relref "/docs/example/collapsed/3rd-level" >}})
-    - [4th]({{< relref "/docs/example/collapsed/3rd-level/4th-level" >}})
+- [**Data Pipeline**]({{< relref "/docs/data_pipeline" >}})
+- [Data]({{< relref "/docs/data_pipeline/data" >}})
+  - [Available data]({{< relref "/docs/data_pipeline/data/available_data" >}})
+  - [Data Sources and Products]({{< relref "/docs/data_pipeline/data/sources_and_products" >}})
+- [Data API]({{< relref "/docs/data_pipeline/data_api" >}})
+  - [TOML Components]({{< relref "/docs/data_pipeline/data_api/toml_components" >}})
+  - [hdf5 Components]({{< relref "/docs/data_pipeline/data_api/hdf5_components" >}})
+  - [Versioning Components]({{< relref "/docs/data_pipeline/data_api/versioning" >}})
+- [File API]({{< relref "/docs/data_pipeline/file_api" >}})
+  - [Readme]({{< relref "/docs/data_pipeline/file_api/readme" >}})
+- [Standard API]({{< relref "/docs/data_pipeline/standard_api" >}})
+  - [Terminology]({{< relref "/docs/data_pipeline/standard_api/terminology" >}})
+  - [Readme]({{< relref "/docs/data_pipeline/standard_api/readme" >}})
 <br />
 
 - **Shortcodes**
