@@ -2,10 +2,13 @@
 headless: true
 ---
 
+- **Data**
+  - [Available data]({{< relref "/docs/data/available_data" >}})
+  - [Data Sources and Products]({{< relref "/docs/data/sources_and_products" >}})
+
 - [**Data Pipeline**]({{< relref "/docs/data_pipeline" >}})
-- [Data]({{< relref "/docs/data_pipeline/data" >}})
-  - [Available data]({{< relref "/docs/data_pipeline/data/available_data" >}})
-  - [Data Sources and Products]({{< relref "/docs/data_pipeline/data/sources_and_products" >}})
+- [Data Resistry]({{< relref "/docs/data_pipeline/data_registry" >}})
+  - [Readme]({{< relref "/docs/data_pipeline/data_registry/readme" >}})
 - [Data API]({{< relref "/docs/data_pipeline/data_api" >}})
   - [TOML Components]({{< relref "/docs/data_pipeline/data_api/toml_components" >}})
   - [hdf5 Components]({{< relref "/docs/data_pipeline/data_api/hdf5_components" >}})
@@ -18,7 +21,7 @@ headless: true
   - [Readme]({{< relref "/docs/data_pipeline/standard_api/readme" >}})
 <br />
 
-- **Shortcodes**
+- **Research**
 - [Buttons]({{< relref "/docs/shortcodes/buttons" >}})
 - [Columns]({{< relref "/docs/shortcodes/columns" >}})
 - [Expand]({{< relref "/docs/shortcodes/expand" >}})

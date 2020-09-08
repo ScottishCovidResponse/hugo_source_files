@@ -1,11 +1,9 @@
 ---
-weight: 1
+weight: 2
 bookFlatSection: true
 title: "Data Pipeline"
 ---
 
 # Introduction
 
-## Ferre hinnitibus erat accipitrem dixi Troiae tollens
-
-Text
+The data pipeline is very shiny.
