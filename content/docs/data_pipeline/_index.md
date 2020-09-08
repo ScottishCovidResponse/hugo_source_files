@@ -1,7 +1,7 @@
 ---
 weight: 2
 bookFlatSection: true
-title: "Data Pipeline"
+title: "SCRC Data Pipeline"
 ---
 
 # Introduction

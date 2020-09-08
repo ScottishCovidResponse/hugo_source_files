@@ -6,7 +6,7 @@ headless: true
   - [Available data]({{< relref "/docs/data/available_data" >}})
   - [Data Sources and Products]({{< relref "/docs/data/sources_and_products" >}})
 
-- [**Data Pipeline**]({{< relref "/docs/data_pipeline" >}})
+- [**SCRC Data Pipeline**]({{< relref "/docs/data_pipeline" >}})
 - [Data Resistry]({{< relref "/docs/data_pipeline/data_registry" >}})
   - [Readme]({{< relref "/docs/data_pipeline/data_registry/readme" >}})
 - [Data API]({{< relref "/docs/data_pipeline/data_api" >}})
