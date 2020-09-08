@@ -10,6 +10,7 @@ headless: true
   - [TOML Components]({{< relref "/docs/data_pipeline/data_api/toml_components" >}})
   - [hdf5 Components]({{< relref "/docs/data_pipeline/data_api/hdf5_components" >}})
   - [Versioning Components]({{< relref "/docs/data_pipeline/data_api/versioning" >}})
+  - [Submission Script Templates]({{< relref "/docs/data_pipeline/data_api/templates" >}})
 - [File API]({{< relref "/docs/data_pipeline/file_api" >}})
   - [Readme]({{< relref "/docs/data_pipeline/file_api/readme" >}})
 - [Standard API]({{< relref "/docs/data_pipeline/standard_api" >}})
