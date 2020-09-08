@@ -1,8 +1,8 @@
 ---
-title: Data Products
+title: Available data
 weight: 1
 ---
-# Data Products
+# Available data
 
 ## On the data registry
 
