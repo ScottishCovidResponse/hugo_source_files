@@ -8,4 +8,4 @@ weight: 10
 
 Some nice text
 
-{{</* button href="https://data.scrc.uk" */>}}Data registry{{</* /button */>}}
+{{< button href="https://data.scrc.uk" >}}Registry{{< /button >}}
