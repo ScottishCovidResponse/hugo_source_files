@@ -108,25 +108,93 @@ Format should be:
 
 Annex: Draft Data extraction sheet (https://forms.gle/E4YgYS9Zvckmc9R58)
 
-| Field |  |
-| Short Descriptor of Information Extracted |  |
-| Detailed Description of Information Extracted |  |
-| Point estimate (if available) |   |
-| Uncertainty/variability metrics  (Best of: None/Interval/Distribution specification: distribution and parameters or Empirical distribution) |   |
-| Title of Paper/Report |   |
-| Authors |   |
-| DOI |   |
-| Uploaded to MSTeams? |   |
-| Identification Route (eg LitCOVID; MedRxiv) |   |
-| Potential Lack of Independence in Parameter Estimate |   |
-| Status (Peer reviewed/Official Report/Preprint/Other) |   |
-| Intrinsic Quality of Estimate |   |
-| Comments on Intrinsic Quality |   |
-| Tag this Document for Further, Future Review? |   |
-| Applicability (Generalizability) |   |
-| Narrative: Lack of Applicability |   |
-| Fitness for Purpose |   |
-| Primary Data Availability |   |
-| Primary Data Location |   |
-| Reviewer Name |   |
-| Date Logged |   |
+<table>
+    <tr>
+        <td>Field</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>Short Descriptor of Information Extracted</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>Detailed Description of Information Extracted</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>Point estimate (if available)</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>Uncertainty/variability metrics  (Best of: None/Interval/Distribution specification: distribution and parameters or Empirical distribution)</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>Title of Paper/Report</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>Authors</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>DOI</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>Uploaded to MSTeams?</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>Identification Route (eg LitCOVID; MedRxiv)</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>Potential Lack of Independence in Parameter Estimate</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>Status (Peer reviewed/Official Report/Preprint/Other)</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>Intrinsic Quality of Estimate</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>Comments on Intrinsic Quality</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>Tag this Document for Further, Future Review?</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>Applicability (Generalizability)</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>Narrative: Lack of Applicability</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>Fitness for Purpose</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>Primary Data Availability</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>Primary Data Location</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>Reviewer Name</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>Date Logged</td>
+        <td></td>
+    </tr>
+</table>
