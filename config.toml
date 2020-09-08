@@ -19,13 +19,13 @@ enableGitInfo = true
 [menu]
 # [[menu.before]]
 [[menu.after]]
-  name = "Github"
-  url = "https://github.com/alex-shpak/hugo-book"
+  name = "SCRC UoG"
+  url = "https://www.gla.ac.uk/research/az/scrc/"
   weight = 10
 
 [[menu.after]]
-  name = "Hugo Themes"
-  url = "https://themes.gohugo.io/hugo-book/"
+  name = "Data Registry"
+  url = "https://data.scrc.uk/"
   weight = 20
 
 [params]
