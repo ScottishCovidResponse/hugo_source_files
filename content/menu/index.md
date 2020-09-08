@@ -5,7 +5,7 @@ headless: true
 - [**Example Site**]({{< relref "/docs/example" >}})
 - [Table of Contents]({{< relref "/docs/example/table-of-contents" >}})
   - [With ToC]({{< relref "/docs/example/table-of-contents/available_data" >}})
-  - [Without ToC]({{< relref "/docs/example/table-of-contents/without-toc" >}})
+  - [Without ToC]({{< relref "/docs/example/table-of-contents/sources_and_products" >}})
 - [Collapsed]({{< relref "/docs/example/collapsed" >}})
   - [3rd]({{< relref "/docs/example/collapsed/3rd-level" >}})
     - [4th]({{< relref "/docs/example/collapsed/3rd-level/4th-level" >}})
