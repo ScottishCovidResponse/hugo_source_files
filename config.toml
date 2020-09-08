@@ -2,7 +2,12 @@
 
 baseURL = 'https://example.com/'
 title = 'SCRC'
-theme = 'hugo-book'
+#theme = 'hugo-book'
+
+# Use module
+[module]
+  [[module.imports]]
+    path = "github.com/ScottishCovidResponse/hugo-book"
 
 # Book configuration
 disablePathToLower = true
