@@ -1,0 +1,11 @@
+{{- if default false .Site.Params.SearchEnabled }}
+<script defer type="text/javascript" src="{{ "lunr.min.js" | relURL }}"></script>
+{{ end -}}
+
+{{- if default false .Site.Params.SearchEnabled }}
+{{- $fancy_searchJSFile := printf "%s.fancy-search.js" .Language.Lang }}
+{{- $fancy_searchJS := resources.Get "fancy-search.js" | resources.ExecuteAsTemplate $fancy_searchJSFile . | resources.Minify | resources.Fingerprint }}
+<script defer src="{{ $fancy_searchJS.RelPermalink }}" integrity="{{ $fancy_searchJS.Data.Integrity }}"></script>
+{{ end -}}
+
+<script defer src="{{ "scroll.js" | relURL }}"></script>

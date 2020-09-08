@@ -1,7 +1,7 @@
 # hugo server --minify --themesDir ... --baseURL=http://0.0.0.0:1313/theme/hugo-book/
 
 baseURL = 'https://example.com/'
-title = 'SCRC'
+title = 'Hugo Book'
 theme = 'hugo-book'
 
 # Book configuration
@@ -86,6 +86,8 @@ enableGitInfo = true
   # Configuration for indexing can be adjusted in i18n folder per language.
   BookSearch = false
 
+  # (Optional, default false) Enables search function with lunrsearch,
+  # Index is built on fly, therefore it might slowdown your website.
   SearchEnabled = true
 
   # (Optional, default true) Enables comments template on pages
