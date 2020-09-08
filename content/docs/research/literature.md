@@ -3,7 +3,8 @@ title: Sytematic Literature Review
 weight: 1
 ---
 
-## SCRC Procedure for Systematised Literature Review (V1.2 19/6/20)
+## SCRC Procedure for Systematised Literature Review v1.2
+<sub>Iain McKendrick, 19/06/2020</sub>  
 
 **The purpose of this procedure is to outline an approach to systematised literature searches to obtain parameters and distributions for SCRC models.**
 
