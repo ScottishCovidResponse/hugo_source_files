@@ -5,7 +5,7 @@ weight: 1
 
 # Available data
 
-The following data products can be found in the data registry.
+The following data products are available in the data registry. Each of the following entries includes a brief description of the dataset, the date this descrition was entered, any links to additional information, and the name of the data product in the data registry.
 
 ## Population estimates
 
