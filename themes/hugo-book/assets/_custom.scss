@@ -50,6 +50,22 @@
   padding-top: 1rem;
 }
 
+.book-page {
+  padding-top: 2.5rem;
+}
+
+@media screen and (min-width: $container-max-width)
+{
+  .book-page, .book-menu nav, .book-toc nav {
+    padding: 1rem 1rem;
+  }
+}
+
+.book-page {
+  margin-top: 1rem;
+}
+
+
 html:not([data-scroll='0']) {
 
   .custom-brand{
@@ -109,6 +125,11 @@ html:not([data-scroll='0']) {
   }
 }
 
+html.search-active {
+  .custom-left, .custom-search-container {
+    border-bottom: none;
+  }
+}
 
 .search-top {
     max-width: 100%;
