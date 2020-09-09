@@ -101,7 +101,7 @@ ukgov_eng_oa_shapefile
 <br>
 <sub>*Description last updated*: 09/09/2020</sub>  
 <sub>*Data registry*: NA</sub>  
-<sub>*Notes*: Can be installed as part of the dataSCRC package</sub>
+<sub>*Notes*: NA</sub>
 
       
 ukgov_scot_dz_shapefile
@@ -109,7 +109,7 @@ ukgov_scot_dz_shapefile
 <br>
 <sub>*Description last updated*: 09/09/2020</sub>  
 <sub>*Data registry*: NA</sub>  
-<sub>*Notes*: Can be installed as part of the dataSCRC package</sub>
+<sub>*Notes*: Run `data("scot_datazone_sf", package = "SCRCdata")` in R</sub>
 
 # To do
 
