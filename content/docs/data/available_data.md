@@ -37,16 +37,18 @@ scotgov_dz_lookup
 <sub>*Data registry*: `geography/lookup_table/gridcell_admin_area/scotland`</sub> 
 
 ambulance
-: Numbers of ambulance attendances (total and COVID-19 suspected) and number of people taken to hospital with suspected COVID-19. The number of attendances is defined as the number of incidents recorded by SAS, where a resource arrived at the scene. More information [here][cam]. No longer updated.
+: Numbers of ambulance attendances (total and COVID-19 suspected) and number of people taken to hospital with suspected COVID-19. The number of attendances is defined as the number of incidents recorded by SAS, where a resource arrived at the scene. More information [here][cam].
 <br>
 <sub>*Description last updated*: 08/09/2020</sub>  
-<sub>*Data registry*: `records/SARS-CoV-2/scotland/cases-and-management/ambulance`</sub> 
+<sub>*Data registry*: `records/SARS-CoV-2/scotland/cases-and-management/ambulance`</sub>  
+<sub>*Notes*: No longer updated</sub>
 
 calls
-: Numbers of calls to NHS 111 and the coronavirus helpline. The number of calls to 111 includes all calls to this line, whether or not they relate to COVID-19. More information [here][cam]. No longer updated.
+: Numbers of calls to NHS 111 and the coronavirus helpline. The number of calls to 111 includes all calls to this line, whether or not they relate to COVID-19. More information [here][cam].
 <br>
 <sub>*Description last updated*: 08/09/2020</sub>  
-<sub>*Data registry*: `records/SARS-CoV-2/scotland/cases-and-management/calls`</sub> 
+<sub>*Data registry*: `records/SARS-CoV-2/scotland/cases-and-management/calls`</sub>  
+<sub>*Notes*: No longer updated</sub>  
 
 carehomes
 : More information [here][cam]. Updated every Wednesday.
@@ -92,7 +94,7 @@ testing
 
 [cam]: https://statistics.gov.scot/resource?uri=http%3A%2F%2Fstatistics.gov.scot%2Fdata%2Fcoronavirus-covid-19-management-information
 
-## Part of SCRCdata
+## Shapefiles
 
 ukgov_eng_oa_shapefile
 : Can be installed as part of the dataSCRC package.
@@ -106,7 +108,7 @@ ukgov_scot_dz_shapefile
 <sub>*Description last updated*: 09/09/2020</sub>  
 <sub>*Data registry*: NA</sub> 
 
-## Not yet processed
+## To do
 
 scotgov_simd_income
 : The Scottish Government’s official tool for identifying concentrations of deprivation in Scotland. Scottish Index of Multiple Deprivation (SIMD) 2020v2 for 2011 data zones. Ranks (1=most deprived to 6,976=least deprived) and groups (quintiles, deciles and vigintiles) are based on the income domain
