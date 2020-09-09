@@ -97,16 +97,19 @@ testing
 ## Shapefiles
 
 ukgov_eng_oa_shapefile
-: Can be installed as part of the dataSCRC package.
+: Text description
 <br>
 <sub>*Description last updated*: 09/09/2020</sub>  
-<sub>*Data registry*: NA</sub> 
+<sub>*Data registry*: NA</sub>  
+<sub>*Notes*: Can be installed as part of the dataSCRC package</sub>
+
       
 ukgov_scot_dz_shapefile
-: 2011 data zone boundaries. Can be installed as part of the dataSCRC package.
+: 2011 data zone boundaries. 
 <br>
 <sub>*Description last updated*: 09/09/2020</sub>  
-<sub>*Data registry*: NA</sub> 
+<sub>*Data registry*: NA</sub>  
+<sub>*Notes*: Can be installed as part of the dataSCRC package</sub>
 
 # To do
 
