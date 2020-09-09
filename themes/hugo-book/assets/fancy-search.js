@@ -39,7 +39,7 @@
       if (request.status >= 200 && request.status < 400) {
         var docs = JSON.parse(request.responseText);
         
-        lunr.tokenizer.separator = /[\s\-]+/
+        lunr.tokenizer.separator = /[\s\-\_]+/
   
         var index = lunr(function(){
           this.ref('id');
@@ -115,7 +115,7 @@
           boost: 10
         });
         query.term(tokens, {
-          wildcard: lunr.Query.wildcard.TRAILING
+          wildcard: lunr.Query.wildcard.LEADING | lunr.Query.wildcard.TRAILING
         });
       });
   
