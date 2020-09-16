@@ -3,6 +3,7 @@
 baseURL = 'https://example.com/'
 title = 'SCRC'
 theme = 'hugo-book'
+enableEmoji = true
 
 # Book configuration
 disablePathToLower = true
