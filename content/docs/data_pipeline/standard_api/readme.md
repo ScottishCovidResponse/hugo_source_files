@@ -115,37 +115,49 @@ HDF5 files contain structured data, encoded as either an “array”, or a “ta
 
 ## Metadata 
 
-```
-extension = "h5" 
-```
+extension = "h5"
 
 ## Alternative metadata 
 
-```
 format = "hdf5"  
-extension = "h5" (could be inferred) 
-```
+extension = "h5" (could be inferred)
 
 ## File format 
 
-HDF5 files are stored with the extension “h5”. Internally, each component is stored in a different (possibly nested) group, where the full path defines the component name (e.g. “path/to/component”). Inside the group for each component is either a value named “array”, or a value named “table”. It is an error for there to be both. 
+HDF5 files are stored with the extension “h5”. Internally, each component is stored in a different (possibly nested) group, where the full path defines the component name (*e.g.* “path/to/component”). Inside the group for each component is either a value named “array”, or a value named “table”. It is an error for there to be both.
 
-## array format 
+## array format
 
-| {component}/array | An n-dimensional array of numerical data. |
-| {component}/Dimension_{i}_title | The string name of dimension i. |
-| {component}/Dimension_{i}_names | String labels for dimension i. |
-| {component}/Dimension_{i}_values | Values for dimension i. |
-| {component}/Dimension_{i}_units | Units for dimension i. |
-| {component}/units | Units for the data in array. |
+{component}/array
+: An n-dimensional array of numerical data
 
-## table format 
+{component}/Dimension_{i}_title
+: The string name of dimension {{< katex >}}i{{< /katex >}}
 
-| {component}/table | A dataframe. | 
-| {component}/row_names | String labels for the row axis. |
-| {component}/column_units | Units for the columns. |
+{component}/Dimension_{i}_names
+: String labels for dimension {{< katex >}}i{{< /katex >}}
 
-## API functions 
+{component}/Dimension_{i}_values
+: Values for dimension {{< katex >}}i{{< /katex >}}
+
+{component}/Dimension_{i}_units  
+: Units for dimension {{< katex >}}i{{< /katex >}}
+
+{component}/units
+: Units for the data in array
+
+## table format
+
+{component}/table
+: A dataframe
+
+{component}/row_names
+: String labels for the row axis
+
+{component}/column_units
+: Units for the columns
+
+## API functions
 
 `read_array(data_product, component) -> array`
 
