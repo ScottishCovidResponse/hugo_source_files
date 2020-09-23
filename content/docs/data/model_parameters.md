@@ -3,24 +3,24 @@ title: Model Parameters
 weight: 3
 ---
 
-| **Parameter**                  |**Source**|**LSHTM**|
-| ---                          |---|---|
-| Latent period | [5] | {{< katex display >}} \footnotesize{d_E: \Gamma(\mu=4.0,k=4)} {{< /katex >}} | [2][3][4] | 
-| Pre-Clinical Infectiousness Duration | | {{< katex display >}} \footnotesize{d_P: \Gamma(\mu=1.5,k=4)} {{< /katex >}} |
-| Clinical Infectiousness Duration | [2][3][4] |  {{< katex display >}} \footnotesize{d_C: \Gamma(\mu=3.5,k=4)} {{< /katex >}} | 
-| Subclinical Infectiousness Duration <br> <sub>*Assumed to be the same duration as total infectious period for clinical cases, including preclinical transmission*</sub> | [1] | {{< katex display >}} \footnotesize{d_S: \Gamma(\mu=5.0,k=4)} {{< /katex >}} | 
-| Hospitalization | - | {{< katex display >}} \footnotesize{d_H: 1} {{< /katex >}} | 
-| Incubation period | [1] | {{< katex display >}} \footnotesize{d_E+d_P; \mu=5.5} {{< /katex >}} | 
-| Relative infectiousness of subclinical cases | [1] | {{< katex display >}} \footnotesize{f = 50\%} {{< /katex >}} | 
-| UK Contact Matrices <br> <sub>*Number of age-{{< katex >}}j{{< /katex >}} individuals contacted by age-{{< katex >}}i{{< /katex >}} individual per day*</sub> | [6] | {{< katex display >}} \footnotesize{c_{ij}:} {{< /katex >}} `covidm/data/all_matrices.rds` | 
-| Number of age-{{< katex >}}i{{< /katex >}} individuals | [6] | {{< katex display >}} \footnotesize{N_i} {{< /katex >}} | 
-| Proportion of hospitalised cases requiring critical care | [7] |{{< katex display >}} \footnotesize{30\%} {{< /katex >}} | 
-| Serial Interval | [2][3][4] | {{< katex display >}} \footnotesize{d_E + \tfrac{1}{2}(y_i(d_P+d_C)+(1-y_i)d_S) = 6.5} \text{ days} {{< /katex >}} | 
-| Delay from onset to hospitalization | [7][8] | {{< katex display >}} \footnotesize{\Gamma(\mu=7,k=7)} {{< /katex >}} | 
-| Duration of hospitalization | [7] | {{< katex display >}} \footnotesize{\Gamma(\mu=10,k=10)} {{< /katex >}} | 
-| Proportion of hospitalized cases requiring critical care | [7] | {{< katex display >}} \footnotesize{30\%} {{< /katex >}} | 
-| Delay from onset to death | [7][8] |  {{< katex display >}} \footnotesize{\Gamma(\mu=22,k=22)} {{< /katex >}} | 
-| | | {{< katex display >}} \footnotesize{dIp} {{< /katex >}} | 
+| **Parameter** | **Source** | **LSHTM** | **Simulation.jl** |
+| ------------- | ---------- | --------- | ----------------- |
+| Latent period | [2][3][4] | {{< katex display >}} \footnotesize{d_E: \Gamma(\mu=4.0,k=4)} {{< /katex >}} | - |
+| Pre-Clinical Infectiousness Duration | [5] | {{< katex display >}} \footnotesize{d_P: \Gamma(\mu=1.5,k=4)} {{< /katex >}} | - |
+| Clinical Infectiousness Duration | [2][3][4] |  {{< katex display >}} \footnotesize{d_C: \Gamma(\mu=3.5,k=4)} {{< /katex >}} | - |
+| Subclinical Infectiousness Duration <br> <sub>*Assumed to be the same duration as total infectious period for clinical cases, including preclinical transmission*</sub> | [1] | {{< katex display >}} \footnotesize{d_S: \Gamma(\mu=5.0,k=4)} {{< /katex >}} | - |
+| Hospitalization | - | {{< katex display >}} \footnotesize{d_H: 1} {{< /katex >}} | - |
+| Incubation period | [1] | {{< katex display >}} \footnotesize{d_E+d_P; \mu=5.5} {{< /katex >}} | - |
+| Relative infectiousness of subclinical cases | [1] | {{< katex display >}} \footnotesize{f = 50\%} {{< /katex >}} | - |
+| UK Contact Matrices <br> <sub>*Number of age-{{< katex >}}j{{< /katex >}} individuals contacted by age-{{< katex >}}i{{< /katex >}} individual per day*</sub> | [6] | {{< katex display >}} \footnotesize{c_{ij}:} {{< /katex >}} `covidm/data/all_matrices.rds` | - |
+| Number of age-{{< katex >}}i{{< /katex >}} individuals | [6] | {{< katex display >}} \footnotesize{N_i} {{< /katex >}} | - |
+| Proportion of hospitalised cases requiring critical care | [7] |{{< katex display >}} \footnotesize{30\%} {{< /katex >}} | - |
+| Serial Interval | [2][3][4] | {{< katex display >}} \footnotesize{d_E + \tfrac{1}{2}(y_i(d_P+d_C)+(1-y_i)d_S) = 6.5} \text{ days} {{< /katex >}} | - |
+| Delay from onset to hospitalization | [7][8] | {{< katex display >}} \footnotesize{\Gamma(\mu=7,k=7)} {{< /katex >}} | - |
+| Duration of hospitalization | [7] | {{< katex display >}} \footnotesize{\Gamma(\mu=10,k=10)} {{< /katex >}} | - |
+| Proportion of hospitalized cases requiring critical care | [7] | {{< katex display >}} \footnotesize{30\%} {{< /katex >}} | - |
+| Delay from onset to death | [7][8] |  {{< katex display >}} \footnotesize{\Gamma(\mu=22,k=22)} {{< /katex >}} | - |
+| | | {{< katex display >}} \footnotesize{dIp} {{< /katex >}} | - |
 
 
 [1] The effect of non-pharmaceutical interventions on COVID-19 cases, deaths and demand for hospital services in the UK: a modelling study, N. G. Davies et. al, 2020, Table S1, pg. 23
