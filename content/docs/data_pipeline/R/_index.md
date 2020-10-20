@@ -1,9 +1,9 @@
 ---
 bookCollapseSection: true
-weight: 20
+weight: 30
 ---
 
-# Data API
+# SCRCdataAPI
 
 To install the SCRCdataAPI package in R
 
@@ -14,6 +14,6 @@ devtools::install_github("scottishcovidresponse/SCRCdataAPI")
 
 To install the SCRCdata package in R
 
-``` R
+``` 
 devtools::install_github("scottishcovidresponse/SCRCdata")
 ```

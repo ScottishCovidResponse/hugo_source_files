@@ -1,8 +1,10 @@
 ---
-weight: 30
+weight: 2
 ---
 
-## The file API manages file access, provenance, and metadata. 
+# File API
+
+## The file API manages file access, provenance, and metadata
 
 The API is accessed as a "session". All reads and writes are recorded and logged into a file when the session closes. Files are identified by their metadata, though the metadata is handled differently for reads (where the files are expected to exist) and writes (where they typically do not), described in more detail below. 
 

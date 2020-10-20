@@ -1,6 +1,5 @@
 ---
-title: Readme
-weight: 2
+weight: 1
 ---
 
 # Standardised data type API 
