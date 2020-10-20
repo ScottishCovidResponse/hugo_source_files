@@ -8,6 +8,7 @@ enableEmoji = true
 # Book configuration
 disablePathToLower = true
 enableGitInfo = true
+pygmentsUseClasses = true
 
 # Needed for mermaid/katex shortcodes
 [markup]
