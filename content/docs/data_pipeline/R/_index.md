@@ -14,6 +14,6 @@ devtools::install_github("scottishcovidresponse/SCRCdataAPI")
 
 To install the SCRCdata package in R
 
-``` 
+``` R
 devtools::install_github("scottishcovidresponse/SCRCdata")
 ```

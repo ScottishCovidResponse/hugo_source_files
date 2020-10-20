@@ -22,13 +22,13 @@ weight: 1
    When this code is run, an hdf5 file will be downloaded, unless a file by the same name already exists at the specified location, in which case a message will notify you. The `download_dataproduct()` function will return a list comprising two named elements, `downloaded_to` (the absolute path of H5 file after downloading) and `components` (the components contained within the H5 file).
 
 4. An H5 file will always contain at least one component, containing of a particular dataset. These are listed in the data registry, or can be listed using:
-   ``` 
+   ``` R
    get_components(file$downloaded_to)
    ```
 
 4. Now, pick one of these components and read it into R:
 
-   ``` 
+   ``` R
    tmp <- read_array(filepath = file$downloaded_to, 
                      component = file$components[4])
    head(tmp)
