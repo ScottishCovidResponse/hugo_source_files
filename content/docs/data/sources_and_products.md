@@ -3,11 +3,11 @@ title: Data Sources and Products
 weight: 2
 ---
 
-# Data Sources and Products
+# Data sources and products
 
 The following information was compiled in July 2020
 
-## Administrative Spatial Scales in UK
+## Administrative spatial scales in UK
 
 The UK is split into different levels of administrative areas and differing amounts of data are available at these different spatial scales. Different government agencies are responsible for the different countries and data may need to be sourced from these different sources.
 
@@ -34,7 +34,7 @@ The UK is split into different levels of administrative areas and differing amou
 
 The [Open Geography portal](https://geoportal.statistics.gov.uk/) from the Office for National Statistics (ONS) provides free and open access to the definitive source of geographic products.
 
-## Epidemic Data
+## Epidemic data
 
 Data, parameter estimates and distributions about the epidemic from literature sources.
 
@@ -56,7 +56,7 @@ Data, parameter estimates and distributions about the epidemic from literature s
 
 2. [Website](https://www.kaggle.com/covid-19-contributions) from US government that contains literature reviews and data extraction for parameters for a number of measures about the natural history of COVID-19. It uses a combination of AI and human intervention to scrape the literature.
 
-## Literature Searches in Progress
+## Literature searches in progress
 
 | Topic        | Searching & Screening | Quality checking & synthesising |
 | ------------ | --------------------- | ------------------------------- |
@@ -64,17 +64,17 @@ Data, parameter estimates and distributions about the epidemic from literature s
 |              |                       |                                 |
 |              |                       |                                 |
 
-## Information about Serology-based tests for COVID-19
+## Information about serology-based tests for COVID-19
 
 This [website](https://www.centerforhealthsecurity.org/resources/COVID-19/serology/Serology-based-tests-for-COVID-19.html#sec3 ) collates type of testing in use by country, including sensitivity and specificity, where available. 
 
 Latent-class [meta-analysis](https://www.researchsquare.com/article/rs-33243/v1 ) estimating sensitivity and specificity for COVID diagnostics DOI: 10.21203/rs.3.rs-33243/v1
 
-## ONS Coronavirus Infection Survey Pilot
+## ONS Coronavirus infection survey pilot
 
 This is a [national survey](https://www.medrxiv.org/content/10.1101/2020.07.06.20147348v1.full.pdf ) (England), collecting throat and nose swabs and accompanying data from individuals in households across England, estimates the prevalence and incidence of SARS-CoV-2 in the community in England.
 
-## Health Data Sources for Progress of COVID-19 epidemic in UK
+## Health Data sources for progress of COVID-19 epidemic in UK
 
 Data requirements and sources about the progress of the epidemic in UK (including Scotland). These data are available at different spatial scales and stratified by social factors (eg age, sex, area deprivation, ethnicity). As these are classified as personal data, it may be necessary to obtain special permission to access the data. Permissions will be required for individual level data, finer spatial scales and more stratifications.
 
@@ -94,13 +94,13 @@ UK Government host a [website](https://coronavirus.data.gov.uk/ ) containing hig
 | COVID-19 patients currently in hospital | UK, England, Scotland, Wales, NI, England NHS Regions | <https://coronavirus-staging.data.gov.uk/> |
 | Patients on ventilation | UK, England, Scotland, Wales, NI, England NHS Regions | <https://coronavirus-staging.data.gov.uk/> |
 
-## Other Sources of Data
+## Other Sources of data
 
 [NHS England - daily deaths](https://www.england.nhs.uk/statistics/statistical-work-areas/covid-19-daily-deaths/)
 
 [NHS England - hospital activity](https://www.england.nhs.uk/statistics/statistical-work-areas/covid-19-hospital-activity/)
 
-## Data Available with social factors
+## Data available with social factors
 
 [Scotland](https://statistics.gov.scot/resource?uri=http%3A%2F%2Fstatistics.gov.scot%2Fdata%2Fdeaths-involving-coronavirus-covid-19 )
 
@@ -143,7 +143,7 @@ Further information: [here](https://www.isdscotland.org/Products-and-Services/eD
 
 Numbers of hospital admissions, times of admission to hospital, testing (multiple tests incl. previous test negative score if available), entry and exit from ICU and time of discharge or death, treatment & medication by week, age group, deprivation quintile, health board.
 
-## Demographic Data Sources
+## Demographic data sources
 
 In general, these data sources can be split into data collected at 2011 Census and therefore available for the whole population of UK at different spatial scales and government surveys which are more up to date but on a sample of the population and therefore fine grained spatial scales are more limited. Population estimates by age, sex and spatial scales are available annually.
 
@@ -154,7 +154,7 @@ In general, these data sources can be split into data collected at 2011 Census a
 
 **Notes:** Most UK surveys will have some detail on households so data products/analysis may be able to produce estimates for different households (*e.g.* travel diaries using the National Travel Survey)
 
-## Other Data Sources
+## Other data sources
 
 Microdata for surveys can be downloaded from the [UK Data Archive](https://www.ukdataservice.ac.uk/ )
 
