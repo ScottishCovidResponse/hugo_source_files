@@ -13,7 +13,7 @@ The data product itself should be producted in the correct format:
 
 # TOML files
 
-There are only three types of toml file:
+There are only three types of TOML file:
 
 * point-estimate
 * distribution
@@ -63,7 +63,7 @@ value = 24.0
 
 ## create_estimate()
 
-Write a single estimate into a toml file:
+Write a single estimate into a TOML file:
 
 ``` R
 filename <- "0.1.0.toml"
@@ -76,7 +76,7 @@ create_estimate(filename = filename,
                 parameters = estimate)
 ```
 
-Write multiple estimates into a toml file:
+Write multiple estimates into a TOML file:
 
 ``` R
 filename <- "0.1.0.toml"
@@ -92,7 +92,7 @@ create_estimate(filename = filename,
 
 ## create_distribution()
 
-Write a single distribution into a toml file
+Write a single distribution into a TOML file
 
 ``` R
 filename <- "0.1.0.toml"
@@ -108,7 +108,7 @@ create_distribution(filename = filename,
                     distribution = distribution)
 ```
 
-Write multiple distributions into a toml file
+Write multiple distributions into a TOML file
 
 ``` R
 filename <- "0.1.0.toml"
@@ -128,13 +128,13 @@ create_distribution(filename = filename,
 
 # HDF5 files
 
-An h5/hdf5 file can be either a table or an array. A table is always 2-dimentional and might typically be used when each column contains different classes of data (*e.g.* integers and strings). Conversely, all elements in an array should be the same class, though the array itself might be 1-dimensional, 2-dimensional, or more (e.g. a 3-dimensional array comprising population counts, with rows as area, columns as age, and a third dimension representing gender).
+An HDF5 file can be either a table or an array. A table is always 2-dimentional and might typically be used when each column contains different classes of data (*e.g.* integers and strings). Conversely, all elements in an array should be the same class, though the array itself might be 1-dimensional, 2-dimensional, or more (e.g. a 3-dimensional array comprising population counts, with rows as area, columns as age, and a third dimension representing gender).
 
-You should create a single h5/hdf5 file for a single dataset. Unless you have a dataset that really should have been generated as multiple datasets in the first place (*e.g.* testing data mixed with carehome data), in which case use your own judgement.
+You should create a single HDF5 file for a single dataset. Unless you have a dataset that really should have been generated as multiple datasets in the first place (*e.g.* testing data mixed with carehome data), in which case use your own judgement.
 
 ## Components
 
-The file itself should contain components. If your dataset contains multiple data topics / data items, then these can be included as separate components within a single h5/hdf5 file. In this case, a particular naming convention is needed. For example, in the human-mortality data product:
+The file itself should contain components. If your dataset contains multiple data topics / data items, then these can be included as separate components within a single HDF5 file. In this case, a particular naming convention is needed. For example, in the human-mortality data product:
 
 * `age_group/week/gender-country-all_deaths`
 * `age_group/week/gender-country-covid_related_deaths`  
@@ -146,9 +146,9 @@ Taking the first component as an example:
 * A description of the contents follows the dash, where `-country-all_deaths` describes all elements
 * Spaces are replaced with underscores
 
-If your dataset contains a single data topic, then only a single component is needed. If the h5/hdf5 file is generated using `create_table()` then name the component "`table`", likewise when `create_array()` is used then the component should be named "`array`".
+If your dataset contains a single data topic, then only a single component is needed. If the HDF5 file is generated using `create_table()` then name the component "`table`", likewise when `create_array()` is used then the component should be named "`array`".
 
-The functions `create_array()` and `create_table()` can be used to generate an h5/hdf5 file.
+The functions `create_array()` and `create_table()` can be used to generate an HDF5 file.
 
 ## create_array()
 
