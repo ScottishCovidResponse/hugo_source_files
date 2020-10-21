@@ -23,10 +23,10 @@ These are all different ways of representing the estimate for a value, which can
 
 ### Components
 
-You could have a data product called `latent-period` with a single point estimate:
+You could have a data product called `latent_period` with a single point estimate:
 
 ``` toml
-[latent-period]
+[latent_period]
 type = "point-estimate"
 value = 1.0
 ```
@@ -36,7 +36,7 @@ In this case, the component is taken as the last part of the name (in the above 
 Alternatively, the data product could have several components, for instance:
 
 ``` toml
-[latent-period]
+[latent_period]
 type = "distribution"
 distribution = "gamma"
 shape = 1.0
@@ -46,7 +46,7 @@ scale = 1.0
 type = "point-estimate"
 value = 1.0
 
-[standard-deviation]
+[standard_deviation]
 type = "point-estimate"
 value = 1.0
 ```
