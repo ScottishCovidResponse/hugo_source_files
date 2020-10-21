@@ -15,7 +15,7 @@ headless: true
   - [HDF5 components]({{< relref "/docs/data_pipeline/specifications/hdf5_components" >}})
   - [Versioning]({{< relref "/docs/data_pipeline/specifications/versioning" >}})
 - [R]({{< relref "/docs/data_pipeline/R" >}})
-  - [Upload metadata to the registry]({{< relref "/docs/data_pipeline/specifications/templates" >}})
+  - [Upload a data product]({{< relref "/docs/data_pipeline/specifications/templates" >}})
   - [Submission script templates]({{< relref "/docs/data_pipeline/specifications/templates" >}})
   - [Download a data product]({{< relref "/docs/data_pipeline/R/download_dp" >}})
 - [Python]({{< relref "/docs/data_pipeline/python" >}})

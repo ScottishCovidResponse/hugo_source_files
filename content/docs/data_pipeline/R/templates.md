@@ -11,7 +11,7 @@ Templates are listed below in decreasing desirability...
 
 ## Five stars, great job!
 
-Use these scripts if you have a single original source (*e.g.* website or database), a single raw data file (*e.g.* csv file), a single processing script (to convert the raw data file into an hdf5 file), and a single data product (*e.g.* h5 file).
+Use these scripts if you have a single original source (*e.g.* a website or database), a single raw data file (*e.g.* a csv file), a single processing script (to convert the raw data file into an h5/hdf5 file), and a single data product (*e.g.* an h5/hdf5 file).
 
 [upload_everything2][10]
 : You have everything mentioned above.

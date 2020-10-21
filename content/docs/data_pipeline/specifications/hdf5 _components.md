@@ -5,12 +5,12 @@ weight: 2
 
 # HDF5 components
 
-There are only two types of HDF5 file:
+There are only two types of h5/hdf5 file:
 
 * table
 * array
 
-You should create a single HDF5 file for a single dataset.
+You should create a single h5/hdf5 file for a single dataset.
 
 ## Single component
 
