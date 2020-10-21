@@ -23,10 +23,10 @@ These are all different ways of representing the estimate for a value, which can
 
 ### Components
 
-You could have a data product called `latent_period` with a single point estimate:
+You could have a data product called `latent-period` with a single point estimate:
 
 ``` toml
-[latent_period]
+[latent-period]
 type = "point-estimate"
 value = 1.0
 ```
@@ -36,7 +36,7 @@ In this case, the component is taken as the last part of the name (in the above 
 Alternatively, the data product could have several components, for instance:
 
 ``` toml
-[latent_period]
+[latent-period]
 type = "distribution"
 distribution = "gamma"
 shape = 1.0
@@ -46,7 +46,7 @@ scale = 1.0
 type = "point-estimate"
 value = 1.0
 
-[standard_deviation]
+[standard-deviation]
 type = "point-estimate"
 value = 1.0
 ```
@@ -68,7 +68,7 @@ Write a single estimate into a toml file:
 ``` 
 create_estimate(filename = "0.1.0.toml",
                 path = "human/infection/SARS-CoV-2/asymptomatic_period",
-                parameters = list(asymptomatic-period = 192.0))
+                parameters = list(`asymptomatic-period` = 192.0))
 ```
 
 Write multiple estimates into a toml file:
@@ -76,8 +76,8 @@ Write multiple estimates into a toml file:
 ```
 create_estimate(filename = "0.1.0.toml",
                 path = "human/infection/SARS-CoV-2/asymptomatic_period",
-                parameters = list(asymptomatic-period = 192.0,
-                                  standard-deviation = 10.2))
+                parameters = list(`asymptomatic-period` = 192.0,
+                                  `standard-deviation` = 10.2))
 ```
 
 ### create_distribution()
@@ -87,7 +87,7 @@ Write a single distribution into a toml file
 ```
 create_distribution(filename = "0.1.0.toml",
                     path = "human/infection/SARS-CoV-2/latency",
-                    distribution = list(name = "latency",
+                    distribution = list(name = "latency-period",
                                         distribution = "gamma",
                                         parameters = list(shape = 2.0,
                                                           scale = 3.0)))
@@ -96,10 +96,10 @@ create_distribution(filename = "0.1.0.toml",
 Write multiple distributions into a toml file
 
 ```
-dist1 <- list(name = "latency1",
+dist1 <- list(name = "latency-period-1",
               distribution = "gamma",
               parameters = list(shape = 2.0, scale = 3.0))
-dist2 <- list(name = "latency2",
+dist2 <- list(name = "latency-period-2",
               distribution = "gamma",
               parameters = list(shape = 2.2, scale = 4.0))
 
