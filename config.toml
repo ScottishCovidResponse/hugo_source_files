@@ -94,3 +94,5 @@ pygmentsUseClasses = true
   # 3. Copy the css into a new stylesheet, named _scriptstyle.scss
   # 4. Add an import to the new stylesheet in _custom.scss:
   # @import "scriptstyle";
+
+    BookLogo = "logo.jpg"
