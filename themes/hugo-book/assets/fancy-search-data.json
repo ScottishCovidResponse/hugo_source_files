@@ -1,19 +1,21 @@
 {
+  {{- $pages := where .Site.Pages "Kind" "in" (slice "home" "page" "section") }}
     {{- $first:= true}}
-    {{- range $index, $page := where .Site.Pages "Kind" "in" (slice "home" "page" "section") }}
+    {{- range $index, $page := $pages }}
       {{- $i :=add $index 1 }}
       {{- if $page.Content }}
       {{- if not $first }}
       ,
       {{- end -}}
-      "{{$i}}": {
+        "{{$i}}": {
         "url": "{{ $page.RelPermalink }}",
         "relUrl": "{{ $page.RelPermalink }}",
         "title": {{ (partial "docs/title" $page) | jsonify }},
         "doc": {{ (partial "docs/title" $page) | jsonify }},
-        "section": {{ (partial "docs/title" $page.Parent) | jsonify }},
+        "section": {{ with $page.Parent }}{{ (partial "docs/title" .) | jsonify }}{{- else -}}""{{- end -}} ,
         "content": {{$page.Plain | jsonify}}
       }
+            
       {{- $first = false}}
       {{- end -}}
     {{- end -}}
