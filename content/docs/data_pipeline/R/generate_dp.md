@@ -1,7 +1,102 @@
 ---
-title: HDF5 files
+title: Generate a data product
 weight: 2
 ---
+
+# How to generate a data product
+
+The data product itself should be producted in the correct format:
+
+* Point estimates, distributions, and samples should be generated as toml files
+* Tables and arrays should be generated as h5/hdf5 files
+* The filename (of the toml or theh h5/hdf5 file) should be the version number of the data product
+
+# TOML files
+
+There are only three types of toml file:
+
+* point-estimate
+* distribution
+* samples
+
+These are all different ways of representing the estimate for a value, which can be anything - the mean of something, the standard deviation, etc.
+
+## Components
+
+You could have a data product called `latent-period` with a single point estimate:
+
+``` toml
+[latent-period]
+type = "point-estimate"
+value = 1.0
+```
+
+In this case, the component is taken as the last part of the name (in the above example, period).
+
+Alternatively, the data product could have several components, for instance:
+
+``` toml
+[latent-period]
+type = "distribution"
+distribution = "gamma"
+shape = 1.0
+scale = 1.0
+
+[mean]
+type = "point-estimate"
+value = 1.0
+
+[standard-deviation]
+type = "point-estimate"
+value = 1.0
+```
+
+and so on.
+
+As far as units are concerned, there will be a unit-respecting system in that (if we get the data pipeline grant) every data product component will have to say what units it is in, and the pipeline API will do conversions and error if the units aren't compatible (or aren't provided). However, it's not there yet. The only thing we can suggest at the moment is to decide to use the component names to specify the units, so add an additional component to the TOML file such as:
+
+``` toml
+[hours]
+type = "point-estimate"
+value = 24.0
+```
+
+## create_estimate()
+
+```
+
+```
+
+## create_distribution()
+
+Write a single distribution into a toml file
+
+```
+dist <- list(name = "latency",
+             distribution = "gamma",
+             parameters = list(shape = 2.0, scale = 3.0))
+filename <- "test_single.toml"
+
+create_distribution(filename = filename,
+                    path = ".",
+                    distribution = dist)
+```
+
+Write multiple distributions into a toml file
+
+```
+dist1 <- list(name = "latency",
+              distribution = "gamma",
+              parameters = list(shape = 2.0, scale = 3.0))
+dist2 <- list(name = "virulence",
+              distribution = "gamma",
+              parameters = list(shape = 2.0, scale = 3.0))
+filename <- "test_multi.toml"
+
+create_distribution(filename = filename,
+                    path = ".",
+                    distribution = list(dist1, dist2))
+```
 
 # HDF5 files
 

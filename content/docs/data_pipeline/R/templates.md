@@ -1,6 +1,6 @@
 ---
 title: Submission script templates
-weight: 2
+weight: 4
 ---
 
 # Submission script templates

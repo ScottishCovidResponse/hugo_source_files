@@ -1,6 +1,6 @@
 ---
 bookCollapseSection: true
-weight: 30
+weight: 20
 ---
 
 # SCRCdataAPI
