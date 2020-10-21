@@ -5,7 +5,7 @@ weight: 1
 
 # TOML components
 
-There are only three types of TOML file:
+There are only three types of toml file:
 
 * point-estimate
 * distribution
