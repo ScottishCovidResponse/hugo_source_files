@@ -1,17 +1,17 @@
 ---
 title: Generate a data product
-weight: 2
+weight: 3
 ---
 
 # How to generate a data product
 
 The data product itself should be producted in the correct format:
 
-* Point estimates, distributions, and samples should be generated as toml files
-* Tables and arrays should be generated as h5/hdf5 files
-* The filename (of the toml or theh h5/hdf5 file) should be the version number of the data product
+* Point estimates, distributions, and samples should be generated as TOML files (`*.toml`)
+* Tables and arrays should be generated as HDF5 files (`*.h5`/`*.hdf5`)
+* The filename (of the TOML or HDF5 file) should be the version number of the data product (see [Filenames and versioning]({{< ref "docs/data_pipeline/R/1_versioning" >}}))
 
-# TOML files
+## TOML files
 
 There are only three types of toml file:
 
@@ -21,7 +21,7 @@ There are only three types of toml file:
 
 These are all different ways of representing the estimate for a value, which can be anything - the mean of something, the standard deviation, etc.
 
-## Components
+### Components
 
 You could have a data product called `latent-period` with a single point estimate:
 
@@ -61,11 +61,7 @@ type = "point-estimate"
 value = 24.0
 ```
 
-## Path / data product name
-
-sf
-
-## create_estimate()
+### create_estimate()
 
 Write a single estimate into a toml file:
 
@@ -84,7 +80,7 @@ create_estimate(filename = "0.1.0.toml",
                                   standard-deviation = 10.2))
 ```
 
-## create_distribution()
+### create_distribution()
 
 Write a single distribution into a toml file
 
@@ -112,13 +108,13 @@ create_distribution(filename = "0.1.0.toml",
                     distribution = list(dist1, dist2))
 ```
 
-# HDF5 files
+## HDF5 files
 
 An h5/hdf5 file can be either a table or an array. A table is always 2-dimentional and might typically be used when each column contains different classes of data (*e.g.* integers and strings). Conversely, all elements in an array should be the same class, though the array itself might be 1-dimensional, 2-dimensional, or more (e.g. a 3-dimensional array comprising population counts, with rows as area, columns as age, and a third dimension representing gender).
 
 You should create a single h5/hdf5 file for a single dataset. Unless you have a dataset that really should have been generated as multiple datasets in the first place (*e.g.* testing data mixed with carehome data), in which case use your own judgement.
 
-## Components
+### Components
 
 The file itself should contain components. If your dataset contains multiple data topics / data items, then these can be included as separate components within a single h5/hdf5 file. In this case, a particular naming convention is needed. For example, in the human-mortality data product:
 
@@ -136,7 +132,7 @@ If your dataset contains a single data topic, then only a single component is ne
 
 The functions `create_array()` and `create_table()` can be used to generate an h5/hdf5 file.
 
-## create_array()
+### create_array()
 
 ``` R
 # Create a fake dataset
@@ -153,7 +149,7 @@ create_array(filename = "0.1.0.h5",
                                     colvalue = colnames(df)))
 ```
 
-## create_table()
+### create_table()
 
 ``` R
 # Create fake data

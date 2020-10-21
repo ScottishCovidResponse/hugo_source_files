@@ -1,6 +1,6 @@
 ---
 title: Download a data product
-weight: 5
+weight: 6
 ---
 
 # How to download a data product
