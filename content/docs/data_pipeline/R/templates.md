@@ -5,7 +5,7 @@ weight: 2
 
 # Submission script templates
 
-Submission scripts are used to upload metadata to the data registry. A number of submission script templates are available in the SCRCdata package. To access them either clone the [repository](https://github.com/ScottishCovidResponse/SCRCdata) and go to the `inst/templates` directory, or follow the links on this page.
+Submission scripts are used to upload metadata to the data registry. A number of submission script templates are available in the SCRCdata package. To access them either clone the [repository](https://github.com/ScottishCovidResponse/SCRCdata) and go to the `inst/templates` directory, or just follow the links on this page.
 
 Templates are listed below in decreasing desirability...
 
@@ -28,7 +28,7 @@ Use these scripts if you have a single original source (*e.g.* website or databa
 [upload_estimate_from_paper][6]
 : You have a point-estimate (raw data) taken from a paper (original source). You can generate the toml file (data product) here so you don't need a processing script.
 
-If you have a more complicated situation, with multiple original sources for [example](https://raw.githubusercontent.com/ScottishCovidResponse/SCRCdata/master/inst/SCRC/scotgov_dz_lookup.R), please seek guidance.
+:exclamation: If you have a more complicated situation, *e.g.* [multiple original sources](https://raw.githubusercontent.com/ScottishCovidResponse/SCRCdata/master/inst/SCRC/scotgov_dz_lookup.R), please seek guidance.
 
 ## Needs more work...
 Use these scripts if you don't have an original source or a processing script and want to upload a data product anyway. Bad!
