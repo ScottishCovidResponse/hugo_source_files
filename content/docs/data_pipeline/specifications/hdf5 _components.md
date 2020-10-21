@@ -1,16 +1,15 @@
 ---
-title: HDF5 components
+title: HDF5 files
 weight: 2
 ---
 
-# HDF5 components
+# HDF5 files
 
-There are only two types of h5/hdf5 file:
+An h5/hdf5 file can be either a table or an array. A table is always 2-dimentional and might typically be used when each column contains different classes of data (*e.g.* integers and strings). Conversely, all elements in an array should be the same class, though the array itself might be 1-dimensional, 2-dimensional, or more (e.g. a 3-dimensional array comprising population counts, with rows as area, columns as age, and a third dimension representing gender).
 
-* table
-* array
+You should create a single h5/hdf5 file for a single dataset. Unless you have a dataset that really should have been generated as multiple datasets in the first place (*e.g.* testing data mixed with carehome data), in which case use your own judgement.
 
-You should create a single h5/hdf5 file for a single dataset.
+The file itself should contain components. If your dataset contains multiple data topics / data items, then these can be included as separate components within a single HDF5 file, *e.g.* cases-and-management/schools contains four components; pupil absences for covid reasons, percentage absences for covid reasons,  percentage absences for non-covid reasons, and percentage attendance.
 
 ## Single component
 
@@ -18,12 +17,13 @@ If your dataset contains a single component, for `create_table()` call it "`tabl
 
 ## Multiple components
 
-If your dataset contains multiple data topics / data items, for example the cases_and_management dataset contains information about nursing homes, testing, nhs24 calls, etc., then these can be included as separate components within a single HDF5 file. In the example linked above, components include:
+If your dataset contains a multiple components, then a particular naming convention is needed. For example, in the human-mortality data product:
 
-* `call_centre/date-number_of_calls`
-* `confirmed_suspected_total/date-country-hospital`
-* `date-country-carehomes-carehomes_submitted_return`  
+* `age_group/week/gender-country-all_deaths`
+* `age_group/week/gender-country-covid_related_deaths`  
+* `age_group/week-persons-country-all_deaths`
 
-and so on.
-
-Note the naming convention! `call_centre/date` corresponds to the first and second dimensions of the data (rows and columns), and everything after the dash applies to all elements.
+Note the naming convention! The first component is described thusly:
+* `age_group/week/gender` corresponds to the first, second, and third dimensions of the data (rows, columns, and levels) 
+* `-country-all_deaths` applies to all elements in the array
+* spaces are replaced with underscores
