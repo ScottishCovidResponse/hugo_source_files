@@ -1,9 +1,9 @@
 ---
 weight: 2
 bookFlatSection: true
-title: "SCRC Data Pipeline"
+title: "SCRC data pipeline"
 ---
 
-# Introduction
+# SCRC data pipeline
 
 The data pipeline is very shiny.

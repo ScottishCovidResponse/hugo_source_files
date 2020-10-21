@@ -1,12 +1,20 @@
 ---
-title: hdf5 Components
+title: HDF5 components
 weight: 2
 ---
 
+# HDF5 components
 
-# HDF5 Components
+There are only two types of HDF5 file:
+
+* table
+* array
 
 You should create a single HDF5 file for a single dataset.
+
+## Single component
+
+If your dataset contains a single component, for `create_table()` call it "`table`" and for `create_array()` call it "`array`".
 
 ## Multiple components
 
@@ -19,7 +27,3 @@ If your dataset contains multiple data topics / data items, for example the case
 and so on.
 
 Note the naming convention! `call_centre/date` corresponds to the first and second dimensions of the data (rows and columns), and everything after the dash applies to all elements.
-
-## Single component
-
-If your dataset contains a single component, for `create_table()` call it "`table`" and for `create_array()` call it "`array`".

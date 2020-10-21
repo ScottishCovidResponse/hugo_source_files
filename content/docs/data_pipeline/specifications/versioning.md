@@ -1,30 +1,34 @@
 ---
-title: Versioning
+title: Data product versioning
 weight: 3
 ---
 
 # Versioning
 
+The version of a data product is identified by its filename.
+
 ## For a dataset that is downloaded only once
 
 Filenames are written thus (`major.minor.patch`):
 
-* `0.1.0.toml` 
+* `0.1.0.toml`
 * `0.1.0.csv`
 * `0.1.0.h5`
 
-**Major** changes only for the initial stable release (when you go from 0.y.z to 1.0.0), and when you have incompatible changes.  
+**Major** changes only for the initial stable release (when you go from `0.y.z` to `1.0.0`), and when you have incompatible changes.  
 **Minor** changes when you're adding new functionality (*e.g.* a new component) or for the initial release that you think is probably right (when you go from `0.0.z` to `0.1.0`).  
 **Patch** changes for small bug fixes.
 
-You can increase minor numbers a bit more freely than that if you're making a bigger change, or you want to make a new and improved script that definitely works better even though the output is technically the same, but those are the "official" rules. For example, you might want to start the disease data with `0.20200722.0`, etc. until you're really confident that it's all good and you're happy to make a `1.2020mmdd.0` release, it's up to you.
+You can increase minor numbers a bit more freely than that if you're making a bigger change, or you want to make a new and improved script that definitely works better even though the output is technically the same, but those are the "official" rules.
 
 ## For a dataset that is downloaded daily
 
 Filenames are written thus (named after the download date):
 
 * `1.20200716.0.csv`
-* `1.20200716.0.h5` 
+* `1.20200716.0.h5`
+
+For example, you might want to start the disease data with `0.20200722.0`, etc. until you're really confident that it's all good and you're happy to make a `1.2020mmdd.0` release.
 
 If there's a bugfix to the dataset, then you'd go from `1.20200716.0.csv` to `1.20200716.1.csv`.
 

@@ -87,10 +87,10 @@ pygmentsUseClasses = true
   BookServiceWorker = true
  
   # To change the fenced code block theme. 
-  # 1. Put this in theme.toml: 
+  # 1. Put this in config.toml: 
   # pygmentsUseClasses = true
   # 2. Run this:
   # hugo gen chromastyles --style=arduino > syntax.css 
-  # 3. Copy the css into a new stylesheet, named _scriptstyle.scss
+  # 3. Copy the css into a new stylesheet, themes/hugo-book/assets/_scriptstyle.scss
   # 4. Add an import to the new stylesheet in _custom.scss:
   # @import "scriptstyle";

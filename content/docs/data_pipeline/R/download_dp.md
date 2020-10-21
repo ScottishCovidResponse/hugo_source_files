@@ -1,9 +1,9 @@
 ---
 title: Download a data product
-weight: 1
+weight: 3
 ---
 
-# How to download a data product in R
+# How to download a data product
 
 1. Go to the [data registry](https://data.scrc.uk/) and browse the data products.
 
