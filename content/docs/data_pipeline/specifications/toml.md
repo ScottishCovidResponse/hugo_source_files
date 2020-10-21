@@ -1,9 +1,9 @@
 ---
-title: TOML components
+title: TOML files
 weight: 1
 ---
 
-# TOML components
+# TOML files
 
 There are only three types of toml file:
 

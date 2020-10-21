@@ -1,19 +1,20 @@
 ---
-title: Data product versioning
+title: Versioning
 weight: 3
 ---
 
 # Versioning
 
-The version of a data product is identified by its filename.
+* The version of a data product is identified by its filename
+* The version of a raw data file is the same as that of the data product
 
 ## For a dataset that is downloaded only once
 
 Filenames are written thus (`major.minor.patch`):
 
 * `0.1.0.toml`
-* `0.1.0.csv`
 * `0.1.0.h5`
+* `0.1.0.csv`
 
 **Major** changes only for the initial stable release (when you go from `0.y.z` to `1.0.0`), and when you have incompatible changes.  
 **Minor** changes when you're adding new functionality (*e.g.* a new component) or for the initial release that you think is probably right (when you go from `0.0.z` to `0.1.0`).  

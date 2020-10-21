@@ -29,8 +29,6 @@ The functions `create_array()` and `create_table()` can be used to generate an h
 
 ## create_array()
 
-To create an array:
-
 ``` R
 # Create a fake dataset
 df <- data.frame(a = 1:2, b = 3:4)
@@ -47,8 +45,6 @@ create_array(filename = "0.1.0.h5",
 ```
 
 ## create_table()
-
-To create a table:
 
 ``` R
 # Create fake data

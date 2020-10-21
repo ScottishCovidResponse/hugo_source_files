@@ -9,7 +9,6 @@ This section describes the various specifications associated with generating dat
 
 The data product itself should be producted in the correct format:
 
-* Point estimates, distributions, and samples should be generated as `*toml` files
-* Tables and arrays should be generated as `*.h5`/`*.hdf5` files
-
-The filename should be the version number of the data product.
+* Point estimates, distributions, and samples should be generated as toml files
+* Tables and arrays should be generated as h5/hdf5 files
+* The filename (of the toml or theh h5/hdf5 file) should be the version number of the data product
