@@ -63,6 +63,12 @@ value = 24.0
 
 ## create_estimate()
 
+Load the SCRCdataAPI package into R:
+
+``` R
+library(SCRCdataAPI)
+```
+
 Write a single estimate into a TOML file:
 
 ``` R
@@ -91,6 +97,12 @@ create_estimate(filename = filename,
 ```
 
 ## create_distribution()
+
+Load the SCRCdataAPI package into R:
+
+``` R
+library(SCRCdataAPI)
+```
 
 Write a single distribution into a TOML file
 
@@ -152,6 +164,12 @@ The functions `create_array()` and `create_table()` can be used to generate an H
 
 ## create_array()
 
+Load the SCRCdataAPI package into R:
+
+``` R
+library(SCRCdataAPI)
+```
+
 ``` R
 filename <- "0.1.0.h5"
 data_product_name <- "some/descriptive/name"
@@ -172,6 +190,12 @@ create_array(filename = filename,
 ```
 
 ## create_table()
+
+Load the SCRCdataAPI package into R:
+
+``` R
+library(SCRCdataAPI)
+```
 
 ``` R
 filename <- "0.1.0.h5"
