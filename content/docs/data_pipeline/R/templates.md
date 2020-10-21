@@ -5,7 +5,9 @@ weight: 2
 
 # Submission script templates
 
-The following submission script templates are available in the `inst/templates` directory. These templates are used to upload metadata to the data registry. Depending on what you have, you need to use a different template. These are listed below in decreasing desirability...
+Submission scripts are used to upload metadata to the data registry. A number of submission script templates are available in the SCRCdata package. To access them either clone the [repository](https://github.com/ScottishCovidResponse/SCRCdata) and go to the `inst/templates` directory, or follow the links on this page.
+
+Templates are listed below in decreasing desirability...
 
 ## Five stars, great job!
 
