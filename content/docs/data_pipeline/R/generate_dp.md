@@ -61,10 +61,27 @@ type = "point-estimate"
 value = 24.0
 ```
 
+## Path / data product name
+
+sf
+
 ## create_estimate()
 
+Write a single estimate into a toml file:
+
+``` 
+create_estimate(filename = "0.1.0.toml",
+                path = "human/infection/SARS-CoV-2/asymptomatic_period",
+                parameters = list(asymptomatic-period = 192.0))
 ```
 
+Write multiple estimates into a toml file:
+
+```
+create_estimate(filename = "0.1.0.toml",
+                path = "human/infection/SARS-CoV-2/asymptomatic_period",
+                parameters = list(asymptomatic-period = 192.0,
+                                  standard-deviation = 10.2))
 ```
 
 ## create_distribution()
@@ -72,29 +89,26 @@ value = 24.0
 Write a single distribution into a toml file
 
 ```
-dist <- list(name = "latency",
-             distribution = "gamma",
-             parameters = list(shape = 2.0, scale = 3.0))
-filename <- "test_single.toml"
-
-create_distribution(filename = filename,
-                    path = ".",
-                    distribution = dist)
+create_distribution(filename = "0.1.0.toml",
+                    path = "human/infection/SARS-CoV-2/latency",
+                    distribution = list(name = "latency",
+                                        distribution = "gamma",
+                                        parameters = list(shape = 2.0,
+                                                          scale = 3.0)))
 ```
 
 Write multiple distributions into a toml file
 
 ```
-dist1 <- list(name = "latency",
+dist1 <- list(name = "latency1",
               distribution = "gamma",
               parameters = list(shape = 2.0, scale = 3.0))
-dist2 <- list(name = "virulence",
+dist2 <- list(name = "latency2",
               distribution = "gamma",
-              parameters = list(shape = 2.0, scale = 3.0))
-filename <- "test_multi.toml"
+              parameters = list(shape = 2.2, scale = 4.0))
 
-create_distribution(filename = filename,
-                    path = ".",
+create_distribution(filename = "0.1.0.toml",
+                    path = "human/infection/SARS-CoV-2/latency",
                     distribution = list(dist1, dist2))
 ```
 
