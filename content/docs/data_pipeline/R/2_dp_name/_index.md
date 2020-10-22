@@ -18,4 +18,4 @@ Thus, the `data_product_name` is used to locate the file, as well as describe it
 
 ![image alt text](front.png)
 
-[^1]: Note that if you try to follow this URL using Safari, your file will be renamed `Unknown.dms`...
+[^1]: Note that if you try to follow this URL using Safari, your file will be renamed to `Unknown.dms`. However, we don't recommend using this method to download files, so nothing to worry about.
