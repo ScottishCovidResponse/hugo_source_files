@@ -7,13 +7,12 @@ weight: 2
 
 The name of a data product should be the same as its path.
 
-For example, the location of a data product:
+In the example below, the location of a data product:<br>
+"ftp://boydorr.gla.ac.uk/scrc/records/SARS-CoV-2/scotland/cases-and-management/testing/0.20200923.0.h5"
 
-`ftp://boydorr.gla.ac.uk/scrc/records/SARS-CoV-2/scotland/cases-and-management/testing/0.20200923.0.h5`
+is generated from:
 
-is given by:
-
-`ftp://boydorr.gla.ac.uk/scrc/[data_product_name]/[version_number].h5`
+`ftp://boydorr.gla.ac.uk/[namespace]/[data_product_name]/[version_number].h5`
 
 ![image alt text](/images/testing.png)
 
