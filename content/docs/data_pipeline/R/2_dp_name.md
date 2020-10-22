@@ -3,7 +3,7 @@ title: Data product naming
 weight: 2
 ---
 
-# Data product name
+# Data product naming
 
 The location of a data product:
 
