@@ -3,7 +3,7 @@ title: Filenames and version numbers
 weight: 1
 ---
 
-# How to name a file and assign it a version number
+# How to name a file and assign version numbers
 
 * The version of a data product is identified by its filename
 * The version of a raw data file is the same as that of the data product
