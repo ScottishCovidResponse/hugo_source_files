@@ -286,6 +286,7 @@ The functions `create_array()` and `create_table()` can be used to generate an H
                 path = data_product_name,
                 component = component_name,
                 df = df,
-                row_names = rownames(df),
                 column_units = c(NA, "m^2"))
    ```
+
+   Note that `column_units` is an optional argument, which is shown here to demonstrate the lack of units in column 1.
