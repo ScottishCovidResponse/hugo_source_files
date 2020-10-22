@@ -61,7 +61,7 @@ type = "point-estimate"
 value = 24.0
 ```
 
-The functions `create_estimate()` and `create_distribution()` can be used to generate a TOML file.
+The functions `create_estimate()` and `create_distribution()` can be used to generate a TOML file. Note that these functions can't be used to edit existing files. If a file already exists at the specified location, an error will be returned.
 
 ## Generate a TOML file from a point-estimate
 
@@ -92,11 +92,11 @@ The functions `create_estimate()` and `create_distribution()` can be used to gen
    or list multiple components with the same data product name:
 
    ``` R
-   estimate <- list(`asymptomatic-period` = 192.0,
-                     sd = 10.2)
+   estimate <- list(`asymptomatic-period-1` = 192.0,
+                    `asymptomatic-period-2` = 190.2)
    ```
 
-   Note that `asymptomatic-period` needs to be enclosed by backticks because of the dash.
+   Note that `asymptomatic-period-1` needs to be enclosed by backticks because of the dash.
 
 5. Write the point-estimate into a TOML file:
 
@@ -125,7 +125,7 @@ The functions `create_estimate()` and `create_distribution()` can be used to gen
 3. Choose an appropriate [data product name]({{< ref "docs/data_pipeline/R/2_dp_name" >}}):
 
    ``` R
-   data_product_name <- "human/infection/SARS-CoV-2/latency"
+   data_product_name <- "human/infection/SARS-CoV-2/latency-period"
    ```
 
 4. List a single component (see [above]({{< relref "#toml-components" >}})):
@@ -149,6 +149,19 @@ The functions `create_estimate()` and `create_distribution()` can be used to gen
    distribution <- list(dist1, dist2)
    ```
 
+   or list a single distribution and associated point-estimates with the same data product name:
+
+   ``` R
+   dist <- list(name = "latency-period",
+                  distribution = "gamma",
+                  parameters = list(shape = 2.0, scale = 3.0))
+   estimate1 <- list(mean = 1.0)
+   estimate2 <- list(`standard-deviation` = 1.0)
+   distribution <- list(dist, estimate1, estimate2)
+   ```
+
+   Note that `standard-deviation` needs to be enclosed by backticks because of the dash.
+
 5. Write the distribution into a TOML file:
 
    ``` R
@@ -156,10 +169,6 @@ The functions `create_estimate()` and `create_distribution()` can be used to gen
                        path = data_product_name,
                        distribution = distribution)
    ```
-
-## Append an existing TOML file with a point-estimate
-
-sdf
 
 # HDF5 files
 
@@ -274,9 +283,9 @@ The functions `create_array()` and `create_table()` can be used to generate an H
    ``` R
    # Create an h5 file from a table
    create_table(filename = filename,
-             path = data_product_name,
-             component = component_name,
-             df = df,
-             row_names = rownames(df),
-             column_units = c(NA, "m^2"))
+                path = data_product_name,
+                component = component_name,
+                df = df,
+                row_names = rownames(df),
+                column_units = c(NA, "m^2"))
    ```
