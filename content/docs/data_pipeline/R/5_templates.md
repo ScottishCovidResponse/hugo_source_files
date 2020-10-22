@@ -28,7 +28,7 @@ Use these scripts if you have a single original source (*e.g.* a website or data
 
 :exclamation: If you have a more complicated situation, *e.g.* [multiple original sources](https://raw.githubusercontent.com/ScottishCovidResponse/SCRCdata/master/inst/SCRC/scotgov_dz_lookup.R), please seek guidance.
 
-## Needs more work...
+## One star, needs more work...
 Use these scripts if you don't have an original source or a processing script and want to upload a data product anyway. Bad!
 
 [upload_array][5]
