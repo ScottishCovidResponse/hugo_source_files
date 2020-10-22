@@ -6,7 +6,7 @@ weight: 4
 # How to upload a data product
 
 1. Push metadata associated with your data product to the data registry
-   * Choose a [submission script template]({{< ref "docs/data_pipeline/R/5_templates" >}})
+   * Choose a [submission script template]({{< ref "/docs/data_pipeline/R/5_templates" >}})
    * Edit the script
    * Push the script to GitHub
    * Check to make sure the version of the script you're about to run is exactly the same as the one you've pushed to GitHub – if it isn't, push all changes now!
