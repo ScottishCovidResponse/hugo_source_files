@@ -25,11 +25,11 @@ weight: 4
 
      or at the command prompt (Windows):
      ``` cmd
-     scp c:\path\to\local\folder\[data_product_name]/[version_number.csv] myusername@boydorr.gla.ac.uk:/srv/ftp/[namespace]/[data_product][version_number].csv
+     scp c:\path\to\local\folder\[data_product_name]/[version_number].csv myusername@boydorr.gla.ac.uk:/srv/ftp/[namespace]/[data_product][version_number].csv
      ```
 
 3. Upload your data product
    * If it's an HDF5 file, upload it to the Boydorr server at this location:<br>
    `/srv/ftp/[namespace]/[data_product_name]/[version_number].h5`
    * If it's a TOML file, push it to the [ScottishCovidResponse/DataRepository](https://github.com/ScottishCovidResponse/DataRepository) repository on GitHub, at this location:<br>
-   `DataRepository/[namespace]/[data_product_name]/[version_number].toml`
+   `/[namespace]/[data_product_name]/[version_number].toml`
