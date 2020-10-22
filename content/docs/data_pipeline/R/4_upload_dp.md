@@ -24,8 +24,8 @@ weight: 4
      ```
 
      or at the command prompt (Windows):
-     ``` bash
-     # Ryan?
+     ``` cmd
+     scp c:\path\to\local\folder\[data_product_name]/[version_number.csv] myusername@boydorr.gla.ac.uk:/srv/ftp/[namespace]/[data_product][version_number].csv
      ```
 
 3. Upload your data product
