@@ -12,7 +12,7 @@ headless: true
   - [Readme]({{< relref "/docs/data_pipeline/data_registry/readme" >}})
 - [R]({{< relref "/docs/data_pipeline/R" >}})
   - [Filenames and versioning]({{< relref "/docs/data_pipeline/R/1_versioning" >}})
-  - [Data product name]({{< relref "/docs/data_pipeline/R/2_dp_name" >}})
+  - [Data product naming]({{< relref "/docs/data_pipeline/R/2_dp_name" >}})
   - [Generate a data product]({{< relref "/docs/data_pipeline/R/3_generate_dp" >}})
   - [Upload a data product]({{< relref "/docs/data_pipeline/R/4_upload_dp" >}})
   - [Submission script templates]({{< relref "/docs/data_pipeline/R/5_templates" >}})

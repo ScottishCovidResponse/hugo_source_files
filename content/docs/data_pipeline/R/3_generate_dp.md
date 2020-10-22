@@ -21,7 +21,7 @@ There are only three types of TOML file:
 
 These are all different ways of representing the estimate for a value, which can be anything - the mean of something, the standard deviation, etc.
 
-## Components
+## TOML components
 
 You could have a data product called `latent-period` with a single point estimate:
 
@@ -61,82 +61,105 @@ type = "point-estimate"
 value = 24.0
 ```
 
-## create_estimate()
+The functions `create_estimate()` and `create_distribution()` can be used to generate a TOML file.
 
-Load the SCRCdataAPI package into R:
+## Generate a TOML file from a point-estimate
 
-``` R
-library(SCRCdataAPI)
-```
+1. Load the SCRCdataAPI package into R:
 
-Write a single estimate into a TOML file:
+   ``` R
+   library(SCRCdataAPI)
+   ```
 
-``` R
-filename <- "0.1.0.toml"
-data_product_name <- "human/infection/SARS-CoV-2/asymptomatic_period"
+2. Choose an appropriate [filename]({{< ref "docs/data_pipeline/R/1_versioning" >}}):
 
-estimate <- list(`asymptomatic-period` = 192.0)
+   ``` R
+   filename <- "0.1.0.toml"
+   ```
 
-create_estimate(filename = filename,
-                path = data_product_name,
-                parameters = estimate)
-```
+3. Choose an appropriate [data product name]({{< ref "docs/data_pipeline/R/2_dp_name" >}}):
 
-Write multiple estimates into a TOML file:
+   ``` R
+   data_product_name <- "human/infection/SARS-CoV-2/asymptomatic-period"
+   ```
 
-``` R
-filename <- "0.1.0.toml"
-data_product_name <- "human/infection/SARS-CoV-2/asymptomatic_period"
+4. List a single component (see [above]({{< relref "#toml-components" >}})):
 
-estimate <- list(`asymptomatic-period` = 192.0,
-                 `standard-deviation` = 10.2)
+   ``` R
+   estimate <- list(`asymptomatic-period` = 192.0)
+   ```
 
-create_estimate(filename = filename,
-                path = data_product_name,
-                parameters = estimate)
-```
+   or list multiple components with the same data product name:
 
-## create_distribution()
+   ``` R
+   estimate <- list(`asymptomatic-period` = 192.0,
+                     sd = 10.2)
+   ```
 
-Load the SCRCdataAPI package into R:
+   Note that `asymptomatic-period` needs to be enclosed by backticks because of the dash.
 
-``` R
-library(SCRCdataAPI)
-```
+5. Write the point-estimate into a TOML file:
 
-Write a single distribution into a TOML file
+   ``` R
+   create_estimate(filename = filename,
+                   path = data_product_name,
+                   parameters = estimate)
+   ```
 
-``` R
-filename <- "0.1.0.toml"
-data_product_name <- "human/infection/SARS-CoV-2/latency"
+   Note that, `create_estimate()` will create the directory structure for you if it doesn't already exist. Your TOML file should now exist at `[data_product_name]/[filename]`.
 
-distribution <- list(name = "latency-period",
-                     distribution = "gamma",
-                     parameters = list(shape = 2.0,
-                                       scale = 3.0))
+## Generate a TOML file from a distribution
 
-create_distribution(filename = filename,
-                    path = data_product_name,
-                    distribution = distribution)
-```
+1. Load the SCRCdataAPI package into R:
 
-Write multiple distributions into a TOML file
+   ``` R
+   library(SCRCdataAPI)
+   ```
 
-``` R
-filename <- "0.1.0.toml"
-data_product_name <- "human/infection/SARS-CoV-2/latency"
+2. Choose an appropriate [filename]({{< ref "docs/data_pipeline/R/1_versioning" >}}):
 
-dist1 <- list(name = "latency-period-1",
-              distribution = "gamma",
-              parameters = list(shape = 2.0, scale = 3.0))
-dist2 <- list(name = "latency-period-2",
-              distribution = "gamma",
-              parameters = list(shape = 2.2, scale = 4.0))
+   ``` R
+   filename <- "0.1.0.toml"
+   ```
 
-create_distribution(filename = filename,
-                    path = data_product_name,
-                    distribution = list(dist1, dist2))
-```
+3. Choose an appropriate [data product name]({{< ref "docs/data_pipeline/R/2_dp_name" >}}):
+
+   ``` R
+   data_product_name <- "human/infection/SARS-CoV-2/latency"
+   ```
+
+4. List a single component (see [above]({{< relref "#toml-components" >}})):
+
+   ``` R
+   distribution <- list(name = "latency-period",
+                        distribution = "gamma",
+                        parameters = list(shape = 2.0,
+                                          scale = 3.0))
+   ```
+
+   or list multiple components with the same data product name:
+
+   ``` R
+   dist1 <- list(name = "latency-period-1",
+                 distribution = "gamma",
+                 parameters = list(shape = 2.0, scale = 3.0))
+   dist2 <- list(name = "latency-period-2",
+                 distribution = "gamma",
+                 parameters = list(shape = 2.2, scale = 4.0))
+   distribution <- list(dist1, dist2)
+   ```
+
+5. Write the distribution into a TOML file:
+
+   ``` R
+   create_distribution(filename = filename,
+                       path = data_product_name,
+                       distribution = distribution)
+   ```
+
+## Append an existing TOML file with a point-estimate
+
+sdf
 
 # HDF5 files
 
@@ -144,74 +167,116 @@ An HDF5 file can be either a table or an array. A table is always 2-dimentional 
 
 You should create a single HDF5 file for a single dataset. Unless you have a dataset that really should have been generated as multiple datasets in the first place (*e.g.* testing data mixed with carehome data), in which case use your own judgement.
 
-## Components
-
-The file itself should contain components. If your dataset contains multiple data topics / data items, then these can be included as separate components within a single HDF5 file. In this case, a particular naming convention is needed. For example, in the human-mortality data product:
-
-* `age_group/week/gender-country-all_deaths`
-* `age_group/week/gender-country-covid_related_deaths`  
-* `age_group/week-persons-country-all_deaths`
-
-Taking the first component as an example:
-
-* Dimensionality is represented by `age_group/week/gender`, corresponding to the first, second, and third dimensions of the component (rows, columns, and levels)
-* A description of the contents follows the dash, where `-country-all_deaths` describes all elements
-* Spaces are replaced with underscores
-
-If your dataset contains a single data topic, then only a single component is needed. If the HDF5 file is generated using `create_table()` then name the component "`table`", likewise when `create_array()` is used then the component should be named "`array`".
-
 The functions `create_array()` and `create_table()` can be used to generate an HDF5 file.
 
-## create_array()
+## Generate an HDF5 file from an array
 
-Load the SCRCdataAPI package into R:
+1. Load the SCRCdataAPI package into R:
 
-``` R
-library(SCRCdataAPI)
-```
+   ``` R
+   library(SCRCdataAPI)
+   ```
 
-``` R
-filename <- "0.1.0.h5"
-data_product_name <- "some/descriptive/name"
-component_name <- "row/column-constant"
+2. Choose an appropriate [filename]({{< ref "docs/data_pipeline/R/1_versioning" >}}):
 
-# Create a fake dataset
-df <- data.frame(a = 1:2, b = 3:4)
-rownames(df) <- 1:2
-array <- as.matrix(df)
+   ``` R
+   filename <- "0.1.0.h5"
+   ```
 
-# Create an h5 file from a 2-dimensional array
-create_array(filename = filename,
-             path = data_product_name,
-             component = component_name,
-             array = array,
-             dimension_names = list(rowvalue = rownames(df),
-                                    colvalue = colnames(df)))
-```
+3. Choose an appropriate [data product name]({{< ref "docs/data_pipeline/R/2_dp_name" >}}):
 
-## create_table()
+   ``` R
+   data_product_name <- "some/descriptive/name"
+   ```
 
-Load the SCRCdataAPI package into R:
+4. Choose an appropriate component name:
 
-``` R
-library(SCRCdataAPI)
-```
+   ``` R
+   component_name <- "row/column-constant"
+   ```
 
-``` R
-filename <- "0.1.0.h5"
-data_product_name <- "some/descriptive/name"
-component_name <- "row/column-constant"
+   If your dataset contains a single data topic, then the component should be named "`array`". However, if your dataset contains multiple data topics, then these can be included as separate components within a single HDF5 file. In doing so, a particular naming convention is required. 
 
-# Create fake data
-df <- data.frame(a = 1:2, b = 3:4)
-rownames(df) <- 1:2
-filename <- "test_table.h5"
+   For example, the human-mortality data product contains the following components:
 
-# Create an h5 file from a table
-create_table(filename = filename,
+   * `age_group/week/gender-country-all_deaths`
+   * `age_group/week/gender-country-covid_related_deaths`  
+   * `age_group/week-persons-country-all_deaths`
+
+   Taking the first component as an example:
+
+   * Dimensionality is represented by `age_group/week/gender`, corresponding to the first, second, and third dimensions of the component (rows, columns, and levels)
+   * A description of the contents follows the dash, where `-country-all_deaths` describes all elements
+   * Spaces are replaced with underscores
+
+5. Source your dataset:
+
+   ``` R
+   # Here we're creating a fake dataset
+   df <- data.frame(column_1 = 1:2, column_2 = 3:4)
+   rownames(df) <- c("row_1", "row_2")
+   ```
+
+   Rather than creating a fake dataset like we did here, you might want to use `download_from_url()` or `download_from_database()` to source your data. These functions are well documented with examples provided in the SCRCdataAPI package.
+
+6. Generate an HDF5 file:
+
+   ``` R
+   # Create an h5 file from a 2-dimensional array
+   create_array(filename = filename,
+                path = data_product_name,
+                component = component_name,
+                array = as.matrix(df),
+                dimension_names = list(rowvalue = rownames(df),
+                                       colvalue = colnames(df)))
+   ```
+
+## Generate an HDF5 file from a table
+
+1. Load the SCRCdataAPI package into R:
+
+   ``` R
+   library(SCRCdataAPI)
+   ```
+
+2. Choose an appropriate [filename]({{< ref "docs/data_pipeline/R/1_versioning" >}}):
+
+   ``` R
+   filename <- "0.1.0.h5"
+   ```
+
+3. Choose an appropriate [data product name]({{< ref "docs/data_pipeline/R/2_dp_name" >}}):
+
+   ``` R
+   data_product_name <- "some/descriptive/name"
+   ```
+
+4. Choose an appropriate component name:
+
+   ``` R
+   component_name <- "descriptive_component_name"
+   ```
+
+   The component naming scheme used in the previous section (generating HDF5 files from an array) doesn't make sense here. So if you have multiple data topics and therefore need multiple components in a single HDF5 file, just pick a name that's suitably descriptive. If your dataset contains a single data topic, then name the component "`table`".
+
+5. Source your dataset:
+
+   ``` R
+   # Here we're creating a fake dataset
+   df <- data.frame(column_1 = 1:2, column_2 = 3:4)
+   rownames(df) <- c("row_1", "row_2")
+   ```
+
+   Rather than creating a fake dataset like we did here, you might want to use `download_from_url()` or `download_from_database()` to source your data. These functions are well documented with examples provided in the SCRCdataAPI package.
+
+6. Generate an HDF5 file:
+
+   ``` R
+   # Create an h5 file from a table
+   create_table(filename = filename,
              path = data_product_name,
              component = component_name,
              df = df,
              row_names = rownames(df),
              column_units = c(NA, "m^2"))
-```
+   ```

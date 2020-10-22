@@ -1,5 +1,5 @@
 ---
-title: Data product name
+title: Data product naming
 weight: 2
 ---
 
