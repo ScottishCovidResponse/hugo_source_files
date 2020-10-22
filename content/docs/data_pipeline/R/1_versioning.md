@@ -1,9 +1,9 @@
 ---
-title: Filenames and versioning
+title: Filenames and version numbers
 weight: 1
 ---
 
-# Filenames and versioning
+# Filenames and version numbers
 
 * The version of a data product is identified by its filename
 * The version of a raw data file is the same as that of the data product

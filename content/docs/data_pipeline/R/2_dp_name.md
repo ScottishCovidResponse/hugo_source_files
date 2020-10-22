@@ -1,9 +1,9 @@
 ---
-title: Data product naming
+title: Data product name
 weight: 2
 ---
 
-# Data product naming
+# Data product name
 
 The location of a data product:
 
