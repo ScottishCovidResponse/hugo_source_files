@@ -14,10 +14,12 @@ weight: 4
 
 2. Upload your raw data (*e.g.* a csv file) to the Boydorr server
    * Ask Richard Reeve for access to the server
-   * Upload your file, in terminal (MacOS):
+   * Upload your file to `/srv/ftp/[namespace]/[data_product_name]/[version_number].csv`, obviously replacing the bits in square brackets
+     
+     In terminal (MacOS):
 
      ``` bash
-     scp my/local/directory/0.1.0.csv myusername@boydorr.gla.ac.uk:/srv/ftp/scrc/[data_product_name]/0.1.0.csv
+     scp mylocaldir/[data_product_name]/[version_number].csv myusername@boydorr.gla.ac.uk:/srv/ftp/[namespace]/[data_product_name]/[version_number].csv
      ```
 
      or at the command prompt (Windows):
