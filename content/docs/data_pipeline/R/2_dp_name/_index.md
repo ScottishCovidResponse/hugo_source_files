@@ -12,10 +12,10 @@ ftp://<span></span>boydorr.gla.ac.uk/scrc/records/SARS-CoV-2/scotland/cases-and-
 
 `ftp://boydorr.gla.ac.uk/[namespace]/[data_product_name]/[version_number].h5`
 
-![image alt text](/images/testing.png)
+![image alt text](testing.png)
 
 Thus, the `data_product_name` is used to locate the file, as well as describe its contents (since the filename is its version number).
 
-![image alt text](/images/front.png)
+![image alt text](front.png)
 
 [^1]: Note that if you try to follow this URL using Safari, your file will be renamed `Unknown.dms`...
