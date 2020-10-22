@@ -71,13 +71,13 @@ The functions `create_estimate()` and `create_distribution()` can be used to gen
    library(SCRCdataAPI)
    ```
 
-2. Choose an appropriate [filename]({{< ref "/content/docs/data_pipeline/R/1_versioning" >}}):
+2. Choose an appropriate [filename]({{< ref "data_pipeline/R/1_versioning" >}}):
 
    ``` R
    filename <- "0.1.0.toml"
    ```
 
-3. Choose an appropriate [data product name]({{< ref "/content/docs/data_pipeline/R/2_dp_name" >}}):
+3. Choose an appropriate [data product name]({{< ref "data_pipeline/R/2_dp_name" >}}):
 
    ``` R
    data_product_name <- "human/infection/SARS-CoV-2/asymptomatic-period"
@@ -116,13 +116,13 @@ The functions `create_estimate()` and `create_distribution()` can be used to gen
    library(SCRCdataAPI)
    ```
 
-2. Choose an appropriate [filename]({{< ref "/content/docs/data_pipeline/R/1_versioning" >}}):
+2. Choose an appropriate [filename]({{< ref "data_pipeline/R/1_versioning" >}}):
 
    ``` R
    filename <- "0.1.0.toml"
    ```
 
-3. Choose an appropriate [data product name]({{< ref "/content/docs/data_pipeline/R/2_dp_name" >}}):
+3. Choose an appropriate [data product name]({{< ref "data_pipeline/R/2_dp_name" >}}):
 
    ``` R
    data_product_name <- "human/infection/SARS-CoV-2/latency-period"
@@ -186,13 +186,13 @@ The functions `create_array()` and `create_table()` can be used to generate an H
    library(SCRCdataAPI)
    ```
 
-2. Choose an appropriate [filename]({{< ref "/content/docs/data_pipeline/R/1_versioning" >}}):
+2. Choose an appropriate [filename]({{< ref "data_pipeline/R/1_versioning" >}}):
 
    ``` R
    filename <- "0.1.0.h5"
    ```
 
-3. Choose an appropriate [data product name]({{< ref "/content/docs/data_pipeline/R/2_dp_name" >}}):
+3. Choose an appropriate [data product name]({{< ref "data_pipeline/R/2_dp_name" >}}):
 
    ``` R
    data_product_name <- "some/descriptive/name"
@@ -248,13 +248,13 @@ The functions `create_array()` and `create_table()` can be used to generate an H
    library(SCRCdataAPI)
    ```
 
-2. Choose an appropriate [filename]({{< ref "/content/docs/data_pipeline/R/1_versioning" >}}):
+2. Choose an appropriate [filename]({{< ref "data_pipeline/R/1_versioning" >}}):
 
    ``` R
    filename <- "0.1.0.h5"
    ```
 
-3. Choose an appropriate [data product name]({{< ref "/content/docs/data_pipeline/R/2_dp_name" >}}):
+3. Choose an appropriate [data product name]({{< ref "data_pipeline/R/2_dp_name" >}}):
 
    ``` R
    data_product_name <- "some/descriptive/name"
