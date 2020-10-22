@@ -172,7 +172,7 @@ The functions `create_estimate()` and `create_distribution()` can be used to gen
 
 # HDF5 files
 
-An HDF5 file can be either a table or an array. A table is always 2-dimentional and might typically be used when each column contains different classes of data (*e.g.* integers and strings). Conversely, all elements in an array should be the same class, though the array itself might be 1-dimensional, 2-dimensional, or more (e.g. a 3-dimensional array comprising population counts, with rows as area, columns as age, and a third dimension representing gender).
+An HDF5 file can be either a table or an array. A table is always 2-dimentional and might typically be used when each column contains different classes of data (*e.g.* integers and strings). Conversely, all elements in an array should be the same class, though the array itself might be 1-dimensional, 2-dimensional, or more (*e.g.* a 3-dimensional array comprising population counts, with rows as area, columns as age, and a third dimension representing gender).
 
 You should create a single HDF5 file for a single dataset. Unless you have a dataset that really should have been generated as multiple datasets in the first place (*e.g.* testing data mixed with carehome data), in which case use your own judgement.
 
@@ -290,4 +290,4 @@ The functions `create_array()` and `create_table()` can be used to generate an H
                 column_units = c(NA, "m^2"))
    ```
 
-   Note that `row_names` and `column_units` are optional arguments. In this case, `row_names` is informative, but it might not always be the case. Likewise, `column_units` is shown here to demonstrate the lack of units in column 1.
+   Note that `row_names` and `column_units` are optional arguments. In this case, `row_names` is informative, but it might not always be the case. Likewise, `column_units` is shown here to demonstrate how to input the lack of units in column 1.
