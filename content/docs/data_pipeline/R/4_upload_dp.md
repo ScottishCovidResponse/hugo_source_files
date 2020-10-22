@@ -14,8 +14,9 @@ weight: 4
 
 2. Upload your raw data (*e.g.* a csv file) to the Boydorr server
    * Ask Richard Reeve for access to the server
-   * Upload your file to `/srv/ftp/[namespace]/[data_product_name]/[version_number].csv`, obviously replacing the bits in square brackets
-     
+   * Upload your file to the Boydorr server using the following format:
+   `/srv/ftp/[namespace]/[data_product_name]/[version_number].csv`
+        
      In terminal (MacOS):
 
      ``` bash
