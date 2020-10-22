@@ -273,7 +273,7 @@ The functions `create_array()` and `create_table()` can be used to generate an H
    ``` R
    # Here we're creating a fake dataset
    df <- data.frame(column_1 = 1:2, column_2 = 3:4)
-   rownames(df) <- c("row_1", "row_2")
+   rownames(df) <- c("informative_rowname_1", "informative_rowname_2")
    ```
 
    Rather than creating a fake dataset like we did here, you might want to use `download_from_url()` or `download_from_database()` to source your data. These functions are well documented with examples provided in the SCRCdataAPI package.
@@ -286,7 +286,8 @@ The functions `create_array()` and `create_table()` can be used to generate an H
                 path = data_product_name,
                 component = component_name,
                 df = df,
+                row_names = rownames(df),
                 column_units = c(NA, "m^2"))
    ```
 
-   Note that `column_units` is an optional argument, which is shown here to demonstrate the lack of units in column 1.
+   Note that `row_names` and `column_units` are optional arguments. In this case, `row_names` is informative, but it might not always be the case. Likewise, `column_units` is shown here to demonstrate the lack of units in column 1.
