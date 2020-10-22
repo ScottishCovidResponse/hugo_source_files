@@ -14,7 +14,7 @@ weight: 4
 
 2. Upload your raw data (*e.g.* a csv file) to the Boydorr server
    * Ask Richard Reeve for access to the server
-   * Upload your file to the Boydorr server using the following format:
+   * Upload your file to the Boydorr server, at this location:
    `/srv/ftp/[namespace]/[data_product_name]/[version_number].csv`
         
      In terminal (MacOS):
@@ -29,5 +29,7 @@ weight: 4
      ```
 
 3. Upload your data product
-   * If it's an HDF5 file, upload it to the Boydorr server
-   * If it's a TOML file, push it to the [ScottishCovidResponse/DataRepository](https://github.com/ScottishCovidResponse/DataRepository) repository on GitHub
+   * If it's an HDF5 file, upload it to the Boydorr server at this location:
+     `/srv/ftp/[namespace]/[data_product_name]/[version_number].h5`
+   * If it's a TOML file, push it to the [ScottishCovidResponse/DataRepository](https://github.com/ScottishCovidResponse/DataRepository) repository on GitHub, at this location:
+     `[namespace]/[data_product_name]/[version_number].toml`
