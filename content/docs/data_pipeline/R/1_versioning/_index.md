@@ -3,12 +3,12 @@ title: Filenames and version numbers
 weight: 1
 ---
 
-# How to name a file and assign version numbers
+# How to assign version numbers and filenames
 
 * The version of a data product is identified by its filename
 * The version of a raw data file is the same as that of the data product
 
-## For a dataset that is downloaded only once
+## When a dataset is static (downloaded only once)
 
 Filenames are written thus (`major.minor.patch`):
 
@@ -22,7 +22,7 @@ Filenames are written thus (`major.minor.patch`):
 
 You can increase minor numbers a bit more freely than that if you're making a bigger change, or you want to make a new and improved script that definitely works better even though the output is technically the same, but those are the "official" rules.
 
-## For a dataset that is downloaded daily
+## When a dataset is dynamic (downloaded daily, weekly, etc.)
 
 Filenames are written thus (named after the download date):
 
