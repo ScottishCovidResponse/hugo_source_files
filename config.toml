@@ -1,6 +1,6 @@
 # hugo server --minify --themesDir ... --baseURL=http://0.0.0.0:1313/theme/hugo-book/
 
-baseURL = 'https://example.com/'
+baseURL = 'https://scottishcovidresponse.github.io/'
 title = 'SCRC docs'
 theme = 'hugo-book'
 enableEmoji = true
