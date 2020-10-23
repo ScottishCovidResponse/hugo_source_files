@@ -83,7 +83,7 @@ The functions `create_estimate()` and `create_distribution()` can be used to gen
    data_product_name <- "human/infection/SARS-CoV-2/asymptomatic-period"
    ```
 
-4. List a single component (see [above]({{% relref "#toml-components" %}})):
+4. List a single component (see [above]({{% ref "/docs/data_pipeline/R/3_generate_dp/#toml-components" %}})):
 
    ``` R
    estimate <- list(`asymptomatic-period` = 192.0)
