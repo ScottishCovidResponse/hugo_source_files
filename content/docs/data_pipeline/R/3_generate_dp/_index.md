@@ -9,7 +9,7 @@ The data product itself should be producted in the correct format:
 
 * Point estimates, distributions, and samples should be generated as TOML files (`*.toml`)
 * Tables and arrays should be generated as HDF5 files (`*.h5`/`*.hdf5`)
-* The filename (of the TOML or HDF5 file) should be the version number of the data product (see [Filenames and versioning]({{% relref "docs/data_pipeline/R/1_versioning" %}}))
+* The filename (of the TOML or HDF5 file) should be the version number of the data product (see [Filenames and versioning]({{% relref "/docs/data_pipeline/R/1_versioning" %}}))
 
 # TOML files
 
