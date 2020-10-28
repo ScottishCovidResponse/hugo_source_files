@@ -14,6 +14,8 @@ install.packages("devtools")
 devtools::install_github("scottishcovidresponse/SCRCdataAPI")
 ```
 
+To view the package documentation, go [here](https://scottishcovidresponse.github.io/SCRCdataAPI/index.html).
+
 # SCRCdata
 
 The `SCRCdata` package includes submission script templates that can be used to interact with the SCRC data pipeline. These can be accessed by cloning the repo and going to `inst/templates` or by browsing the GitHub [repository](https://github.com/ScottishCovidResponse/SCRCdata/tree/master/inst/templates).
