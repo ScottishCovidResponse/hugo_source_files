@@ -13,10 +13,10 @@ weight: 1
 Filenames are written `major.minor.patch.extension`, *e.g.* `0.1.0.toml`, `0.1.0.h5`, `0.1.0.csv`.
 
 Major
-: Changes only for the initial stable release and when incompatible changes are made, go from `0.y.z` to `1.0.0`
+: Changes only for the initial stable release (go from `0.y.z` to `1.0.0`) and when incompatible changes are made
 
 Minor
-: Changes when new functionality is added (*e.g.* a new component), or for the initial release that is *probably* stable, or a script that definitely works better even though the output is technically the same, go from `0.0.z` to `0.1.0`
+: Changes when new functionality is added such as a new component, or for the initial release that is *probably* stable, or a script that definitely works better even though the output is technically the same (go from `0.0.z` to `0.y.0`)
 
 Patch
 : Changes for small bug fixes
