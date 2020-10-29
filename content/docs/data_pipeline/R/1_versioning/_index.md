@@ -10,17 +10,16 @@ weight: 1
 
 ## When a dataset is static (downloaded only once)
 
-Filenames are written thus (`major.minor.patch`):
+Filenames are written `major.minor.patch.extension`, *e.g.* `0.1.0.toml`, `0.1.0.h5`, `0.1.0.csv`.
 
-* `0.1.0.toml`
-* `0.1.0.h5`
-* `0.1.0.csv`
+Major
+: Changes only for the initial stable release and when incompatible changes are made, go from `0.y.z` to `1.0.0`
 
-**Major** changes only for the initial stable release (when you go from `0.y.z` to `1.0.0`), and when you have incompatible changes.  
-**Minor** changes when you're adding new functionality (*e.g.* a new component) or for the initial release that you think is probably right (when you go from `0.0.z` to `0.1.0`).  
-**Patch** changes for small bug fixes.
+Minor
+: Changes when new functionality is added (*e.g.* a new component), or for the initial release that is *probably* stable, or a script that definitely works better even though the output is technically the same, go from `0.0.z` to `0.1.0`
 
-You can increase minor numbers a bit more freely than that if you're making a bigger change, or you want to make a new and improved script that definitely works better even though the output is technically the same, but those are the "official" rules.
+Patch
+: Changes for small bug fixes
 
 ## When a dataset is dynamic (downloaded daily, weekly, etc.)
 
