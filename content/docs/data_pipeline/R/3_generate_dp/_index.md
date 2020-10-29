@@ -153,8 +153,8 @@ The functions `create_estimate()` and `create_distribution()` can be used to gen
 
    ``` R
    dist <- list(name = "latency-period",
-                  distribution = "gamma",
-                  parameters = list(shape = 2.0, scale = 3.0))
+                distribution = "gamma",
+                parameters = list(shape = 2.0, scale = 3.0))
    estimate1 <- list(mean = 1.0)
    estimate2 <- list(`standard-deviation` = 1.0)
    distribution <- list(dist, estimate1, estimate2)
