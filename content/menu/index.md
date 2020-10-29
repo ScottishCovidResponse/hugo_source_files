@@ -17,6 +17,7 @@ headless: true
   - [Upload a data product]({{< relref "/docs/data_pipeline/R/4_upload_dp" >}})
   - [Submission script templates]({{< relref "/docs/data_pipeline/R/5_templates" >}})
   - [Download a data product]({{< relref "/docs/data_pipeline/R/6_download_dp" >}})
+  - [Download a raw data]({{< relref "/docs/data_pipeline/R/7_download_eo" >}})
 - [Python]({{< relref "/docs/data_pipeline/python" >}})
   - [Standard API]({{< relref "/docs/data_pipeline/python/standard_api" >}})
   - [File API]({{< relref "/docs/data_pipeline/python/file_api" >}})
