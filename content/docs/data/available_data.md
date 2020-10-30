@@ -113,12 +113,28 @@ ukgov_eng_oa_shapefile
 <sub>*Data registry*: NA</sub>  
 <sub>*Notes*: NA</sub>
 
-ukgov_scot_dz_shapefile
-: 2011 data zone boundaries.
+England/Wales_grid_shapefile
+: Text description
 <br>
-<sub>*Description last updated*: 09/09/2020</sub>  
-<sub>*Data registry*: NA</sub>  
-<sub>*Notes*: NA</sub>
+<sub>*Description last updated*: 30/10/2020</sub>  
+<sub>*Data registry*: `England/Wales spatial lookup table - grid_shapefile`</sub>  
+<sub>*Notes*: External Object</sub>
+
+ukgov_scot_dz_shapefile
+: Text description
+<br>
+<sub>*Description last updated*: 30/10/2020</sub>  
+<sub>*Data registry*: `Scottish datazone shapefile`</sub>  
+<sub>*Notes*: External Object</sub>
+
+Scotland_grid_shapefile
+: Text description
+<br>
+<sub>*Description last updated*: 30/10/2020</sub>  
+<sub>*Data registry*: `Scottish spatial lookup table - grid_shapefile`</sub>  
+<sub>*Notes*: External Object</sub>
+
+
 
 # To do
 
