@@ -5,6 +5,8 @@ weight: 7
 
 # How to download raw data (an external object)
 
+You shouldn't need to download the raw data file, since the data product should already be available, but for the sake of completeness...
+
 An external object is an original source file. This might be a reference to a paper or a raw, unedited csv file. Papers are not stored by the SCRC. Raw data objects are and can be downloaded in the following way.
 
 1. Go to the [data registry](https://data.scrc.uk/) and browse the external objects.
