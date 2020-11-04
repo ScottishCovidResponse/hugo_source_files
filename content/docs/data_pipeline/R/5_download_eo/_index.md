@@ -1,6 +1,6 @@
 ---
 title: Download raw data
-weight: 7
+weight: 5
 ---
 
 # How to download raw data (an external object)

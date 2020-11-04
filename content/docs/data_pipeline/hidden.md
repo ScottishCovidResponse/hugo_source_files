@@ -6,47 +6,155 @@ bookHidden: true
 
 # Quondam non pater est dignior ille Eurotas
 
-## Latent te facies
+attach_issue()
 
-Lorem markdownum arma ignoscas vocavit quoque ille texit mandata mentis ultimus,
-frementes, qui in vel. Hippotades Peleus [pennas
-conscia](http://gratia.net/tot-qua.php) cuiquam Caeneus quas.
+Attach issue to object
 
-- Pater demittere evincitque reddunt
-- Maxime adhuc pressit huc Danaas quid freta
-- Soror ego
-- Luctus linguam saxa ultroque prior Tatiumque inquit
-- Saepe liquitur subita superata dederat Anius sudor
+bin_ages()
 
-## Cum honorum Latona
+Bin ages
 
-O fallor [in sustinui
-iussorum](http://www.spectataharundine.org/aquas-relinquit.html) equidem.
-Nymphae operi oris alii fronde parens dumque, in auro ait mox ingenti proxima
-iamdudum maius?
+check_exists()
 
-    reality(burnDocking(apache_nanometer),
-            pad.property_data_programming.sectorBrowserPpga(dataMask, 37,
-            recycleRup));
-    intellectualVaporwareUser += -5 * 4;
-    traceroute_key_upnp /= lag_optical(android.smb(thyristorTftp));
-    surge_host_golden = mca_compact_device(dual_dpi_opengl, 33,
-            commerce_add_ppc);
-    if (lun_ipv) {
-        verticalExtranet(1, thumbnail_ttl, 3);
-        bar_graphics_jpeg(chipset - sector_xmp_beta);
-    }
+Check if entry exists
 
-## Fronde cetera dextrae sequens pennis voce muneris
+convert_to_grid()
 
-Acta cretus diem restet utque; move integer, oscula non inspirat, noctisque
-scelus! Nantemque in suas vobis quamvis, et labori!
+Convert census geographies to grid based system
 
-    var runtimeDiskCompiler = home - array_ad_software;
-    if (internic > disk) {
-        emoticonLockCron += 37 + bps - 4;
-        wan_ansi_honeypot.cardGigaflops = artificialStorageCgi;
-        simplex -= downloadAccess;
-    }
-    var volumeHardeningAndroid = pixel + tftp + onProcessorUnmount;
-    sector(memory(firewire + interlaced, wired));
+convert_to_lower()
+
+Convert census geographies to lower resolution
+
+create_version_number()
+
+Create version number
+
+get_entry()
+
+Get entry
+
+get_existing()
+
+Get existing entries
+
+get_file_hash()
+
+Calculate hash from file
+
+get_github_hash()
+
+Get current GitHub hash
+
+get_package_info()
+
+Get GitHub package info
+
+get_url()
+
+Get URL
+
+get_version_numbers()
+
+Get version numbers
+
+increment_version()
+
+Increment version number
+
+new_author()
+
+Post to author table
+
+new_code_repo_release()
+
+Post to code_repo_release table
+
+new_coderun()
+
+Post to code_run table
+
+new_data_product()
+
+Post to data_product table
+
+new_external_object()
+
+Post to external_object table
+
+new_issue()
+
+Post to issue table
+
+new_keyword()
+
+Post to keyword table
+
+new_namespace()
+
+Post to namespace table
+
+new_object()
+
+Post to object table
+
+new_object_component()
+
+Post to object_component table
+
+new_source()
+
+Post to source table
+
+new_storage_location()
+
+Post to storage_location table
+
+new_storage_root()
+
+Post to storage_root table
+
+new_text_file()
+
+Post to text_file table
+
+paper_exists()
+
+Check whether paper exists
+
+register_everything()
+
+Upload everything associated with a data product to the data registry
+
+upload_data_product()
+
+Upload data_product metadata to the data registry
+
+upload_github_repo()
+
+Upload github_repo metadata to the data registry
+
+upload_object_links()
+
+Upload object_links metadata to the data registry
+
+upload_paper()
+
+Upload paper metadata to the data registry
+
+upload_source_data()
+
+Upload source_data metadata to the data registry
+
+upload_submission_script()
+
+Upload submission_script metadata to the data registry
+
+upload_toml_to_github()
+
+Upload TOML file to GitHub
+
+
+Reference another [page]({{% ref "/docs/data_pipeline/R/1_generate_dp" %}})
+
+Reference same [page]({{% ref "/docs/data_pipeline/R/1_generate_dp/_index.md#toml-components" %}})
