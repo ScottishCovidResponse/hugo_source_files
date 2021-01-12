@@ -23,3 +23,7 @@ headless: true
 - **Research**
 - [Systematic Literature Review]({{< relref "/docs/research/literature" >}})
 <br />
+
+- **Edit this site**
+- [Editing Instructions]({{< relref "/docs/edit-site/edit-site" >}})
+<br />
