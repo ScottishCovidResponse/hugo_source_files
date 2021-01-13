@@ -21,11 +21,10 @@ headless: true
 <br />
 
 - **Research**
-- [Systematic Literature Review]({{< relref "/docs/research/literature" >}})
+  - [Systematic Literature Review]({{< relref "/docs/research/literature" >}})
 <br />
 
-- **Edit this site**
-- [Editing Instructions]({{< relref "/docs/edit-site/edit-site" >}})
-- 
-- **Models**
+- [**Models**]({{< relref "/docs/models" >}})
 <br />
+
+- [Editing this site]({{< relref "/docs/edit-site" >}})
