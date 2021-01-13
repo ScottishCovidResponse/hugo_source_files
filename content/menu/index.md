@@ -28,5 +28,4 @@ headless: true
 - [Editing Instructions]({{< relref "/docs/edit-site/edit-site" >}})
 - 
 - **Models**
-- [List of Models]({{< relref "/docs/models/models" >}})
 <br />
