@@ -30,6 +30,11 @@ pygmentsUseClasses = true
   url = "https://data.scrc.uk/"
   weight = 20
 
+[[menu.after]]
+  name = "Edit this site"
+  url = "/edit-site"
+  weight = 30
+
 [params]
   # (Optional, default true) Controls table of contents visibility on right side of pages.
   # Start and end levels can be controlled with markup.tableOfContents setting.

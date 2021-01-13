@@ -1,5 +1,4 @@
 ---
-weight: 5
 bookFlatSection: true
 title: "Edit this site"
 ---
