@@ -3,14 +3,22 @@ title: Introduction
 type: docs
 ---
 
-# SCRC docs 
+# SCRC 
 
-Greetings people of the SCRC. Welcome to our documentation website. I hope you find it useful!
+## Who are we?
 
-If you want to edit or add to any of the pages here, please click on the "Edit this page" link at the bottom of the page you want to edit. This will take you to a GitHub repository, which stores the source files for that particular page. From there you can click on the tiny pencil (on hover: Edit this file), which will allow you to make any edits you want. Please remember that any tables or fancy formatting will have to be written in markdown / html to be visible. If you need any help with this please [get in touch](mailto:sonia.mitchell@glasgow.ac.uk). Once you're finished, just click the link at the bottom of the page to create a new branch and start a pull request.
+The Scottish COVID-19 Response Consortium is formed of [dozens of individuals from over 30 academic and commercial organisations](https://www.gla.ac.uk/research/az/scrc/ourpeople/#members).
 
-If you want to add new pages to the website let me know I'll generate an empty page for you (a tiny line of code needs to be added so that the menu doesn't break). From there you can follow the steps above.
+Researchers in these organisations jointly responded to a call by the [Royal Society](https://royalsociety.org/topics-policy/health-and-wellbeing/ramp/) to develop more epidemiological models of COVID-19 spread ([RAPID ASSISTANCE IN MODELLING THE PANDEMIC: RAMP](https://epcced.github.io/ramp/)), in order to develop a more robust and clearer understanding of the impacts of different exit strategies from lockdown. Scientists from several other organisations across the UK and abroad have now joined the consortium to provide additional expertise in specific areas. 
 
-Alternatively, if there's anything you think might be useful but don't have the resource to add it yourself, let me know and I'll put it on the list.
+## Our outputs:
 
-:seedling:
+During and since the intial three months of RAMP work, our major achievements have been:
+
+- Seven software epidemidogical models in four different programming languages and using multiple scientific approaches. These models have been assesed favourably against a software checklist in internal review.
+- Data APIs in five languages (python, Julia, R, Java and C++) that simplify provenance recording, allowing input data to be verified as it is used, and model outputs to be traced back to the model code and input data that were used to produce them.
+- A set of curated, traceable source data useful for epidemiological modelling on Covid-19.
+- A database to hold metadata and index the data.
+- Data processing code in `R` to populate the database.
+
+These are discoverable via our [GitHub organisation](https://github.com/ScottishCovidResponse).
