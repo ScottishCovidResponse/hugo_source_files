@@ -21,3 +21,7 @@ It is not necessary to build the site in order to contribute changes, but if you
 4. In the folder that contains this repository run the command `hugo server`. 
 5. The website should build locally on http://localhost:1313/. 
 6. After pushing to Github, the website should automatically generate source files and build online.
+
+Alternatively, click on the Edit this page link (at the bottom of each page, next to the pencil) to edit an existing page.
+
+Or email a markdown / word document and we'll put it up for you.
