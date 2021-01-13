@@ -11,12 +11,13 @@ The [SCRC Docs website](https://github.com/ScottishCovidResponse/ScottishCovidRe
   * This theme is based on the Hugo [Book](https://github.com/alex-shpak/hugo-book) theme, with the search bar from the Jekyll [Just the Docs](https://github.com/pmarsceill/just-the-docs) theme, and some extra tweaks
   * Forked from [RyanJField/hugo-book](https://github.com/RyanJField/hugo-book)
 
-## Building the site locally
+## How to edit the site
 
 It is not necessary to build the site in order to contribute changes, but if you want to see how these will be rendered, you will need to cary out the folowing steps:
 
 1. [Install `hugo extended`](https://gohugo.io/getting-started/installing/).
 2. Clone this repository `git clone https://github.com/ScottishCovidResponse/hugo_source_files.git`.
-3. In the folder that contains this repository run the command `hugo server`. This will return a URL for a locally hosted site.
-
-Changes to source files should be automatically propogated into served HTML as you work.
+3. Information regarding the directory structure of the website and how make edits to to the template (mostly in markdown) can be found [here](https://gohugo.io/getting-started).
+4. In the folder that contains this repository run the command `hugo server`. 
+5. The website should build locally on http://localhost:1313/. 
+6. After pushing to Github, the website should automatically generate source files and build online.
