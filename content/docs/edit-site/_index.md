@@ -1,5 +1,4 @@
 ---
-bookFlatSection: true
 title: "Edit this site"
 ---
 # How to edit this site
