@@ -15,7 +15,7 @@ Researchers in these organisations jointly responded to a call by the [Royal Soc
 
 During and since the intial three months of RAMP work, our major achievements have been:
 
-- Seven software epidemidogical models in four different programming languages and using multiple scientific approaches. These models have been assesed favourably against a software checklist in internal review.
+- Seven [software epidemidogical models](https://scottishcovidresponse.github.io/docs/models/) in four different programming languages and using multiple scientific approaches. These models have been assesed favourably in internal review against a [software checklist](https://github.com/ScottishCovidResponse/modelling-resources/blob/main/software-checklist.md) we developed.
 - Data APIs in five languages (python, Julia, R, Java and C++) that simplify provenance recording, allowing input data to be verified as it is used, and model outputs to be traced back to the model code and input data that were used to produce them.
 - A set of curated, traceable source data useful for epidemiological modelling on Covid-19.
 - A database to hold metadata and index the data.
