@@ -8,4 +8,4 @@ title: "SCRC data pipeline"
 
 The data pipeline is moving towards this new structure.
 
-![SCRC Data API design document(scrc-api-new.svg)
+![SCRC Data API design document](scrc-api-new.svg)
