@@ -1,6 +1,6 @@
 ---
-title: Model Parameters
-weight: 3
+title: Model parameters
+weight: 30
 ---
 
 | **Parameter** | **Source** | **LSHTM** | **Simulation.jl** |

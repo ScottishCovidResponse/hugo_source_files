@@ -1,5 +1,6 @@
 ---
-weight: 10
+weight: 20
+title: "Data registry"
 ---
 
 # Data registry

@@ -1,6 +1,6 @@
 ---
-title: Data Sources and Products
-weight: 2
+title: Data sources and products
+weight: 20
 ---
 
 # Data sources and products
