@@ -1,6 +1,6 @@
 ---
 title: Upload a data product
-weight: 2
+weight: 20
 ---
 
 # How to upload a data product

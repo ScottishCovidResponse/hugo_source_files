@@ -9,7 +9,6 @@ headless: true
 
 - **Research**
   - [Systematic Literature Review]({{< relref "/docs/research/literature" >}})
-<br />
 
 - **SCRC data pipeline**
   - [API]({{< relref "/docs/data_pipeline/API" >}})

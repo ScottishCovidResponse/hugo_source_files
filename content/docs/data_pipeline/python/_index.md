@@ -1,6 +1,6 @@
 ---
 bookCollapseSection: true
-weight: 50
+weight: 6
 ---
 
 # Standardised data type API

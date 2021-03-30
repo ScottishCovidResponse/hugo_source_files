@@ -1,6 +1,6 @@
 ---
 title: Generate a data product
-weight: 1
+weight: 10
 ---
 
 # How to generate a data product

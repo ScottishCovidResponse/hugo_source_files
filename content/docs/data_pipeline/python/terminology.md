@@ -1,6 +1,6 @@
 ---
 title: Terminology
-weight: 3
+weight: 30
 ---
 
 # Terminology used in this document
