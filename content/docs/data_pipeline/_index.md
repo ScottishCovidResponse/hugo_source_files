@@ -50,12 +50,10 @@ read:
     use:
       doi: 10.1111/ddi.12887
       title: Supplementary Table 3
-      cache: ~/local/hidden.csv
+      cache: ~/local/secret.csv
 - object: weird_lost_file
     use:
-      object_id: 123123123123123
-      component: 0
-
+      hash: b5a514810b4cb6dc795848464572771f
 write:
 - data_product: human/outbreak-timeseries
     use:
@@ -79,6 +77,6 @@ write:
 
 - `run_metadata` provides metadata for the run.
 
-The `read: data_product:`, `read: external_object:`, `read: object:`, `write: data_product:` and `write: external_object:` sections specify metadata subsets that are matched in the read and write processes. The metadata values may use glob syntax, in which case matching is done against the glob. The corresponding `use:` sections contain metadata that is used to update the call metadata before the file access is attempted. For reads, a `cache:` may be specified directly, in which case it will be used without any further lookup. If a write is carried out to a data product where no such `data_product:` section exists, then a new data product is created with that name in the local namespace, or the version of an existing data product is suitably incremented. If a write is carried out to an object that is not a data product and no such `external_object:` section exists, then a new object is created with no associated external object or data product, and an issue is raised with the object to note the absence of an appropriate reference.
+The `data_product:` (within `read:` and `write:`), `external_object:` (`read:` and `write:`) and `object:` (`read:` only) sections specify metadata subsets that are matched in the read and write processes. The metadata values may use glob syntax, in which case matching is done against the glob. The corresponding `use:` sections contain metadata that is used to update the call metadata before the file access is attempted. For reads, a `cache:` may be specified directly, in which case it will be used without any further lookup. If a write is carried out to a data product where no such `data_product:` section exists, then a new data product is created with that name in the local namespace, or the version of an existing data product is suitably incremented. If a write is carried out to an object that is not a data product and no such `external_object:` section exists, then a new object is created with no associated external object or data product, and an issue is raised with the object to note the absence of an appropriate reference, referencing the name given in the write API call.
 
 Any other attributes will be ignored.
