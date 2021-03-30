@@ -16,24 +16,11 @@ The API must be initialised with the model URI and git sha, which should then be
 
 The write functions all accept `description` and `issues` arguments.
 
-## parameter files 
+## TOML (parameter) files
 
 A parameter file contains representations of one or more parameters, each a single number, possibly with some associated uncertainty. Parameters may by represented as point-estimates, parametric distributions, and sample data.
 
-## Metadata
-
-```
-extension = "toml" 
-```
-
-## Alternative metadata
-
-```
-format = "parameter"  
-extension = "toml" (could be inferred) 
-```
-
-## File format
+### File format
 
 Parameters are stored in toml-formatted files, with the extension “toml”, containing sections corresponding to different components. The following is an example of the internal encoding, defining three components: "`my-point-estimate`", "`my-distribution`", and "`my-samples`":
 
@@ -59,7 +46,7 @@ Distributions are used when our knowledge of a parameter can be represented by a
 
 Samples are used when our knowledge of a parameter is represented by samples, from either empirical measurements, or a posterior distribution. A samples component must have type = "samples" and a value that is a list of floats and integers.
 
-## Distributions
+#### Distributions
 
 The supported distributions,each with a link to information about their parameterisation, and their standardised parameter names are as follows:
 
@@ -76,7 +63,7 @@ The supported distributions,each with a link to information about their paramete
 | binomial                      | n (int), p (float)                            |
 | multinomial                   | n (int), p (float array)                      |
 
-## API functions
+### API functions
 
 `read_estimate(data_product, component) -> float or integer`
 
@@ -112,20 +99,11 @@ If the component is represented as samples, return the samples.
 
 HDF5 files contain structured data, encoded as either an “array”, or a “table”, both of which are described in more detail below.
 
-## Metadata 
-
-extension = "h5"
-
-## Alternative metadata 
-
-format = "hdf5"  
-extension = "h5" (could be inferred)
-
-## File format 
+### File format
 
 HDF5 files are stored with the extension “h5”. Internally, each component is stored in a different (possibly nested) group, where the full path defines the component name (*e.g.* “path/to/component”). Inside the group for each component is either a value named “array”, or a value named “table”. It is an error for there to be both.
 
-## array format
+#### array format
 
 {component}/array
 : An n-dimensional array of numerical data
@@ -145,7 +123,7 @@ HDF5 files are stored with the extension “h5”. Internally, each component is
 {component}/units
 : Units for the data in array
 
-## table format
+#### table format
 
 {component}/table
 : A dataframe
@@ -156,7 +134,7 @@ HDF5 files are stored with the extension “h5”. Internally, each component is
 {component}/column_units
 : Units for the columns
 
-## API functions
+### API functions
 
 `read_array(data_product, component) -> array`
 
@@ -172,4 +150,8 @@ Return a dataframe, with labelled columns.
 
 `write_array(data_product, component, array, description, issues)`
 
+If the array argument is not array-formatted, raise an error.
+
 `write_table(data_product, component, table, description, issues)`
+
+If the table argument is not table-formatted, raise an error.

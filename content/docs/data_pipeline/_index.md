@@ -18,9 +18,9 @@ This interaction between the configuration file and the remote registry defines 
 
 When a model or script is run (as a *session* / “*code run*”), any output files are written to the data directory, and those outputs are logged in the local registry, which has itself been created (or updated) by the *download synchronisation script*. The local registry can be queried to determine whether the data generated is as intended, and if so it can then by synchronised back to the remote registry. This can be carried out automatically using an *upload synchronisation script* [(currently here)](https://github.com/ScottishCovidResponse/data_pipeline_api/tree/master/data_pipeline_api/registry). When the *session* is initialised a “*run id*” is created to uniquely identify that *code run*. It is constructed by forming the SHA1 hash of the configuration file content, plus the date time string.
 
-## config.yaml file format 
+## config.yaml file format
 
-The config file lets users specify metadata to be used during file lookup for read or write, and configure overall API behaviour. A simple example: 
+The config file lets users specify metadata to be used during file lookup for read or write, and configure overall API behaviour. A simple example:
 
 ```yaml
 data_directory: . 
