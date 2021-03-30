@@ -80,3 +80,29 @@ write:
 The `data_product:` (within `read:` and `write:`), `external_object:` (`read:` and `write:`) and `object:` (`read:` only) sections specify metadata subsets that are matched in the read and write processes. The metadata values may use glob syntax, in which case matching is done against the glob. The corresponding `use:` sections contain metadata that is used to update the call metadata before the file access is attempted. For reads, a `cache:` may be specified directly, in which case it will be used without any further lookup. If a write is carried out to a data product where no such `data_product:` section exists, then a new data product is created with that name in the local namespace, or the version of an existing data product is suitably incremented. If a write is carried out to an object that is not a data product and no such `external_object:` section exists, then a new object is created with no associated external object or data product, and an issue is raised with the object to note the absence of an appropriate reference, referencing the name given in the write API call.
 
 Any other attributes will be ignored.
+
+## Example use of pipeline
+
+One of the simplest possible use cases for the pipeline - read in a value, calculate a new value from it, and write out the new value, creating a provenance for the new value that it depends on the old value and the script being executed.
+
+```julia
+using DataPipeline
+
+# Open the connection to the local registry with a given config file
+handle = initialise("config.yaml") # Need to resolve how to reference this script
+
+# Read in the estimate of a value from a toml file
+inf_period = read_estimate(handle,
+                           name = "human/infection/SARS-CoV-2",
+                           component = "infectious-duration")
+
+# Do some exciting processing
+double_period = inf_period * 2
+
+# Write out the newly created value to a toml file
+write_estimate(handle, double_period,
+               name = "human/infection/SARS-CoV-2/doubled",
+               component = "doubled-infectious-period")
+
+finalise(handle)
+```
