@@ -260,9 +260,9 @@ register:
       accessibility: 0
     stored_in:
       name: Local store
-      root: ~/datastore/
-      path: eb788dd5d4cf6345c0c74535031088927918f64b.csv
+      path: ~/datastore/eb788dd5d4cf6345c0c74535031088927918f64b.csv
       accessibility: 0
+    cache: ~/datastore/eb788dd5d4cf6345c0c74535031088927918f64b.csv
     data:
       unique_name: scottish deaths-involving-coronavirus-covid-19
       product_name: records/SARS-CoV-2/scotland/human-mortality
