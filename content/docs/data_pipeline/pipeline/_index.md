@@ -210,7 +210,7 @@ This registers an external object, reads it in, and then writes it back to the p
 
 Note that this is another made up example that hasn't been tested.
 
-```
+```yaml
 run_metadata:
   description: "Register a file in the pipeline"
   remote_data_registry_url: "https://data.scrc.uk/api/"
