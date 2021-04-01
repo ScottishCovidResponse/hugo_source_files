@@ -221,11 +221,11 @@ register:
 - external_object: raw-mortality-data
   use:
     source:
-    - name: Scottish Government Open Data Repository
+      name: Scottish Government Open Data Repository
       abbreviation: Scottish Government Open Data Repository
       website: https://statistics.gov.scot/
     downloaded_from:
-    - name: Scottish Government Open Data Repository
+      name: Scottish Government Open Data Repository
       root: https://statistics.gov.scot/sparql.csv?query=
       path: |
         PREFIX qb: <http://purl.org/linked-data/cube#>
@@ -259,7 +259,7 @@ register:
         }
       accessibility: 0
     stored_in:
-    - name: Local store
+      name: Local store
       root: ~/datastore/
       path: eb788dd5d4cf6345c0c74535031088927918f64b.csv
       accessibility: 0
