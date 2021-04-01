@@ -22,13 +22,14 @@ When a model or script is run (as a *session* / “*code run*”), any output fi
 The config file lets users specify metadata to be used during file lookup for read or write, and configure overall API behaviour. A simple example:
 
 ```yaml
-data_directory: . 
 fail_on_hash_mismatch: True 
 run_metadata: 
-  description: A test model 
+  description: "A test model"
   remote_data_registry_url: https://data.scrc.uk/api/ 
   default_input_namespace: SCRC 
   default_output_namespace: johnsmith
+  default_data_store: "~/datastore"
+  always_copy_to_store: False
 
 read: 
 - data_product: human/commutes
@@ -40,16 +41,16 @@ read:
       data_product: scotland/human/population
 - data_product: human/health
     use:
-      cache: ~/local/file.h5
+      cache: "~/local/file.h5"
 - external_object: crummy_table
     use:
-      doi: 10.1111/ddi.12887
-      title: Supplementary Table 2
+      doi: "10.1111/ddi.12887"
+      title: "Supplementary Table 2"
 - external_object: secret_data
     use:
-      doi: 10.1111/ddi.12887
-      title: Supplementary Table 3
-      cache: ~/local/secret.csv
+      doi: "10.1111/ddi.12887"
+      title: "Supplementary Table 3"
+      cache: "~/local/secret.csv"
 - object: weird_lost_file
     use:
       hash: b5a514810b4cb6dc795848464572771f
@@ -62,11 +63,11 @@ write:
       data_product: scotland/human/outbreak/simulation_run-{run_id}
 - external_object: beautiful_figure
     use:
-      unique_name: My amazing figure
+      unique_name: "My amazing figure"
       version: minor
 ```
 
-- `data_directory:` specifies the file system root used for data access (default “.”). It may be relative; in which case it is relative to the directory containing the config file.
+- `default_data_store:` specifies the file system root used for data writes (default “~/datastore”). It may be relative, in which case it is relative to the directory containing the config file. If files already exist in the local filesystem (but not in the datastore), then they will only be copied to the default data store if `always_copy_to_store:` is set to `True` (default `False`).
 
 - Any part of a `use:` statement may contain the string `{run_id}`, which will be replaced with the run id.
 
@@ -87,7 +88,6 @@ Any other attributes will be ignored.
 One of the simplest possible use cases for the pipeline is just to read in a value, calculate a new value from it, and write out the new value. First you need a `config.yaml` file:
 
 ```yaml
-data_directory: . 
 run_metadata: 
   description: A simple example using data products
   remote_data_registry_url: https://data.scrc.uk/api/ 
@@ -129,7 +129,6 @@ This script will find the latest version of the `human/infection/SARS-CoV-2` dat
 A script to read and write an external object (i.e. something not in a core data pipeline format). First, the yaml file, that gives the `doi_or_unique_name` and `title` of the external objects being read and written, and the aliases that will be used in the file:
 
 ```yaml
-data_directory: . 
 run_metadata: 
   description: A simple example using external objects
   remote_data_registry_url: https://data.scrc.uk/api/ 
@@ -176,7 +175,6 @@ finalise(handle)
 Here, we'll download some data from outside the pipeline, do some processing, and record the original file and the resultant data product into the pipeline. First the yaml file, specifying where the external object comes from:
 
 ```yaml
-data_directory: . 
 run_metadata: 
   description: Register a file in the pipeline
   remote_data_registry_url: https://data.scrc.uk/api/ 
