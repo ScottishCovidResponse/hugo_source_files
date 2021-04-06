@@ -208,67 +208,68 @@ This registers an external object, reads it in, and then writes it back to the p
 
 ### Another example of a an external object
 
-Note that this is another made up example that hasn't been tested.
+Here follows another `config.yaml` file, which is used to register a data product in the data registry. The processing / analysis script is stored in `remote_repo` (and `local_repo`), where `remote_repo` corresponds to the root of a remote repository and `local_repo` corresponds to the root of the file path of a local repository. Note that only one of these is necessary. If `local_repo` is omitted, a clone of `remote_repo` will be created by `initialise()`. If `local_repo` is included, `initialise()` will check whether or not the local repository is clean. The submission script itself (a single line of code that points to the processing / analysis script) should either be written in `script` or stored in a text file in `script_path`, which can be absolute or relative to the root of the repo.
 
 ```yaml
 run_metadata:
   description: Register a file in the pipeline
+  local_data_store_path: ~/datastore/
+  local_data_registry_url: https://localhost:8000/api/
   remote_data_registry_url: https://data.scrc.uk/api/
   default_input_namespace: SCRC
   default_output_namespace: johnsmith
+  remote_repo: 
+  script: |
+    R -f path/file.R
 
 register:
-- external_object: raw-mortality-data
-  use:
-    source:
-      name: Scottish Government Open Data Repository
-      abbreviation: Scottish Government Open Data Repository
-      website: https://statistics.gov.scot/
-    downloaded_from:
-      name: Scottish Government Open Data Repository
-      root: https://statistics.gov.scot/sparql.csv?query=
-      path: |
-        PREFIX qb: <http://purl.org/linked-data/cube#>
-        PREFIX data: <http://statistics.gov.scot/data/>
-        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-        PREFIX dim: <http://purl.org/linked-data/sdmx/2009/dimension#>
-        PREFIX sdim: <http://statistics.gov.scot/def/dimension/>
-        PREFIX stat: <http://statistics.data.gov.uk/def/statistical-entity#>
-        PREFIX mp: <http://statistics.gov.scot/def/measure-properties/>
-        SELECT ?featurecode ?featurename ?areatypename ?date ?cause ?location ?gender ?age ?type ?count
-        WHERE {
-         ?indicator qb:dataSet data:deaths-involving-coronavirus-covid-19;
-           mp:count ?count;
-           qb:measureType ?measType;
-           sdim:age ?value;
-           sdim:causeOfDeath ?causeDeath;
-           sdim:locationOfDeath ?locDeath;
-           sdim:sex ?sex;
-           dim:refArea ?featurecode;
-           dim:refPeriod ?period.
+- type: external_object
+  alias: raw-mortality-data
+  source:
+    name: Scottish Government Open Data Repository
+    abbreviation: Scottish Government Open Data Repository
+    website: https://statistics.gov.scot/
+  downloaded_from:
+    name: Scottish Government Open Data Repository
+    root: https://statistics.gov.scot/sparql.csv?query=
+    path: |
+      PREFIX qb: <http://purl.org/linked-data/cube#>
+      PREFIX data: <http://statistics.gov.scot/data/>
+      PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+      PREFIX dim: <http://purl.org/linked-data/sdmx/2009/dimension#>
+      PREFIX sdim: <http://statistics.gov.scot/def/dimension/>
+      PREFIX stat: <http://statistics.data.gov.uk/def/statistical-entity#>
+      PREFIX mp: <http://statistics.gov.scot/def/measure-properties/>
+      SELECT ?featurecode ?featurename ?areatypename ?date ?cause ?location ?gender ?age ?type ?count
+      WHERE {
+       ?indicator qb:dataSet data:deaths-involving-coronavirus-covid-19;
+         mp:count ?count;
+         qb:measureType ?measType;
+         sdim:age ?value;
+         sdim:causeOfDeath ?causeDeath;
+         sdim:locationOfDeath ?locDeath;
+         sdim:sex ?sex;
+         dim:refArea ?featurecode;
+         dim:refPeriod ?period.
 
-           ?measType rdfs:label ?type.
-           ?value rdfs:label ?age.
-           ?causeDeath rdfs:label ?cause.
-           ?locDeath rdfs:label ?location.
-           ?sex rdfs:label ?gender.
-           ?featurecode stat:code ?areatype;
-             rdfs:label ?featurename.
-           ?areatype rdfs:label ?areatypename.
-           ?period rdfs:label ?date.
-        }
-      accessibility: 0
-    stored_in:
-      name: Local store
-      path: ~/datastore/eb788dd5d4cf6345c0c74535031088927918f64b.csv
-      accessibility: 0
-    cache: ~/datastore/eb788dd5d4cf6345c0c74535031088927918f64b.csv
-    data:
-      unique_name: scottish deaths-involving-coronavirus-covid-19
-      product_name: records/SARS-CoV-2/scotland/human-mortality
-      title: scottish deaths-involving-coronavirus-covid-19
-      primary: True
-      release_date: 2021-04-01
-      description: scottish deaths-involving-coronavirus-covid-19 dataset
-      version: 0.20210401.0
+         ?measType rdfs:label ?type.
+         ?value rdfs:label ?age.
+         ?causeDeath rdfs:label ?cause.
+         ?locDeath rdfs:label ?location.
+         ?sex rdfs:label ?gender.
+         ?featurecode stat:code ?areatype;
+           rdfs:label ?featurename.
+         ?areatype rdfs:label ?areatypename.
+         ?period rdfs:label ?date.
+      }
+    accessibility: 0
+  data:
+    unique_name: scottish deaths-involving-coronavirus-covid-19
+    product_name: records/SARS-CoV-2/scotland/human-mortality
+    title: scottish deaths-involving-coronavirus-covid-19
+    primary: True
+    release_date: 2021-04-01
+    description: scottish deaths-involving-coronavirus-covid-19 dataset
+    version: 0.20210401.0
+    accessibility: 0
 ```
