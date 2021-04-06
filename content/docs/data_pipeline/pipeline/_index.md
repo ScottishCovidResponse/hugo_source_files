@@ -206,7 +206,9 @@ with StandardAPI.from_config("config.yaml") as api:
 
 This registers an external object, reads it in, and then writes it back to the pipeline as a data product component.
 
-### Another example of a an external object
+### Register an external object in the data pipeline 2
+
+<span style="font-size:16pt; color:red">This is a more involved example, which I'll expand in due course to include a processing script and data product.</span>
 
 Here follows another `config.yaml` file, which is used to register a data product in the data registry. The processing / analysis script is stored in `remote_repo` (and `local_repo`), where `remote_repo` corresponds to the root of a remote repository and `local_repo` corresponds to the root of the file path of a local repository. Note that only one of these is necessary. If `local_repo` is omitted, a clone of `remote_repo` will be created by `initialise()`. If `local_repo` is included, `initialise()` will check whether or not the local repository is clean. The submission script itself (a single line of code that points to the processing / analysis script) should either be written in `script` or stored in a text file in `script_path`, which can be absolute or relative to the root of the repo.
 
