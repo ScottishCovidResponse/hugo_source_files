@@ -97,6 +97,8 @@ If the component is represented as samples, return the samples.
 
 ## HDF5 files
 
+<span style="font-size:16pt; color:red">Note that the following is subject to change. For example, we may want to add all of the metadata as attributes.</span>
+
 HDF5 files contain structured data, encoded as either an “array”, or a “table”, both of which are described in more detail below.
 
 ### File format
