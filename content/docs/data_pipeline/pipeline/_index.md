@@ -187,20 +187,20 @@ register:
          ?areatype rdfs:label ?areatypename.
          ?period rdfs:label ?date.
       }
-    accessibility: 0
+    accessibility: open
   data:
     unique_name: scottish deaths-involving-coronavirus-covid-19
     product_name: records/SARS-CoV-2/scotland/human-mortality
     title: scottish deaths-involving-coronavirus-covid-19
     primary: True
-    release_date: 2021-04-01
+    release_date: 2021-04-01   # Assuming this is today
     description: scottish deaths-involving-coronavirus-covid-19 dataset
-    version: 0.20210401.0
-    accessibility: 0
+    version: 0.20210401.0      # Likewise
+    accessibility: open
     
 write:
 - data_product: human/mortality
-  component: mortality_data
+  component: mortality_data    # This is a rubbish name
 ```
 
 Then the python script:
@@ -240,10 +240,9 @@ read:
 
 register:
 - external_object: "revised-time-series"
-  use:
-    unique_name: "An new, revised, time series"
-    title: "Table 1"
-    primary: True
+  unique_name: "An new, revised, time series"
+  title: "Table 1"
+  primary: True
 ```
 
 Then the R script reads in the original data, modifies it and saves it to disk as a csv file, registering it in the local registry as an external object:
