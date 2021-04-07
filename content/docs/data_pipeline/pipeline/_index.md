@@ -26,7 +26,7 @@ When a model or script is run (as a *session* / “*code run*”), any output fi
 
 The config file lets users specify metadata to be used during file lookup for read or write, and configure overall API behaviour.
 
-### Example: simple inputs and outputs
+### Example: Simple inputs and outputs
 
 ```yaml
 fail_on_hash_mismatch: True
@@ -89,7 +89,7 @@ If a write is carried out to a data product where no such `data_product:` entry 
 
 <span style="font-size:14pt; color:red">Note that: at the moment, we haven't ensured that any write will already have its objects synced to the local registry, so we may not know what the current version is. Either we need to say that you have to add writes to the config.yaml file, or you need to allow a special version called "patch", "minor" and "major" in the local registry (or "+0.0.1", "+0.1", "+1", so that you can then allow "+2", "+2.0.1", etc.).</span>
 
-### Example: flexibile inputs and outputs
+### Example: Flexibile inputs and outputs
 
 The following example describes an analysis which typically reads `human/population` and writes `human/outbreak-timeseries`. Instead, a test model is run using Scottish data, whereby `scotland/human/population` is read from the `eera` namespace, rather than `human/population`. Likewise, the output is written as `scotland/human/outbreak-timeseries` rather than `human/outbreak-timeseries`.
 
@@ -122,9 +122,9 @@ write:
 Any part of a `use:` statement may contain the string `{run_id}`, which will be replaced with the run id.
 - `run_id` specifies the run id to be used, otherwise a hash of the config contents and the date will be used.
 
-## Example use of the pipeline
+## Use of the pipeline
 
-### Register a new external object
+### Example: Register a new external object and write a data product component
 
 To get the pipeline up and running, we need to add some data. To do this we should download some data from outside the pipeline, do some processing in Python (for example), and record the original file and the resultant data product into the pipeline.
 
@@ -216,7 +216,7 @@ with StandardAPI.from_config("config.yaml") as api:
 
 This registers an external object, reads it in, and then writes it back to the pipeline as a data product component.
 
-### Read and write an external object
+### Example: Read and write an external object
 
 A script to read and write an external object (*i.e.* something not in a core data pipeline format) in R. First, the yaml file, that gives the `doi_or_unique_name` and `title` of the external objects being read and written, and the aliases that will be used in the submission script:
 
@@ -267,7 +267,7 @@ finalise(handle)
 ```
 
 Since we're now working with external objects, we use `pipeline_record_open()` and `pipeline_record_write()` to read and write objects, rather than the standard API `read_xxx()` and `write_xxx()` calls.
-### Read then write a data product component
+### Example: Read then write a data product component
 
 Now that the pipeline is populated, one of the simplest possible use cases is just to read in a value, calculate a new value from it, and write out the new value. Again, we need to write a `config.yaml` file:
 
