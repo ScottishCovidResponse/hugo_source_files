@@ -16,12 +16,6 @@ The underlying data to which the API refers is determined by the interaction bet
 This interaction between the configuration file and the remote registry defines the “*local filesystem data repository*” that the local pipeline interacts with. The data directory can be automatically created by a *download synchronisation script* [(currently found here)](https://github.com/ScottishCovidResponse/data_pipeline_api/tree/master/data_pipeline_api/registry) which reads the `config.yaml` file, queries the appropriate remote registry, downloads appropriate data, and populates the local registry with the relevant metadata for those data.
 
 When a model or script is run (as a *session* / “*code run*”), any output files are written to the data directory, and those outputs are logged in the local registry, which has itself been created (or updated) by the *download synchronisation script*. The local registry can be queried to determine whether the data generated is as intended, and if so it can then by synchronised back to the remote registry. This can be carried out automatically using an *upload synchronisation script* [(currently here)](https://github.com/ScottishCovidResponse/data_pipeline_api/tree/master/data_pipeline_api/registry). When the *session* is initialised a “*run id*” is created to uniquely identify that *code run*. It is constructed by forming the SHA1 hash of the configuration file content, plus the date time string.
-
-## Dictionary of terms
-
-*external object*: an object that is not in an internal pipeline format (toml or hdf5) - thus, external... 
-
-*data product*: what we access with the standard API read_xxx(), write_xxx() calls. External objects we tell the pipeline we are going to read using record_read() and record_write(), but the reading and writing happens in your code
 ## config.yaml file format
 
 The config file lets users specify metadata to be used during file lookup for read or write, and configure overall API behaviour.
@@ -124,6 +118,8 @@ Any part of a `use:` statement may contain the string `{run_id}`, which will be 
 
 ## Use of the pipeline
 
+<span style="font-size:14pt; color:red">Note that this is a living document and the following is subject to change. The following examples are mostly guesswork and have not yet been tested. Fields may be missing or named incorrectly!</span>
+
 ### Example: Register a new external object and write a data product component
 
 To get the pipeline up and running, we need to add some data. To do this we should download some data from outside the pipeline, do some processing in Python (for example), and record the original file and the resultant data product into the pipeline.
@@ -192,6 +188,7 @@ register:
     unique_name: scottish deaths-involving-coronavirus-covid-19
     product_name: records/SARS-CoV-2/scotland/human-mortality
     title: scottish deaths-involving-coronavirus-covid-19
+    file_type: csv
     primary: True
     release_date: 2021-04-01   # Assuming this is today
     description: scottish deaths-involving-coronavirus-covid-19 dataset
@@ -233,15 +230,16 @@ run_metadata:
     R -f path/submission_script.R {CONFIG_PATH}
 
 read: 
-- external_object: "time-series"
+- external_object: time-series
   use:
-    unique_name: "An exciting time series"
-    title: "Table 1"
+    unique_name: An exciting time series
+    title: Table 1
 
 write: 
-- external_object: "revised-time-series"
-  unique_name: "An new, revised, time series"
-  title: "Table 1"
+- external_object: revised-time-series
+  unique_name: An new, revised, time series
+  title: Table 1
+  file_type: csv
   primary: True
 ```
 
