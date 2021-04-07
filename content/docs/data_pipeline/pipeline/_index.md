@@ -184,16 +184,16 @@ register:
        ?period rdfs:label ?date.
     }
   # Metadata
+  title: scottish deaths-involving-coronavirus-covid-19
+  description: scottish deaths-involving-coronavirus-covid-19 dataset
   unique_name: scottish deaths-involving-coronavirus-covid-19
   product_name: records/SARS-CoV-2/scotland/human-mortality
-  title: scottish deaths-involving-coronavirus-covid-19
   file_type: csv
-  accessibility: closed        # Default is open
-  primary: True
   release_date: 2021-04-01     # Assuming this is today
-  description: scottish deaths-involving-coronavirus-covid-19 dataset
   version: 0.20210401.0        # Likewise
-    
+  primary: True
+  accessibility: closed        # Default is open
+  
 write:
 - data_product: human/mortality
   component: mortality_data    # This is a rubbish component name
