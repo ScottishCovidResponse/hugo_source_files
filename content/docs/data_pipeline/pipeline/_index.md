@@ -238,7 +238,7 @@ read:
     unique_name: "An exciting time series"
     title: "Table 1"
 
-register: # Need to think about this a bit more
+write: 
 - external_object: "revised-time-series"
   unique_name: "An new, revised, time series"
   title: "Table 1"
