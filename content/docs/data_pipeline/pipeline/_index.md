@@ -146,58 +146,54 @@ run_metadata:
 
 register:
 - external_object: raw-mortality-data
-  source: # Maybe existing sources only require `name:` to be populated?
-    name: Scottish Government Open Data Repository
-    abbreviation: Scottish Government Open Data Repository
-    website: https://statistics.gov.scot/
-  downloaded_from:
-    name: Scottish Government Open Data Repository
-    root: https://statistics.gov.scot/sparql.csv?query=
-    path: |
-      PREFIX qb: <http://purl.org/linked-data/cube#>
-      PREFIX data: <http://statistics.gov.scot/data/>
-      PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-      PREFIX dim: <http://purl.org/linked-data/sdmx/2009/dimension#>
-      PREFIX sdim: <http://statistics.gov.scot/def/dimension/>
-      PREFIX stat: <http://statistics.data.gov.uk/def/statistical-entity#>
-      PREFIX mp: <http://statistics.gov.scot/def/measure-properties/>
-      SELECT ?featurecode ?featurename ?areatypename ?date ?cause ?location ?gender ?age ?type ?count
-      WHERE {
-       ?indicator qb:dataSet data:deaths-involving-coronavirus-covid-19;
-         mp:count ?count;
-         qb:measureType ?measType;
-         sdim:age ?value;
-         sdim:causeOfDeath ?causeDeath;
-         sdim:locationOfDeath ?locDeath;
-         sdim:sex ?sex;
-         dim:refArea ?featurecode;
-         dim:refPeriod ?period.
+  source_name: Scottish Government Open Data Repository
+  source_abbreviation: Scottish Government Open Data Repository
+  source_website: https://statistics.gov.scot/
+  root_name: Scottish Government Open Data Repository
+  root: https://statistics.gov.scot/sparql.csv?query=
+  path: |
+    PREFIX qb: <http://purl.org/linked-data/cube#>
+    PREFIX data: <http://statistics.gov.scot/data/>
+    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+    PREFIX dim: <http://purl.org/linked-data/sdmx/2009/dimension#>
+    PREFIX sdim: <http://statistics.gov.scot/def/dimension/>
+    PREFIX stat: <http://statistics.data.gov.uk/def/statistical-entity#>
+    PREFIX mp: <http://statistics.gov.scot/def/measure-properties/>
+    SELECT ?featurecode ?featurename ?areatypename ?date ?cause ?location ?gender ?age ?type ?count
+    WHERE {
+     ?indicator qb:dataSet data:deaths-involving-coronavirus-covid-19;
+       mp:count ?count;
+       qb:measureType ?measType;
+       sdim:age ?value;
+       sdim:causeOfDeath ?causeDeath;
+       sdim:locationOfDeath ?locDeath;
+       sdim:sex ?sex;
+       dim:refArea ?featurecode;
+       dim:refPeriod ?period.
 
-         ?measType rdfs:label ?type.
-         ?value rdfs:label ?age.
-         ?causeDeath rdfs:label ?cause.
-         ?locDeath rdfs:label ?location.
-         ?sex rdfs:label ?gender.
-         ?featurecode stat:code ?areatype;
-           rdfs:label ?featurename.
-         ?areatype rdfs:label ?areatypename.
-         ?period rdfs:label ?date.
-      }
-    accessibility: open        # Default, so not necessary
-  metadata:
-    unique_name: scottish deaths-involving-coronavirus-covid-19
-    product_name: records/SARS-CoV-2/scotland/human-mortality
-    title: scottish deaths-involving-coronavirus-covid-19
-    file_type: csv
-    primary: True
-    release_date: 2021-04-01   # Assuming this is today
-    description: scottish deaths-involving-coronavirus-covid-19 dataset
-    version: 0.20210401.0      # Likewise
-    accessibility: open
+       ?measType rdfs:label ?type.
+       ?value rdfs:label ?age.
+       ?causeDeath rdfs:label ?cause.
+       ?locDeath rdfs:label ?location.
+       ?sex rdfs:label ?gender.
+       ?featurecode stat:code ?areatype;
+         rdfs:label ?featurename.
+       ?areatype rdfs:label ?areatypename.
+       ?period rdfs:label ?date.
+    }
+  accessibility: open          # Default, so not necessary
+  unique_name: scottish deaths-involving-coronavirus-covid-19
+  product_name: records/SARS-CoV-2/scotland/human-mortality
+  title: scottish deaths-involving-coronavirus-covid-19
+  file_type: csv
+  primary: True
+  release_date: 2021-04-01     # Assuming this is today
+  description: scottish deaths-involving-coronavirus-covid-19 dataset
+  version: 0.20210401.0        # Likewise
     
 write:
 - data_product: human/mortality
-  component: mortality_data    # This is a rubbish name
+  component: mortality_data    # This is a rubbish component name
 ```
 
 Then the python script:
