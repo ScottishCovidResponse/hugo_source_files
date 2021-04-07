@@ -150,7 +150,7 @@ run_metadata:
 
 register:
 - external_object: raw-mortality-data
-  source:
+  source: # Maybe existing sources only require `name:` to be populated?
     name: Scottish Government Open Data Repository
     abbreviation: Scottish Government Open Data Repository
     website: https://statistics.gov.scot/
@@ -187,8 +187,8 @@ register:
          ?areatype rdfs:label ?areatypename.
          ?period rdfs:label ?date.
       }
-    accessibility: open
-  data:
+    accessibility: open        # Default, so not necessary
+  metadata:
     unique_name: scottish deaths-involving-coronavirus-covid-19
     product_name: records/SARS-CoV-2/scotland/human-mortality
     title: scottish deaths-involving-coronavirus-covid-19
@@ -238,7 +238,7 @@ read:
     unique_name: "An exciting time series"
     title: "Table 1"
 
-register:
+register: # Need to think about this a bit more
 - external_object: "revised-time-series"
   unique_name: "An new, revised, time series"
   title: "Table 1"
