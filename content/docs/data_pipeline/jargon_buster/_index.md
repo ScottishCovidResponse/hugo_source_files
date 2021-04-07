@@ -55,4 +55,4 @@ External object
 ## W
 
 `write:`
-: a field in `config.yaml` used to specify the writing of an object (a data product or an external object) that belongs to the user (see also `write:` and `read:`)
+: a field in `config.yaml` used to specify the writing of an object (a data product or an external object) that belongs to the user (see also `register:` and `read:`)
