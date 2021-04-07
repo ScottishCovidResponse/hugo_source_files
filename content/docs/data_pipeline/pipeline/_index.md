@@ -253,17 +253,17 @@ library(dplyr)
 handle <- initialise("config.yaml") # How to reference the active script?
 
 # Read in a csv file stored in the pipeline
-time_series <- read_csv(open_for_read(handle, "time-series"))
+time_series <- read_csv(link_read(handle, "time-series"))
 
 new_time_series <- time_series %>% select(time, pipes) %>% filter(time < 10)
 
 write_csv(new_time_series,
-          open_for_write(handle, "revised-time-series"))
+          link_write(handle, "revised-time-series"))
 
 finalise(handle)
 ```
 
-Since we're now working with external objects, we use `open_for_read()` and `open_for_write()` to read and write objects, rather than the standard API `read_xxx()` and `write_xxx()` calls.
+Since we're now working with external objects, we use `link_read()` and `link_write()` to read and write objects, rather than the standard API `read_xxx()` and `write_xxx()` calls.
 ### Example: Read then write a data product component
 
 Now that the pipeline is populated, one of the simplest possible use cases is just to read in a value, calculate a new value from it, and write out the new value. Again, we need to write a `config.yaml` file:

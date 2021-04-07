@@ -22,12 +22,12 @@ Data registry
 External object
 : an object that is not in an internal pipeline format (*i.e.* not toml or hdf5 files)
 
-## O
-`open_for_read()`
-: connects `code_run` to `external_object` as input and returns path location
+## L
+`link_read()`
+: connects `code_run` to `external_object` as input and returns path location (see also `link_write()`)
 
-`open_for_write()`
-: connects `code_run` to `data_product` as output and returns path location
+`link_write()`
+: connects `code_run` to `data_product` as output and returns path location (see also `link_read()`)
 
 ## R
 `read:`
