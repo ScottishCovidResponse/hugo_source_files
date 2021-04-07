@@ -186,7 +186,7 @@ register:
   # Metadata
   title: Deaths involving COVID19
   description: Nice description of the dataset
-  unique_name: Scottish deaths involving COVID19  # doi:
+  unique_name: Scottish deaths involving COVID19  # or doi
   product_name: records/SARS-CoV-2/scotland/human-mortality
   file_type: csv
   release_date: 2021-04-01     # Assuming this is today
