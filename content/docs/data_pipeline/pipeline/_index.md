@@ -150,14 +150,14 @@ run_metadata:
 
 register:
 - external_object: contact-matrix
-    use:
-      source_url: https://data.scrc.uk/data_product/LSHTM:contact_matrices/national@0.20200811.0
-      cache: ~/cache/national@0.20200811.0.csv
-      unique_name: An new, revised, time series
-      title: Table 1
-      primary: True
-      author: John Smith
-      source: LSHTM
+  use:
+    source_url: https://data.scrc.uk/data_product/LSHTM:contact_matrices/national@0.20200811.0
+    cache: ~/cache/national@0.20200811.0.csv
+    unique_name: An new, revised, time series
+    title: Table 1
+    primary: True
+    author: John Smith
+    source: LSHTM
 
 write:
 - data_product: human/movement
@@ -195,16 +195,16 @@ run_metadata:
 
 read: 
 - external_object: "time-series"
-    use:
-      unique_name: "An exciting time series"
-      title: "Table 1"
+  use:
+    unique_name: "An exciting time series"
+    title: "Table 1"
 
 register:
 - external_object: "revised-time-series"
-    use:
-      unique_name: "An new, revised, time series"
-      title: "Table 1"
-      primary: True
+  use:
+    unique_name: "An new, revised, time series"
+    title: "Table 1"
+    primary: True
 ```
 
 Then the R script reads in the original data, modifies it and saves it to disk as a csv file, registering it in the local registry as an external object:
