@@ -19,7 +19,74 @@ When a model or script is run (as a *session* / “*code run*”), any output fi
 
 ## config.yaml file format
 
-The config file lets users specify metadata to be used during file lookup for read or write, and configure overall API behaviour. A simple example:
+The config file lets users specify metadata to be used during file lookup for read or write, and configure overall API behaviour.
+
+### Example: simple inputs and outputs
+
+```yaml
+fail_on_hash_mismatch: True
+run_metadata:
+  description: A simple analysis
+  local_data_registry_url: https://localhost:8000/api/
+  remote_data_registry_url: https://data.scrc.uk/api/
+  default_input_namespace: SCRC
+  default_output_namespace: johnsmith
+  default_data_store: ~/datastore/
+  always_copy_to_store: False
+
+read:
+# Read version 1.0 of human/commutes
+- data_product: human/commutes
+  use:
+    version: 1.0
+# Read human/health from cache
+- data_product: human/health
+  use:
+    cache: ~/local/file.h5
+# Read crummy_table with specific doi and title
+- external_object: crummy_table
+  use:
+    doi: 10.1111/ddi.12887
+    title: Supplementary Table 2
+# Read secret_data with specific doi and title from cache
+- external_object: secret_data
+  use:
+    doi: 10.1111/ddi.12887
+    title: Supplementary Table 3
+    cache: ~/local/secret.csv
+# Read weird_lost_file (which perhaps has no metadata) with specific hash
+- object: weird_lost_file
+  use:
+    hash: b5a514810b4cb6dc795848464572771f
+
+write:
+# Write beautiful_figure and increment version number
+- external_object: beautiful_figure
+  use:
+    unique_name: My amazing figure
+    version: minor
+```
+
+- `fail_on_hash_mismatch:` will, if set to True (the default), cause the API to fail is an attempt is made to read a file whose computed hash differs from the one stored in the local registry
+
+- `run_metadata` provides metadata for the run:
+  - `description:` is a human readable description of the purpose of the config.yaml
+  - `local_data_registry_url:` specifies the local data registry root, which defaults to https<!-- -->://localhost:8000/api/
+  - `remote_data_registry_url:` specifies the remote data registry endpoint, which defaults to https<!-- -->://data.scrc.uk/api/
+  - `default_input_namespace:` and `default_output_namespace:` specify the default namespace for reading and writing
+  - `default_data_store:` specifies the file system root used for data writes, which defaults to ~/datastore (it may be relative, in which case it is relative to the directory containing the config file)
+  - `always_copy_to_store` specifies whether files that already exist in the local filesystem (files specified in `read: use: cache:`) but not in the `default_data_store` should be copied to the data store (set to `True`) or not (set to `False`, default)
+  - Additional fields exist (`remote_repo:`, `local_repo:`, `script_path:`, and `script:`), which will be described later. Any other fields will be ignored.
+  
+The `data_product:` (within `read:` and `write:`), `external_object:` (`read:` and `write:`) and `object:` (`read:` only) sections specify metadata subsets that are matched in the read and write processes. The metadata values may use glob syntax, in which case matching is done against the glob. The corresponding `use:` sections contain metadata that is used to update the call metadata before the file access is attempted. For reads, a `cache:` may be specified directly, in which case it will be used without any further lookup.
+
+If a write is carried out to a data product where no such `data_product:` entry exists, then a new data product is created with that name in the local namespace, or the patch version of an existing data product is suitably incremented. The level of incrementation or version number can be explicitly defined by `version:`. If a write is carried out to an object that is not a data product and no such `external_object:` entry exists, then a new object is created with no associated external object or data product, and an issue is raised with the object to note the absence of an appropriate reference, referencing the name given in the write API call.
+
+<span style="font-size:14pt; color:red">Note that: at the moment, we haven't ensured that any write will already have its objects synced to the local registry, so we may not know what the current version is. Either we need to say that you have to add writes to the config.yaml file, or you need to allow a special version called "patch", "minor" and "major" in the local registry (or "+0.0.1", "+0.1", "+1", so that you can then allow "+2", "+2.0.1", etc.).</span>
+
+### Example: flexibile inputs and outputs
+
+The following example describes an analysis which typically reads `human/population` and writes `human/outbreak-timeseries`. Instead, a test model is run using Scottish data, whereby `scotland/human/population` is read from the `eera` namespace, rather than `human/population`. Likewise, the output is written as `scotland/human/outbreak-timeseries` rather than `human/outbreak-timeseries`.
 
 ```yaml
 fail_on_hash_mismatch: True
@@ -33,28 +100,10 @@ run_metadata:
   always_copy_to_store: False
 
 read:
-- data_product: human/commutes
-  use:
-    version: 1.0
 - data_product: human/population
   use:
     namespace: eera
     data_product: scotland/human/population
-- data_product: human/health
-  use:
-    cache: ~/local/file.h5
-- external_object: crummy_table
-  use:
-    doi: 10.1111/ddi.12887
-    title: Supplementary Table 2
-- external_object: secret_data
-  use:
-    doi: 10.1111/ddi.12887
-    title: Supplementary Table 3
-    cache: ~/local/secret.csv
-- object: weird_lost_file
-  use:
-    hash: b5a514810b4cb6dc795848464572771f
 
 write:
 - data_product: human/outbreak-timeseries
@@ -62,80 +111,84 @@ write:
     data_product: scotland/human/outbreak-timeseries
 - data_product: human/outbreak/simulation_run
   use:
-    data_product: scotland/human/outbreak/simulation_run-{run_id}
-- external_object: beautiful_figure
-  use:
-    unique_name: My amazing figure
-    version: minor
+    data_product: human/outbreak/simulation_run-{run_id}
 ```
 
-- `default_data_store:` specifies the file system root used for data writes (default “~/datastore”). It may be relative, in which case it is relative to the directory containing the config file. If files already exist in the local filesystem (but not in the datastore), then they will only be copied to the default data store if `always_copy_to_store:` is set to `True` (default `False`).
-
-- Any part of a `use:` statement may contain the string `{run_id}`, which will be replaced with the run id.
-
-- `fail_on_hash_mismatch:` will, if set to True (the default), cause the API to fail is an attempt is made to read a file whose computed hash differs from the one stored in the local registry.
-
+Any part of a `use:` statement may contain the string `{run_id}`, which will be replaced with the run id.
 - `run_id` specifies the run id to be used, otherwise a hash of the config contents and the date will be used.
-
-- `run_metadata` provides metadata for the run.
-
-The `data_product:` (within `read:` and `write:`), `external_object:` (`read:` and `write:`) and `object:` (`read:` only) sections specify metadata subsets that are matched in the read and write processes. The metadata values may use glob syntax, in which case matching is done against the glob. The corresponding `use:` sections contain metadata that is used to update the call metadata before the file access is attempted. For reads, a `cache:` may be specified directly, in which case it will be used without any further lookup. If a write is carried out to a data product where no such `data_product:` section exists, then a new data product is created with that name in the local namespace, or the version of an existing data product is suitably incremented. If a write is carried out to an object that is not a data product and no such `external_object:` section exists, then a new object is created with no associated external object or data product, and an issue is raised with the object to note the absence of an appropriate reference, referencing the name given in the write API call.
-
-Any other attributes will be ignored.
 
 ## Example use of pipeline
 
-### Read then write a data product component
+### Register a new external object
 
-One of the simplest possible use cases for the pipeline is just to read in a value, calculate a new value from it, and write out the new value. First you need a `config.yaml` file:
+To get the pipeline up and running, we need to add some data. To do this we should download some data from outside the pipeline, do some processing in Python (for example), and record the original file and the resultant data product into the pipeline.
+
+To achieve this, run the following from the command line:
+
+```bash
+tdp run config.yaml
+```
+
+That is, assuming a config.yaml file already exists. The yaml file, should specify where the external object comes from and the aliases that will be used in the submission script:
 
 ```yaml
 run_metadata: 
-  description: A simple example using data products
-  remote_data_registry_url: https://data.scrc.uk/api/ 
+  description: Register a file in the pipeline
+  local_data_registry_url: https://localhost:8000/api/
+  remote_data_registry_url: https://data.scrc.uk/api/
   default_input_namespace: SCRC 
   default_output_namespace: johnsmith
+  default_data_store: ~/datastore/
+  local_repo: ~/Users/johnsmith/git/myproject/
+  script: | # Points to the Python script, below (relative to local_repo)
+    python -f path/submission_script.py {CONFIG_PATH}
 
-read: 
-- data_product: human/infection/SARS-CoV-2
+register:
+- external_object: contact-matrix
+    use:
+      source_url: https://data.scrc.uk/data_product/LSHTM:contact_matrices/national@0.20200811.0
+      cache: ~/cache/national@0.20200811.0.csv
+      unique_name: An new, revised, time series
+      title: Table 1
+      primary: True
+      author: John Smith
+      source: LSHTM
+
+write:
+- data_product: human/movement
+  component: contact_matrix
 ```
 
-The download sync using this yaml file will look in the `SCRC` namespace of the remote registry (https://data.scrc.uk/api/) for the latest version of the `human/infection/SARS-CoV-2` data product and download it, syncing all of the associated metadata into the local registry. Then, a script like this (in Julia) will do the actual work:
+Then the python script:
 
-```julia
-using DataPipeline
+```python
+from data_pipeline_api.standard_api import StandardAPI
 
-# Open the connection to the local registry with a given config file
-handle = initialise("config.yaml") # How to reference the active script?
-
-# Read in the estimate of a value from a toml file
-inf_period = read_estimate(handle,
-                           name = "human/infection/SARS-CoV-2",
-                           component = "infectious-duration")
-
-# Do some exciting processing
-double_period = inf_period * 2
-
-# Write out the newly created value to a toml file
-write_estimate(handle, double_period,
-               name = "human/infection/SARS-CoV-2/doubled",
-               component = "doubled-infectious-period")
-
-finalise(handle)
+with StandardAPI.from_config("config.yaml") as api:
+    api.register("contact-matrix")
+    matrix = read(api.record_open("contact-matrix"))
+    api.write_array("human/movement", "contact_matrix", matrix)
 ```
 
-This script will find the latest version of the `human/infection/SARS-CoV-2` data product in the local registry, read the file and find the `infectious-duration` component. It will then double it and save the new value to disk as the `doubled-infectious-period` component of the `human/infection/SARS-CoV-2/doubled` data product, and record its existence in the local registry. When saving the metadata to the registry, that will include its provenance -- that it depends on the old value and was generated by the script being executed.
+This registers an external object, reads it in, and then writes it back to the pipeline as a data product component.
 
-### Read then write an external object
+### Modify an existing external object
 
-A script to read and write an external object (i.e. something not in a core data pipeline format). First, the yaml file, that gives the `doi_or_unique_name` and `title` of the external objects being read and written, and the aliases that will be used in the file:
+<span style="font-size:14pt; color:red">Assuming, for some reason, we want to modify an existing external object, rather than generating a new data product...</span>
+
+A script to read and write an external object (*i.e.* something not in a core data pipeline format) in R. First, the yaml file, that gives the `doi_or_unique_name` and `title` of the external objects being read and written, and the aliases that will be used in the submission script:
 
 ```yaml
 run_metadata: 
   description: A simple example using external objects
-  remote_data_registry_url: https://data.scrc.uk/api/ 
+  local_data_registry_url: https://localhost:8000/api/
+  remote_data_registry_url: https://data.scrc.uk/api/
   default_input_namespace: SCRC 
   default_output_namespace: johnsmith
+  default_data_store: ~/datastore/
+  local_repo: ~/Users/johnsmith/git/myproject/
+  script: | # Points to the R script, below (relative to local_repo)
+    R -f path/submission_script.R {CONFIG_PATH}
 
 read: 
 - external_object: "time-series"
@@ -143,7 +196,7 @@ read:
       unique_name: "An exciting time series"
       title: "Table 1"
 
-write:
+register:
 - external_object: "revised-time-series"
     use:
       unique_name: "An new, revised, time series"
@@ -171,48 +224,63 @@ write_csv(new_time_series,
 
 finalise(handle)
 ```
+### Read then write a data product component
 
-### Register a new external object in the pipeline
-
-Here, we'll download some data from outside the pipeline, do some processing, and record the original file and the resultant data product into the pipeline. First the yaml file, specifying where the external object comes from:
+Now that the pipeline is populated, one of the simplest possible use cases is just to read in a value, calculate a new value from it, and write out the new value. Again, we need to write a `config.yaml` file:
 
 ```yaml
 run_metadata: 
-  description: Register a file in the pipeline
-  remote_data_registry_url: https://data.scrc.uk/api/ 
+  description: A simple example using data products
+  local_data_registry_url: https://localhost:8000/api/
+  remote_data_registry_url: https://data.scrc.uk/api/
   default_input_namespace: SCRC 
   default_output_namespace: johnsmith
+  default_data_store: ~/datastore/
+  local_repo: ~/Users/johnsmith/git/myproject/
+  script: | # Points to the Julia script, below (relative to local_repo)
+    Julia -f path/submission_script.jl {CONFIG_PATH}
 
-register:
-- external_object: "contact-matrix"
-    use:
-      source_url: "https://data.scrc.uk/data_product/LSHTM:contact_matrices/national@0.20200811.0"
-      cache: ~/cache/national@0.20200811.0.csv
-      unique_name: "An new, revised, time series"
-      title: "Table 1"
-      primary: True
-      author: "John Smith"
-      source: "LSHTM"
+read: 
+- data_product: human/infection/SARS-CoV-2
+
+write:
+- data_product: human/infection/SARS-CoV-2/doubled
+  component: doubled-infectious-period
 ```
 
-Then the python script:
+Here, a submission script is stored in `local_repo:` (the root of a local repository). Alternatively, a `remote_repo:` can be provided, corresponding to the root of a remote repository. Note that only one of these is necessary. If `local_repo` is omitted, a clone of `remote_repo` will be created by `initialise()`. If `local_repo` is included, `initialise()` will check whether or not the local repository is clean. The submission script itself (usually, a single line of code that points to the processing / analysis script) should either be written in `script` or stored in a text file in `script_path`, which can be absolute or relative to the root of the repo.
 
-```python
-from data_pipeline_api.standard_api import StandardAPI
+The download sync using this yaml file will look in the `default_input_namespace` of the remote registry (`remote_data_registry_url:`) for the latest version of the `human/infection/SARS-CoV-2` data product and download it, syncing all of the associated metadata into the local registry.
 
-with StandardAPI.from_config("config.yaml") as api:
-    api.register("contact-matrix")
-    matrix = read(api.record_open("contact-matrix"))
-    api.write_array("human/movement", "contact_matrix", matrix)
+The Julia script (found in `local_repo`/path/submission_script.jl) will do the work:
+
+```julia
+using DataPipeline
+
+# Open the connection to the local registry with a given config file
+handle = initialise("config.yaml") 
+
+# Read in the estimate of a value from a toml file
+inf_period = read_estimate(handle,
+                           name = "human/infection/SARS-CoV-2",
+                           component = "infectious-duration")
+
+# Do some exciting processing
+double_period = inf_period * 2
+
+# Write out the newly created value to a toml file
+write_estimate(handle, double_period,
+               name = "human/infection/SARS-CoV-2/doubled",
+               component = "doubled-infectious-period")
+
+finalise(handle)
 ```
 
-This registers an external object, reads it in, and then writes it back to the pipeline as a data product component.
+This script will find the latest version of the `human/infection/SARS-CoV-2` data product in the local registry, read the file and find the `infectious-duration` component. It will then double it and save the new value to disk as the `doubled-infectious-period` component of the `human/infection/SARS-CoV-2/doubled` data product, and record its existence in the local registry. When saving the metadata to the registry, that will include its provenance -- that it depends on the old value and was generated by the script being executed.
 
-### Register an external object in the data pipeline 2
+### Register an real external object in the data pipeline
 
-<span style="font-size:16pt; color:red">This is a more involved example, which I'll expand in due course to include a processing script and data product.</span>
-
-Here follows another `config.yaml` file, which is used to register a data product in the data registry. The processing / analysis script is stored in `remote_repo` (and `local_repo`), where `remote_repo` corresponds to the root of a remote repository and `local_repo` corresponds to the root of the file path of a local repository. Note that only one of these is necessary. If `local_repo` is omitted, a clone of `remote_repo` will be created by `initialise()`. If `local_repo` is included, `initialise()` will check whether or not the local repository is clean. The submission script itself (a single line of code that points to the processing / analysis script) should either be written in `script` or stored in a text file in `script_path`, which can be absolute or relative to the root of the repo.
+<span style="font-size:14pt; color:red">This is a more involved example (the previous examples were made up), which will be expanded upon in due course to include a processing script and data product.</span>
 
 ```yaml
 run_metadata:
@@ -224,7 +292,7 @@ run_metadata:
   default_data_store: ~/datastore/
   remote_repo: 
   script: |
-    R -f path/file.R
+    R -f path/file.R {CONFIG_PATH}
 
 register:
 - external_object: raw-mortality-data
