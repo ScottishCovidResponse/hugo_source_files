@@ -22,49 +22,51 @@ When a model or script is run (as a *session* / “*code run*”), any output fi
 The config file lets users specify metadata to be used during file lookup for read or write, and configure overall API behaviour. A simple example:
 
 ```yaml
-fail_on_hash_mismatch: True 
-run_metadata: 
-  description: "A test model"
-  remote_data_registry_url: https://data.scrc.uk/api/ 
-  default_input_namespace: SCRC 
+fail_on_hash_mismatch: True
+run_metadata:
+  description: A test model
+  local_data_registry_url: https://localhost:8000/api/
+  remote_data_registry_url: https://data.scrc.uk/api/
+  default_input_namespace: SCRC
   default_output_namespace: johnsmith
-  default_data_store: "~/datastore"
+  default_data_store: ~/datastore/
   always_copy_to_store: False
 
-read: 
+read:
 - data_product: human/commutes
-    use:
-      version: 1.0
+  use:
+    version: 1.0
 - data_product: human/population
-    use:
-      namespace: eera
-      data_product: scotland/human/population
+  use:
+    namespace: eera
+    data_product: scotland/human/population
 - data_product: human/health
-    use:
-      cache: "~/local/file.h5"
+  use:
+    cache: ~/local/file.h5
 - external_object: crummy_table
-    use:
-      doi: "10.1111/ddi.12887"
-      title: "Supplementary Table 2"
+  use:
+    doi: 10.1111/ddi.12887
+    title: Supplementary Table 2
 - external_object: secret_data
-    use:
-      doi: "10.1111/ddi.12887"
-      title: "Supplementary Table 3"
-      cache: "~/local/secret.csv"
+  use:
+    doi: 10.1111/ddi.12887
+    title: Supplementary Table 3
+    cache: ~/local/secret.csv
 - object: weird_lost_file
-    use:
-      hash: b5a514810b4cb6dc795848464572771f
+  use:
+    hash: b5a514810b4cb6dc795848464572771f
+
 write:
 - data_product: human/outbreak-timeseries
-    use:
-      data_product: scotland/human/outbreak-timeseries
+  use:
+    data_product: scotland/human/outbreak-timeseries
 - data_product: human/outbreak/simulation_run
-    use:
-      data_product: scotland/human/outbreak/simulation_run-{run_id}
+  use:
+    data_product: scotland/human/outbreak/simulation_run-{run_id}
 - external_object: beautiful_figure
-    use:
-      unique_name: "My amazing figure"
-      version: minor
+  use:
+    unique_name: My amazing figure
+    version: minor
 ```
 
 - `default_data_store:` specifies the file system root used for data writes (default “~/datastore”). It may be relative, in which case it is relative to the directory containing the config file. If files already exist in the local filesystem (but not in the datastore), then they will only be copied to the default data store if `always_copy_to_store:` is set to `True` (default `False`).
@@ -215,18 +217,17 @@ Here follows another `config.yaml` file, which is used to register a data produc
 ```yaml
 run_metadata:
   description: Register a file in the pipeline
-  local_data_store_path: ~/datastore/
   local_data_registry_url: https://localhost:8000/api/
   remote_data_registry_url: https://data.scrc.uk/api/
   default_input_namespace: SCRC
   default_output_namespace: johnsmith
+  default_data_store: ~/datastore/
   remote_repo: 
   script: |
     R -f path/file.R
 
 register:
-- type: external_object
-  alias: raw-mortality-data
+- external_object: raw-mortality-data
   source:
     name: Scottish Government Open Data Repository
     abbreviation: Scottish Government Open Data Repository
