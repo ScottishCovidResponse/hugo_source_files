@@ -19,7 +19,8 @@ Data registry
 : a database for recording metadata about data and model outputs
 
 ## E
-**External object**: an object that is not in an internal pipeline format (*i.e.* not toml or hdf5 files)
+External object
+: an object that is not in an internal pipeline format (*i.e.* not toml or hdf5 files)
 
 ## R
 `read:`
