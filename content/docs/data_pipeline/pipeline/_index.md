@@ -146,9 +146,11 @@ run_metadata:
 
 register:
 - external_object: raw-mortality-data
+  # Who owns the data?
   source_name: Scottish Government Open Data Repository
   source_abbreviation: Scottish Government Open Data Repository
   source_website: https://statistics.gov.scot/
+  # Where does the data come from?
   root_name: Scottish Government Open Data Repository
   root: https://statistics.gov.scot/sparql.csv?query=
   path: |
@@ -181,11 +183,12 @@ register:
        ?areatype rdfs:label ?areatypename.
        ?period rdfs:label ?date.
     }
-  accessibility: open          # Default, so not necessary
+  # Metadata
   unique_name: scottish deaths-involving-coronavirus-covid-19
   product_name: records/SARS-CoV-2/scotland/human-mortality
   title: scottish deaths-involving-coronavirus-covid-19
   file_type: csv
+  accessibility: closed        # Default is open
   primary: True
   release_date: 2021-04-01     # Assuming this is today
   description: scottish deaths-involving-coronavirus-covid-19 dataset
