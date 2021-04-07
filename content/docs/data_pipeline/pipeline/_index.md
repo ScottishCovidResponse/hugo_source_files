@@ -184,9 +184,9 @@ register:
        ?period rdfs:label ?date.
     }
   # Metadata
-  title: scottish deaths-involving-coronavirus-covid-19
-  description: scottish deaths-involving-coronavirus-covid-19 dataset
-  unique_name: scottish deaths-involving-coronavirus-covid-19
+  title: Deaths involving COVID19
+  description: Nice description of the dataset
+  unique_name: Scottish deaths involving COVID19  # doi:
   product_name: records/SARS-CoV-2/scotland/human-mortality
   file_type: csv
   release_date: 2021-04-01     # Assuming this is today
