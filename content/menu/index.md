@@ -13,7 +13,7 @@ headless: true
 - **SCRC data pipeline**
   - [API]({{< relref "/docs/data_pipeline/API" >}})
   - [Data pipeline]({{< relref "/docs/data_pipeline/pipeline" >}})
-  - [Data registry]({{< relref "/docs/data_pipeline/data_registry" >}})
+  - [Jargon buster]({{< relref "/docs/data_pipeline/jargon_buster" >}})
   - [R]({{< relref "/docs/data_pipeline/R" >}})
     - [Generate a data product]({{< relref "/docs/data_pipeline/R/1_generate_dp" >}})
     - [Upload a data product]({{< relref "/docs/data_pipeline/R/2_upload_dp" >}})
