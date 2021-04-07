@@ -17,6 +17,11 @@ This interaction between the configuration file and the remote registry defines 
 
 When a model or script is run (as a *session* / “*code run*”), any output files are written to the data directory, and those outputs are logged in the local registry, which has itself been created (or updated) by the *download synchronisation script*. The local registry can be queried to determine whether the data generated is as intended, and if so it can then by synchronised back to the remote registry. This can be carried out automatically using an *upload synchronisation script* [(currently here)](https://github.com/ScottishCovidResponse/data_pipeline_api/tree/master/data_pipeline_api/registry). When the *session* is initialised a “*run id*” is created to uniquely identify that *code run*. It is constructed by forming the SHA1 hash of the configuration file content, plus the date time string.
 
+## Dictionary of terms
+
+*external object*: an object that is not in an internal pipeline format (toml or hdf5) - thus, external... 
+
+*data product*: what we access with the standard API read_xxx(), write_xxx() calls. External objects we tell the pipeline we are going to read using record_read() and record_write(), but the reading and writing happens in your code
 ## config.yaml file format
 
 The config file lets users specify metadata to be used during file lookup for read or write, and configure overall API behaviour.
@@ -39,7 +44,7 @@ read:
 - data_product: human/commutes
   use:
     version: 1.0
-# Read human/health from cache
+# Read human/health from the cache
 - data_product: human/health
   use:
     cache: ~/local/file.h5
@@ -48,7 +53,7 @@ read:
   use:
     doi: 10.1111/ddi.12887
     title: Supplementary Table 2
-# Read secret_data with specific doi and title from cache
+# Read secret_data with specific doi and title from the cache
 - external_object: secret_data
   use:
     doi: 10.1111/ddi.12887
@@ -117,7 +122,7 @@ write:
 Any part of a `use:` statement may contain the string `{run_id}`, which will be replaced with the run id.
 - `run_id` specifies the run id to be used, otherwise a hash of the config contents and the date will be used.
 
-## Example use of pipeline
+## Example use of the pipeline
 
 ### Register a new external object
 
@@ -129,7 +134,7 @@ To achieve this, run the following from the command line:
 tdp run config.yaml
 ```
 
-That is, assuming a config.yaml file already exists. The yaml file, should specify where the external object comes from and the aliases that will be used in the submission script:
+That is, assuming a `config.yaml` file already exists. The yaml file, should specify where the external object comes from and the aliases that will be used in the submission script:
 
 ```yaml
 run_metadata: 
@@ -172,9 +177,7 @@ with StandardAPI.from_config("config.yaml") as api:
 
 This registers an external object, reads it in, and then writes it back to the pipeline as a data product component.
 
-### Modify an existing external object
-
-<span style="font-size:14pt; color:red">Assuming, for some reason, we want to modify an existing external object, rather than generating a new data product...</span>
+### Read and write an external object
 
 A script to read and write an external object (*i.e.* something not in a core data pipeline format) in R. First, the yaml file, that gives the `doi_or_unique_name` and `title` of the external objects being read and written, and the aliases that will be used in the submission script:
 
@@ -224,6 +227,8 @@ write_csv(new_time_series,
 
 finalise(handle)
 ```
+
+Since we're now working with external objects, we use `pipeline_record_open()` and `pipeline_record_write()` to read and write objects, rather than the standard API `read_xxx()` and `write_xxx()` calls.
 ### Read then write a data product component
 
 Now that the pipeline is populated, one of the simplest possible use cases is just to read in a value, calculate a new value from it, and write out the new value. Again, we need to write a `config.yaml` file:
