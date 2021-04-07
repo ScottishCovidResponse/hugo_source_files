@@ -14,6 +14,7 @@ headless: true
   - [API]({{< relref "/docs/data_pipeline/API" >}})
   - [Data pipeline]({{< relref "/docs/data_pipeline/pipeline" >}})
   - [Jargon buster]({{< relref "/docs/data_pipeline/jargon_buster" >}})
+  - [Local registry]({{< relref "/docs/data_pipeline/local_registry" >}})
   - [R]({{< relref "/docs/data_pipeline/R" >}})
     - [Generate a data product]({{< relref "/docs/data_pipeline/R/1_generate_dp" >}})
     - [Upload a data product]({{< relref "/docs/data_pipeline/R/2_upload_dp" >}})
