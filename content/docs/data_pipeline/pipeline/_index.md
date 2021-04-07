@@ -190,7 +190,7 @@ register:
   product_name: records/SARS-CoV-2/scotland/human-mortality
   file_type: csv
   release_date: 2021-04-01     # Assuming this is today
-  version: 0.20210401.0        # Likewise
+  version: 0.20210401.0        # .. likewise
   primary: True
   accessibility: closed        # Default is open
   
