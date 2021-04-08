@@ -49,7 +49,7 @@ External object
 `register:`
 : a field in `config.yaml` used to specify the registration of an object (usually an external object) that exists elsewhere (see also `write:` and `read:`)
 
-`register()`
+`add_to_register()`
 : registers the object(s) listed in `register:` (in the `config.yaml` file)
 
 ## W

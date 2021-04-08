@@ -205,7 +205,7 @@ Then the python script:
 from data_pipeline_api.standard_api import StandardAPI
 
 with StandardAPI.from_config("config.yaml") as api:
-    api.register("raw-mortality-data")
+    api.add_to_register("raw-mortality-data")
     matrix = read(api.record_open("raw-mortality-data"))
     api.write_array("human/mortality", "mortality_data", matrix)
 ```
