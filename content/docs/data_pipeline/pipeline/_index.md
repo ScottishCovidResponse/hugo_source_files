@@ -142,7 +142,7 @@ run_metadata:
   default_data_store: /datastore/
   local_repo: /Users/johnsmith/git/myproject/
   script: # Points to the Python script, below (relative to local_repo)
-    python -f path/submission_script.py {CONFIG_PATH}
+    python path/submission_script.py {CONFIG_PATH}
 
 register:
 - external_object: raw-mortality-data
