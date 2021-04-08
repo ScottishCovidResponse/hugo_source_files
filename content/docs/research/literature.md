@@ -1,5 +1,5 @@
 ---
-title: Sytematic literature review
+title: Systematic literature review
 weight: 10
 ---
 

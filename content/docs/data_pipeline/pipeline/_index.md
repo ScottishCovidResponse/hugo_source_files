@@ -83,7 +83,7 @@ If a write is carried out to a data product where no such `data_product:` entry 
 
 <span style="font-size:14pt; color:red">Note that: at the moment, we haven't ensured that any write will already have its objects synced to the local registry, so we may not know what the current version is. Either we need to say that you have to add writes to the config.yaml file, or you need to allow a special version called "patch", "minor" and "major" in the local registry (or "+0.0.1", "+0.1", "+1", so that you can then allow "+2", "+2.0.1", etc.).</span>
 
-### Example: Flexibile inputs and outputs
+### Example: Flexible inputs and outputs
 
 The following example describes an analysis which typically reads `human/population` and writes `human/outbreak-timeseries`. Instead, a test model is run using Scottish data, whereby `scotland/human/population` is read from the `eera` namespace, rather than `human/population`. Likewise, the output is written as `scotland/human/outbreak-timeseries` rather than `human/outbreak-timeseries`.
 
