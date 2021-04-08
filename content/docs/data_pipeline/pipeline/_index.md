@@ -153,7 +153,7 @@ register:
   # Where does the data come from?
   root_name: Scottish Government Open Data Repository
   root: https://statistics.gov.scot/sparql.csv?query=
-  path: |
+  path: |-
     PREFIX qb: <http://purl.org/linked-data/cube#>
     PREFIX data: <http://statistics.gov.scot/data/>
     PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -225,7 +225,7 @@ run_metadata:
   default_output_namespace: johnsmith
   default_data_store: /datastore/
   local_repo: /Users/johnsmith/git/myproject/
-  script: | # Points to the R script, below (relative to local_repo)
+  script: # Points to the R script, below (relative to local_repo)
     R -f path/submission_script.R {CONFIG_PATH}
 
 read: 
@@ -277,7 +277,7 @@ run_metadata:
   default_output_namespace: johnsmith
   default_data_store: /datastore/
   local_repo: /Users/johnsmith/git/myproject/
-  script: | # Points to the Julia script, below (relative to local_repo)
+  script: # Points to the Julia script, below (relative to local_repo)
     Julia -f path/submission_script.jl {CONFIG_PATH}
 
 read: 
