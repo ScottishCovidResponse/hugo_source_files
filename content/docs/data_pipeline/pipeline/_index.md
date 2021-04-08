@@ -30,7 +30,7 @@ run_metadata:
   remote_data_registry_url: https://data.scrc.uk/api/
   default_input_namespace: SCRC
   default_output_namespace: johnsmith
-  default_data_store: ~/datastore/
+  default_data_store: /datastore/
   always_copy_to_store: False
 
 read:
@@ -41,7 +41,7 @@ read:
 # Read human/health from the cache
 - data_product: human/health
   use:
-    cache: ~/local/file.h5
+    cache: /local/file.h5
 # Read crummy_table with specific doi and title
 - external_object: crummy_table
   use:
@@ -52,7 +52,7 @@ read:
   use:
     doi: 10.1111/ddi.12887
     title: Supplementary Table 3
-    cache: ~/local/secret.csv
+    cache: /local/secret.csv
 # Read weird_lost_file (which perhaps has no metadata) with specific hash
 - object: weird_lost_file
   use:
@@ -73,7 +73,7 @@ write:
   - `local_data_registry_url:` specifies the local data registry root, which defaults to https<!-- -->://localhost:8000/api/
   - `remote_data_registry_url:` specifies the remote data registry endpoint, which defaults to https<!-- -->://data.scrc.uk/api/
   - `default_input_namespace:` and `default_output_namespace:` specify the default namespace for reading and writing
-  - `default_data_store:` specifies the file system root used for data writes, which defaults to ~/datastore (it may be relative, in which case it is relative to the directory containing the config file)
+  - `default_data_store:` specifies the file system root used for data writes, which defaults to /datastore (it may be relative, in which case it is relative to the directory containing the config file)
   - `always_copy_to_store` specifies whether files that already exist in the local filesystem (files specified in `read: use: cache:`) but not in the `default_data_store` should be copied to the data store (set to `True`) or not (set to `False`, default)
   - Additional fields exist (`remote_repo:`, `local_repo:`, `script_path:`, and `script:`), which will be described later. Any other fields will be ignored.
   
@@ -95,7 +95,7 @@ run_metadata:
   remote_data_registry_url: https://data.scrc.uk/api/
   default_input_namespace: SCRC
   default_output_namespace: johnsmith
-  default_data_store: ~/datastore/
+  default_data_store: /datastore/
   always_copy_to_store: False
 
 read:
@@ -139,8 +139,8 @@ run_metadata:
   remote_data_registry_url: https://data.scrc.uk/api/
   default_input_namespace: SCRC
   default_output_namespace: johnsmith
-  default_data_store: ~/datastore/
-  local_repo: ~/Users/johnsmith/git/myproject/
+  default_data_store: /datastore/
+  local_repo: /Users/johnsmith/git/myproject/
   script: # Points to the Python script, below (relative to local_repo)
     python -f path/submission_script.py {CONFIG_PATH}
 
@@ -223,8 +223,8 @@ run_metadata:
   remote_data_registry_url: https://data.scrc.uk/api/
   default_input_namespace: SCRC 
   default_output_namespace: johnsmith
-  default_data_store: ~/datastore/
-  local_repo: ~/Users/johnsmith/git/myproject/
+  default_data_store: /datastore/
+  local_repo: /Users/johnsmith/git/myproject/
   script: | # Points to the R script, below (relative to local_repo)
     R -f path/submission_script.R {CONFIG_PATH}
 
@@ -275,8 +275,8 @@ run_metadata:
   remote_data_registry_url: https://data.scrc.uk/api/
   default_input_namespace: SCRC 
   default_output_namespace: johnsmith
-  default_data_store: ~/datastore/
-  local_repo: ~/Users/johnsmith/git/myproject/
+  default_data_store: /datastore/
+  local_repo: /Users/johnsmith/git/myproject/
   script: | # Points to the Julia script, below (relative to local_repo)
     Julia -f path/submission_script.jl {CONFIG_PATH}
 
