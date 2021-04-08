@@ -6,6 +6,6 @@ bookHidden: true
 
 # Quondam non pater est dignior ille Eurotas
 
-Reference another [page]({{% ref "/docs/data_pipeline/R/1_generate_dp" %}})
+Reference another [page]({{% ref "/docs/data_pipeline/API/R/1_generate_dp" %}})
 
-Reference same [page]({{% ref "/docs/data_pipeline/R/1_generate_dp/_index.md#toml-components" %}})
+Reference same [page]({{% ref "/docs/data_pipeline/API/R/1_generate_dp/_index.md#toml-components" %}})

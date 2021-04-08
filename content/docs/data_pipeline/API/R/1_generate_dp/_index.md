@@ -1,6 +1,6 @@
 ---
 title: Generate a data product
-weight: 10
+weight: 1
 ---
 
 # How to generate a data product
@@ -119,19 +119,19 @@ The functions `create_estimate()` and `create_distribution()` can be used to gen
    library(SCRCdataAPI)
    ```
 
-2. Choose an appropriate [filename]({{% ref "/docs/data_pipeline/R/1_generate_dp/_index.md#filenames-and-version-numbers" %}}):
+2. Choose an appropriate [filename]({{% ref "/docs/data_pipeline/API/R/1_generate_dp/_index.md#filenames-and-version-numbers" %}}):
 
    ``` R
    filename <- "0.1.0.toml"
    ```
 
-3. Choose an appropriate [data product name]({{% ref "/docs/data_pipeline/R/1_generate_dp/_index.md#data-product-names" %}}):
+3. Choose an appropriate [data product name]({{% ref "/docs/data_pipeline/API/R/1_generate_dp/_index.md#data-product-names" %}}):
 
    ``` R
    data_product_name <- "human/infection/SARS-CoV-2/asymptomatic-period"
    ```
 
-4. List a single component (see [TOML components]({{% ref "/docs/data_pipeline/R/1_generate_dp/_index.md#toml-components" %}})):
+4. List a single component (see [TOML components]({{% ref "/docs/data_pipeline/API/R/1_generate_dp/_index.md#toml-components" %}})):
 
    ``` R
    estimate <- list(`asymptomatic-period` = 192.0)
@@ -164,19 +164,19 @@ The functions `create_estimate()` and `create_distribution()` can be used to gen
    library(SCRCdataAPI)
    ```
 
-2. Choose an appropriate [filename]({{% ref "/docs/data_pipeline/R/1_generate_dp/_index.md#filenames-and-version-numbers" %}}):
+2. Choose an appropriate [filename]({{% ref "/docs/data_pipeline/API/R/1_generate_dp/_index.md#filenames-and-version-numbers" %}}):
 
    ``` R
    filename <- "0.1.0.toml"
    ```
 
-3. Choose an appropriate [data product name]({{% ref "/docs/data_pipeline/R/1_generate_dp/_index.md#data-product-names" %}}):
+3. Choose an appropriate [data product name]({{% ref "/docs/data_pipeline/API/R/1_generate_dp/_index.md#data-product-names" %}}):
 
    ``` R
    data_product_name <- "human/infection/SARS-CoV-2/latency-period"
    ```
 
-4. List a single component (see [TOML components]({{% ref "/docs/data_pipeline/R/1_generate_dp/_index.md#toml-components" %}})):
+4. List a single component (see [TOML components]({{% ref "/docs/data_pipeline/API/R/1_generate_dp/_index.md#toml-components" %}})):
 
    ``` R
    distribution <- list(name = "latency-period",
@@ -234,13 +234,13 @@ The functions `create_array()` and `create_table()` can be used to generate an H
    library(SCRCdataAPI)
    ```
 
-2. Choose an appropriate [filename]({{% ref "/docs/data_pipeline/R/1_generate_dp/_index.md#filenames-and-version-numbers" %}}):
+2. Choose an appropriate [filename]({{% ref "/docs/data_pipeline/API/R/1_generate_dp/_index.md#filenames-and-version-numbers" %}}):
 
    ``` R
    filename <- "0.1.0.h5"
    ```
 
-3. Choose an appropriate [data product name]({{% ref "/docs/data_pipeline/R/1_generate_dp/_index.md#data-product-names" %}}):
+3. Choose an appropriate [data product name]({{% ref "/docs/data_pipeline/API/R/1_generate_dp/_index.md#data-product-names" %}}):
 
    ``` R
    data_product_name <- "some/descriptive/name"
@@ -296,13 +296,13 @@ The functions `create_array()` and `create_table()` can be used to generate an H
    library(SCRCdataAPI)
    ```
 
-2. Choose an appropriate [filename]({{% ref "/docs/data_pipeline/R/1_generate_dp/_index.md#filenames-and-version-numbers" %}}):
+2. Choose an appropriate [filename]({{% ref "/docs/data_pipeline/API/R/1_generate_dp/_index.md#filenames-and-version-numbers" %}}):
 
    ``` R
    filename <- "0.1.0.h5"
    ```
 
-3. Choose an appropriate [data product name]({{% ref "/docs/data_pipeline/R/1_generate_dp/_index.md#data-product-names" %}}):
+3. Choose an appropriate [data product name]({{% ref "/docs/data_pipeline/API/R/1_generate_dp/_index.md#data-product-names" %}}):
 
    ``` R
    data_product_name <- "some/descriptive/name"

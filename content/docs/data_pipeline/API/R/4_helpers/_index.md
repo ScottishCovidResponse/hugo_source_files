@@ -1,6 +1,6 @@
 ---
 title: Helpers
-weight: 40
+weight: 4
 ---
 
 # Helper functions

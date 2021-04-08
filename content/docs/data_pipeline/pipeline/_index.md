@@ -1,9 +1,9 @@
 ---
-weight: 2
+weight: 1
 title: "Data pipeline"
 ---
 
-# SCRC data pipeline
+# Data pipeline
 
 The data pipeline is moving towards this new structure:
 
