@@ -189,10 +189,10 @@ register:
   unique_name: Scottish deaths involving COVID19  # or doi
   product_name: records/SARS-CoV-2/scotland/human-mortality
   file_type: csv
-  release_date: 2021-04-01     # Assuming this is today
-  version: 0.20210401.0        # .. likewise
+  release_date: 2021-04-01 11:34:37    # Assuming this is today
+  version: 0.20210401.0                # .. likewise
   primary: True
-  accessibility: closed        # Default is open
+  accessibility: open        # Other option is "closed"
   
 write:
 - data_product: human/mortality
