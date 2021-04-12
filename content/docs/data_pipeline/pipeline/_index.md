@@ -272,11 +272,11 @@ Now that the pipeline is populated, one of the simplest possible use cases is ju
 run_metadata: 
   description: A simple example reading and writing data products
   default_input_namespace: SCRC
-  local_repo: /Users/johnsmith/git/myproject/
-  script: # Points to the Julia script, below (relative to local_repo)
+  local_repo: /Users/johnsmith/git/myproject
+  script: | # addresses are relative to local_repo
     julia -f path/submission_script.jl {CONFIG_PATH}
 
-read: 
+read:
 - data_product: human/infection/SARS-CoV-2
 
 write:
@@ -286,7 +286,7 @@ write:
 
 Here, a submission script is stored in `local_repo:` (the root of a local repository). Alternatively, a `remote_repo:` can be provided, corresponding to the root of a remote repository. Note that only one of these is necessary. If `local_repo` is omitted, a clone of `remote_repo` will be created by `initialise()`. If `local_repo` is included, `initialise()` will check whether or not the local repository is clean. The submission script itself (usually, a single line of code that points to the processing / analysis script) should either be written in `script` or stored in a text file in `script_path`, which can be absolute or relative to the root of the repo.
 
-The download sync using this yaml file will look in the `default_input_namespace` of the remote registry (`remote_data_registry_url:`) for the latest version of the `human/infection/SARS-CoV-2` data product and download it, syncing all of the associated metadata into the local registry.
+The download sync using this yaml file will look in the `default_input_namespace` of the remote registry (`remote_data_registry_url:`, SCRC's by default) for the latest version of the `human/infection/SARS-CoV-2` data product and download it, syncing all of the associated metadata into the local registry.
 
 The Julia script (found in `local_repo`/path/submission_script.jl) will do the work:
 
