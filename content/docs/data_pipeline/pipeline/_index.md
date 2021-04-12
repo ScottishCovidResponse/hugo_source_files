@@ -270,15 +270,11 @@ Now that the pipeline is populated, one of the simplest possible use cases is ju
 
 ```yaml
 run_metadata: 
-  description: A simple example using data products
-  local_data_registry_url: https://localhost:8000/api/
-  remote_data_registry_url: https://data.scrc.uk/api/
-  default_input_namespace: SCRC 
-  default_output_namespace: johnsmith
-  default_data_store: /datastore/
+  description: A simple example reading and writing data products
+  default_input_namespace: SCRC
   local_repo: /Users/johnsmith/git/myproject/
   script: # Points to the Julia script, below (relative to local_repo)
-    Julia -f path/submission_script.jl {CONFIG_PATH}
+    julia -f path/submission_script.jl {CONFIG_PATH}
 
 read: 
 - data_product: human/infection/SARS-CoV-2
