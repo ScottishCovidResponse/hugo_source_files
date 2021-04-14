@@ -1,10 +1,13 @@
 ---
 weight: 5
-title: "Notes"
+title: "Notes on synchronisation"
 ---
 
 # Notes
 
+These notes are just extracted from Zulip, so are more stream of consciousness than specifications, but they attempt to describe what a command line tool might do that carried out syncing between the local and remote registries, and what else we might want it to do. Given some of the functionality described here is already provided by the [download and upload scripts](https://github.com/ScottishCovidResponse/data_pipeline_api/tree/master/data_pipeline_api/registry) in the data_pipeline_api repo, it probably makes sense for this to be written in python.
+
+There is an alternative to this command line solution, which would be for the Django interface to the local registry to provide the same (or similar) functionality. This would allow the commands to be access through the web interface, or through the REST API and (optionally) also through the native language interfaces. This would not preclude a command line option as well, because it would simply be a wrapper around the REST API.
 ## Distinction between modelling API and backend
 
 Individual languages communicate with the local registry and the local data store, but communicate no further afield. They need to be able to parse the `config.yaml` file to understand the relationship between the api requests they receive and the requests they need to make of the registry, however.
@@ -21,10 +24,6 @@ is handled by an as-yet-unwritten command line tool, which (for the sake of conv
 - `fdp run config.yaml` will run the submission script referred to in the `config.yaml`
 - `fdp commit <some-token> | <path/to/file>` will mark a code run or a specific file (and all of its provenance) to be synced back to the remote registry (once we've worked out how to refer to code runs in an intuitive way?)
 - `fdp push` will sync back any committed changes to the remote registry and upload any associated data to the remote data store (but we still haven't determined how to specify what to store where)
-
-***
-
-The current bits that may ultimately form the backend are written in python.
 
 Other commands that might be useful:
 
