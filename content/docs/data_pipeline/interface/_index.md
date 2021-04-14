@@ -1,6 +1,6 @@
 ---
 weight: 1
-title: "Data pipeline"
+title: "Config file and API Interface"
 ---
 
 # Data pipeline
