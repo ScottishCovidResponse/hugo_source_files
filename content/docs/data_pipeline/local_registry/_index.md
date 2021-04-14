@@ -1,9 +1,12 @@
 ---
-weight: 3
+weight: 2
 title: "Local registry"
 ---
 
 # Local registry
+
+
+The documentation for the registry is available [here](https://data.scrc.uk/docs/), and is the same for the local and remote registry.
 
 ## Installation
 

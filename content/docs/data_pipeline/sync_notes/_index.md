@@ -1,5 +1,5 @@
 ---
-weight: 5
+weight: 3
 title: "Notes on synchronisation"
 ---
 
