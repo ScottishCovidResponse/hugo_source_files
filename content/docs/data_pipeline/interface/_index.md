@@ -195,8 +195,25 @@ register:
   accessibility: open        # Other option is "closed"
   
 write:
-- data_product: human/mortality
-  component: mortality_data    # This is a rubbish component name
+- data_product: records/SARS-CoV-2/scotland/human-mortality
+  description: human mortality data
+  components:
+    nhs_health_board/week-covid_related_deaths: number of covid-related deaths per week per nhs health board
+    council_area/week-covid_related_deaths: number of covid-related deaths per week per council area
+    age_group/week/gender-country-covid_related_deaths: number of covid-related deaths per week per age group, by gender
+    age_group/week-persons-country-covid_related_deaths: number of covid-related deaths per week per age group
+    location_type/week-covid_related_deaths: number of covid-related deaths per week in care homes, at home, at hospital, and other locations
+    nhs_health_board-covid_related_deaths: total number of covid-related deaths per health board per year
+    council_area-covid_related_deaths: total number of covid-related deaths per council area per year
+    nhs_health_board/week-all_deaths: number of deaths (all causes) per week per nhs health board
+    council_area/week-all_deaths: number of deaths (all causes) per week per council area
+    age_group/week/gender-country-all_deaths: number of deaths (all causes) per week per age group, by gender
+    age_group/week-persons-country-all_deaths: number of deaths (all causes) per week per age group
+    location_type/week-all_deaths: number of deaths (all causes) per week in care homes, at home, at hospital, and other locations
+    nhs_health_board-all_deaths: total number of deaths (all causes) per nhs health board per year
+    council_area-all_deaths: total number of deaths (all causes) per council area per year
+    week-persons-scotland-all_deaths-averaged_over_5years: number of deaths (all causes) per week, averaged over 5 years
+  version: 0.20210414.0
 ```
 
 Then the python script:
