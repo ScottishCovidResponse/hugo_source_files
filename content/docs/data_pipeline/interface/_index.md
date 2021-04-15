@@ -189,8 +189,8 @@ register:
   unique_name: Scottish deaths involving COVID19  # or doi
   product_name: records/SARS-CoV-2/scotland/human-mortality
   file_type: csv
-  release_date: 2021-04-01 11:34:37    # Assuming this is today
-  version: 0.20210401.0                # .. likewise
+  release_date: {DATETIME}    
+  version: {VERSION}             
   primary: True
   accessibility: open        # Other option is "closed"
   
@@ -213,8 +213,10 @@ write:
     nhs_health_board-all_deaths: total number of deaths (all causes) per nhs health board per year
     council_area-all_deaths: total number of deaths (all causes) per council area per year
     week-persons-scotland-all_deaths-averaged_over_5years: number of deaths (all causes) per week, averaged over 5 years
-  version: 0.20210414.0
+  version: {VERSION}
 ```
+
+Note that `{VERSION}` will be converted to something like `0.20210414.0` in the working `config.yaml` file, likewise `{DATETIME}` will be `2021-04-14 11:34:37` and `{CONFIG_PATH}` will be the location of the working `config.yaml` file.
 
 Then the python script:
 
