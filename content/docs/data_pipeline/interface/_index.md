@@ -143,6 +143,7 @@ run_metadata:
   local_repo: /Users/johnsmith/git/myproject/
   script: # Points to the Python script, below (relative to local_repo)
     python path/submission_script.py {CONFIG_PATH}
+# `script_path:` can be used instead of `script:`
 
 register:
 - external_object: raw-mortality-data
