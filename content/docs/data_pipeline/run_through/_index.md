@@ -30,7 +30,7 @@ add_to_register(h, "raw-mortality-data")
 # Return location of file stored in the pipeline
 input_path <- read_link(h, "raw-mortality-data")
 
-h <- process_scotgov_deaths(h, input_path)
+process_scotgov_deaths(h, input_path)
 
 finalise(h)
 ```
