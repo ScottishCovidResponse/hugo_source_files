@@ -35,14 +35,18 @@ h <- process_scotgov_deaths(h, input_path)
 finalise(h)
 ```
 
-## `initialise()` should:
+## `initialise()`
+
+should:
 - read the working `config.yaml` file and record its location to the data registry
 - get the hash of the latest commit on GitHub and check that the local repository is clean, if it is given (note that either the local or remote repository must always be given. It is possible that the user may reference a script located outside of a repository, but they must work from a repository)
 - write the submission script to the data store (in `<local_store>/script/date-time.sh`) and record this location in the data registry (note that `config.yaml` should contain either `script:` that should be saved as the submission script, or `script_path:` that points to the file that should be saved as the submission script)
 - return a `handle` containing the working `config.yaml` contents, the object id for this file and the object id for the submission script file
 
-## `add_to_register()` should:
-- in most cases you should register an external object, but data products might also be possible to register
+## `add_to_register()` 
+
+should:
+- in most cases register an external object (though data products might also be possible to register)
 - download the external object to the data store, get the file hash, and rename the file
 - record the original source in the data registry (the website homepage / organisation)
 - record the original source location in the data registry (the link / query)
@@ -50,14 +54,20 @@ finalise(h)
 - record the external object in the data registry (linking all of the above)
 - update the `handle` with the external object id
 
-## `read_link()` should
+## `read_link()` 
+
+should
 - find the file referenced by its `alias` (note that the alias is not recorded in the data registry, rather, it's a means to reference items in the `config.yaml`)
 
-## `write_array()` should
+## `write_array()` 
+
+should
 - write an array as a component to an hdf5 file
 - update the `handle` with the component that was written and its location in the data store
 
-## `finalise()` should
+## `finalise()` 
+
+should
 - record the local data store root in the data registry
 - rename the data product as `hash.h5`
 - record the data product location in the data registry
