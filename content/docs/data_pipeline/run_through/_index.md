@@ -7,13 +7,13 @@ title: "Run through"
 
 <span style="font-size:14pt; color:red">Note that this is very much a first pass and all of the following is subject to change. At the very least, this is simple example of a registry use case.</span>
 
-My code lives [here](https://github.com/ScottishCovidResponse/SCRCdataAPI/tree/implement_yaml).
+My code lives [here](https://github.com/ScottishCovidResponse/SCRCdataAPI/tree/implement_yaml) and uses the `config.yaml` shown [here](https://scottishcovidresponse.github.io/docs/data_pipeline/interface/#example-register-a-new-external-object-and-write-a-data-product-component).
 
 Here, I've assumed that `fdp run` will read the `config.yaml` file and generate a working `config.yaml` file with specific version numbers and no aliases. It should save this file in the local data store (in `<local_store>/config/date-time.yaml`) and save the path to this file in the global environment as `$wconfig`.
 
 I've also assumed that a local registry token is saved within `.scrc`. However, I would suggest that `fdp config` should update a user file in `.scrc` containing user information (API token, associated namespace, local data store, login node, and so on).
 
-The following example will download an external object and generates a data product by means of a processing script. In this example the model API includes `initialise()`, `add_to_regsiter()`, `read_link()`, `write_array`, and `finalise()`.
+The following example (submission script) will download an external object and generates a data product by means of a processing script. In this example the model API includes `initialise()`, `add_to_regsiter()`, `read_link()`, `write_array`, and `finalise()`.
 
 ```R
 library(SCRCdata) # contains process_scotgov_deaths()
