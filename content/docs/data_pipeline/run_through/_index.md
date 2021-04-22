@@ -52,7 +52,7 @@ finalise(h)
 ## `initialise()`
 
 - read the working *config.yaml* file
-- return a `handle` containing the working *config.yaml* contents, the object id for this file and the object id for the submission script file
+- return a `handle` containing the working *config.yaml* contents, the object id for this file, the object id for the submission script file, and the object id for any input data 
 
 ## `read_link()`
 
