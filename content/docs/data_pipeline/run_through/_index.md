@@ -11,7 +11,7 @@ My code lives [here](https://github.com/ScottishCovidResponse/SCRCdataAPI/tree/i
 
 I've assumed that a local registry token is saved within `.scrc`. However, I would suggest that `fdp config` should update a user file in `.scrc` containing user information (API token, associated namespace, local data store, login node, and so on).
 
-The following example (submission script) will download an external object and generate a data product by means of a processing script. In this example the model API includes `initialise()`, `add_to_register()`, `read_link()`, `write_array`, and `finalise()`.
+The following example (submission script) will download an external object and generate a data product by means of a processing script. In this example the model API includes `initialise()`, `read_link()`, `write_array`, and `finalise()`.
 
 ```R
 library(SCRCdata) # contains process_scotgov_deaths()
