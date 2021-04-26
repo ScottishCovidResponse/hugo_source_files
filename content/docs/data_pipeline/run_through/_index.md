@@ -14,16 +14,24 @@ I've assumed that a local registry token is saved within `.scrc`. However, I wou
 The following example (submission script) will download an external object and generate a data product by means of a processing script. In this example the model API includes `initialise()`, `read_link()`, `write_array`, and `finalise()`.
 
 ```R
-library(SCRCdata) # contains process_scotgov_deaths()
 library(SCRCdataAPI)
 
 # Open the connection to the local registry with a given config file
-h <- initialise()
+# You can put in a file if you really want to, but otherwise read from the environment directly or from a command line argument
+handle <- initialise(Sys.getenv("FDP_CONFIG_DIR"))
 
 # Return location of file stored in the pipeline
-input_path <- read_link(h, "raw-mortality-data")
+input_path <- read_link(handle, "raw-mortality-data")
 
-process_scotgov_deaths(h, input_path)
+# Process raw data and write data product
+data <- read.csv(input_path)
+array <- some_processing(data)
+write_array(array, 
+            handle, 
+            data_product = "data_product_name", 
+            component = "component",
+            dimension_names = list(location = rownames(array),
+                                   date = colnames(array)))
 
 finalise(h)
 ```
