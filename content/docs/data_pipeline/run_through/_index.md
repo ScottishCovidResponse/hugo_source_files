@@ -54,7 +54,7 @@ finalise(h)
   - `register:` is removed and external objects / data products are written in `read:`
 - save the working *config.yaml* file in the local data store (in *<local_store>/coderun/\<date>-\<time>/config.yaml*) and register metadata in the data registry
 - save the submission script to the local data store in *<local_store>/coderun/\<date>-\<time>/script.sh* (note that *config.yaml* should contain either `script:` that should be saved as the submission script, or `script_path:` that points to the file that should be saved as the submission script) and register metadata in the data registry
-- save the path to *<local_store>/coderun/\<date>-\<time>/* in the global environment as `$fdp_config_dir` so that it can be picked up by the script that is run after this has been completed
+- save the path to *<local_store>/coderun/\<date>-\<time>/* in the global environment as `$FDP_CONFIG_DIR` so that it can be picked up by the script that is run after this has been completed
 - execute the submission script
 
 ## `initialise()`
