@@ -73,7 +73,7 @@ register:
 - record data product metadata (*e.g.* location, components, various descriptions, issues) in the data registry
 - record the code run in the data registry
 
-## `fdp push()`
+## `fdp push`
 
 - push new files (generated from `write:` and `register:`) to the remote data store
 - record metadata in the data registry (whilst editing relevant entries, *e.g.* `storage_root`)
