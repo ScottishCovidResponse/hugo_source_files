@@ -11,6 +11,7 @@ headless: true
   - [Systematic Literature Review]({{< relref "/docs/research/literature" >}})
 
 - **SCRC data pipeline**
+  - [Introduction]({{< relref "/docs/data_pipeline/introduction" >}})
   - [Data pipeline]({{< relref "/docs/data_pipeline/pipeline" >}})
   - [Jargon buster]({{< relref "/docs/data_pipeline/jargon_buster" >}})
   - [Local registry]({{< relref "/docs/data_pipeline/local_registry" >}})
