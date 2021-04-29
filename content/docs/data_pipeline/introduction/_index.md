@@ -7,7 +7,7 @@ title: "Introduction"
 
 **This is work in progress.**
 
-The FAIR Data Pipeline (FDP) is intended to enable tracking of provenance of data used in epidemiological modelling. File APIs written in C++, Java, Julia, Python and R can be called by model software for data insgestion. These interact with a local relational database storing metadata and the local filesystem, and are configured by a `yml` file associated with the model run. Local files and metadata are synchronised with a remote registry via a command line tool (`fdp`).
+The FAIR Data Pipeline (FDP) is intended to enable tracking of provenance of data used in epidemiological modelling. Pipeline APIs written in C++, Java, Julia, Python and R can be called by modelling software for data ingestion. These interact with a local relational database storing metadata and the local filesystem, and are configured using a yaml file associated with the model run. Local files and metadata can be synchronised with a remote registry via a command line tool (`fdp`).
 
 The key benefits of using the FAIR Data Pipeline are:
 
