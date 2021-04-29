@@ -1,5 +1,5 @@
 ---
-weight: 5
+weight: 6
 title: "Modelling API"
 bookCollapseSection: true
 ---
@@ -53,17 +53,17 @@ Samples are used when our knowledge of a parameter is represented by samples, fr
 The supported distributions,each with a link to information about their parameterisation, and their standardised parameter names are as follows:
 
 
-| Distribution                  | Standardised parameter names                  |
-| ----------------------------- | --------------------------------------------- |
-| categorical (non-standard)    | bins (string array), weights (float array)    |
-| gamma                         | k (float), theta (float)                      |
-| normal                        | mu (float), sigma (float)                     |
-| uniform                       | a (float), b (float)                          |
-| poisson                       | lambda (float)                                |
-| exponential                   | lambda (float)                                |
-| beta                          | alpha (float), beta (float)                   |
-| binomial                      | n (int), p (float)                            |
-| multinomial                   | n (int), p (float array)                      |
+| Distribution               | Standardised parameter names               |
+| -------------------------- | ------------------------------------------ |
+| categorical (non-standard) | bins (string array), weights (float array) |
+| gamma                      | k (float), theta (float)                   |
+| normal                     | mu (float), sigma (float)                  |
+| uniform                    | a (float), b (float)                       |
+| poisson                    | lambda (float)                             |
+| exponential                | lambda (float)                             |
+| beta                       | alpha (float), beta (float)                |
+| binomial                   | n (int), p (float)                         |
+| multinomial                | n (int), p (float array)                   |
 
 ### API functions
 
