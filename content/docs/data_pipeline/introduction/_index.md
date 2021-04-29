@@ -27,22 +27,23 @@ graph LR;
         FS[File System]
     end
     subgraph Local API
-        API
-        CY
+        API[Pipeline API]
+        CY[config.yml]
     end
     subgraph Model
-        M
+        M[Model]
     end
-
-    LR-->|read_*| API[File API]
-    API-->|write_*| LR
+ 
+    LR -->|read_*| API
+    API-->|write_*,link_*| LR
     FS-->|read_*| API
     API-->|write_*| FS
 
-    CY[config.yml]-->API
+    CY-->API
 
-    API-->M[Model]
-    M-->API
+    API-->|read_*,link_*|M
+    M-->|write_*,link_*|API
+    M-->|link_*|FS
 
 {{< /mermaid >}}
 
