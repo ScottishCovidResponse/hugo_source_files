@@ -16,7 +16,7 @@ The key benefits of using the FAIR Data Pipeline are:
 - Multiple language support
 - Designed to run on a broad range of platforms (including HPC, inside Safe Havens)
 - Designed to be set up and completed online (to down-/up-load data) and run offline (Safe Havens will require this)
-- Access to shared central data for covid modelling
+- Open metadata provides knowledge of or access to shared central data for specific domains (e.g. COVID-19 epidemiological modelling)
 
 ## Running Models
 
