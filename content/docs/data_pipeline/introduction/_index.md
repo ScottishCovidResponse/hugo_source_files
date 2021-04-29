@@ -11,7 +11,8 @@ The FAIR Data Pipeline (FDP) is intended to enable tracking of provenance of dat
 
 The key benefits of using the FAIR Data Pipeline are:
 
-- Provenance of model outputs is tracked to inputs
+- Data recorded in a FAIR fashion (metadata on all data and code open and available for inspection)
+- Provenance tracing allows model outputs to be traced to inputs and modelling code
 - Multiple language support
 - Designed to run on a broad range of platforms (including HPC)
 - Access to shared central data for covid modelling
