@@ -12,20 +12,24 @@ headless: true
 
 - **SCRC data pipeline**
   - [Introduction]({{< relref "/docs/data_pipeline/introduction" >}})
-  - [Data pipeline]({{< relref "/docs/data_pipeline/pipeline" >}})
-  - [Jargon buster]({{< relref "/docs/data_pipeline/jargon_buster" >}})
+  - [Config file and API Interface]({{< relref "/docs/data_pipeline/interface" >}})
+  - [Run through]({{< relref "/docs/data_pipeline/run_through" >}})
+    - [FDP functions]({{< relref "/docs/data_pipeline/run_through/fdp" >}})
+    - [DP API Example 1]({{< relref "/docs/data_pipeline/run_through/example1" >}})
   - [Local registry]({{< relref "/docs/data_pipeline/local_registry" >}})
+  - [Notes on synchronisation]({{< relref "/docs/data_pipeline/sync_notes" >}})
   - [API]({{< relref "/docs/data_pipeline/API" >}})
     - [R]({{< relref "/docs/data_pipeline/API/R" >}})
-    - [Generate a data product]({{< relref "/docs/data_pipeline/API/R/1_generate_dp" >}})
-    - [Upload a data product]({{< relref "/docs/data_pipeline/API/R/2_upload_dp" >}})
-    - [Download a data product]({{< relref "/docs/data_pipeline/API/R/3_download_data" >}})
-  - [Julia]({{< relref "/docs/data_pipeline/API/julia" >}})
-  - [Python]({{< relref "/docs/data_pipeline/API/python" >}})
-    - [Standard API]({{< relref "/docs/data_pipeline/API/python/standard_api" >}})
-    - [File API]({{< relref "/docs/data_pipeline/API/python/file_api" >}})
-    - [Terminology]({{< relref "/docs/data_pipeline/API/python/terminology" >}})
-  - [Notes]({{< relref "/docs/data_pipeline/notes" >}})
+      - [Generate a data product]({{< relref "/docs/data_pipeline/API/R/1_generate_dp" >}})
+      - [Upload a data product]({{< relref "/docs/data_pipeline/API/R/2_upload_dp" >}})
+      - [Download a data product]({{< relref "/docs/data_pipeline/API/R/3_download_data" >}})
+    - [Julia]({{< relref "/docs/data_pipeline/API/julia" >}})
+    - [Python]({{< relref "/docs/data_pipeline/API/python" >}})
+      - [Standard API]({{< relref "/docs/data_pipeline/API/python/standard_api" >}})
+      - [File API]({{< relref "/docs/data_pipeline/API/python/file_api" >}})
+      - [Terminology]({{< relref "/docs/data_pipeline/API/python/terminology" >}})
+  - [Jargon buster]({{< relref "/docs/data_pipeline/jargon_buster" >}})
+  
 <br />
 
 - **Models**
