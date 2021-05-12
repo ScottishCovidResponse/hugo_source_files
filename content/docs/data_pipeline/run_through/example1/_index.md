@@ -100,7 +100,7 @@ run_metadata:
   default_output_namespace: soniamitchell
   default_data_store: /Users/SoniaM/datastore/
   local_repo: /Users/Soniam/Desktop/git/SCRC/SCRCdata
-  script: R -f inst/SCRC/scotgov_management/submission_script.R {CONFIG_PATH}
+  script: R -f inst/SCRC/scotgov_management/submission_script.R /Users/SoniaM/datastore/coderun/20210511-231444/config.yaml
 read:
 - external_object: management-data
   doi_or_unique_name: COVID-19 management information
