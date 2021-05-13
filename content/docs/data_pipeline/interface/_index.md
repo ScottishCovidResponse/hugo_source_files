@@ -132,7 +132,7 @@ To get the pipeline up and running, we need to add some data. To do this we shou
 To achieve this, run the following from the command line:
 
 ```bash
-tdp run config.yaml
+fdp run config.yaml
 ```
 
 That is, assuming a *config.yaml* file already exists. The yaml file, should specify where the external object comes from and the aliases that will be used in the submission script:
