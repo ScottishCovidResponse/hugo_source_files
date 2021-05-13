@@ -68,7 +68,7 @@ write:
 
 - `fail_on_hash_mismatch:` will, if set to True (the default), cause the API to fail is an attempt is made to read a file whose computed hash differs from the one stored in the local registry
 
-- `run_metadata` provides metadata for the run:
+- `run_metadata:` provides metadata for the run:
   - `description:` is a human readable description of the purpose of the config.yaml
   - `local_data_registry_url:` specifies the local data registry root, which defaults to https<!-- -->://localhost:8000/api/
   - `remote_data_registry_url:` specifies the remote data registry endpoint, which defaults to https<!-- -->://data.scrc.uk/api/
@@ -77,9 +77,14 @@ write:
   - `always_copy_to_store` specifies whether files that already exist in the local filesystem (files specified in `read: use: cache:`) but not in the `default_data_store` should be copied to the data store (set to `True`) or not (set to `False`, default)
   - Additional fields exist (`remote_repo:`, `local_repo:`, `script_path:`, and `script:`), which will be described later. Any other fields will be ignored.
   
-The `data_product:` (within `read:` and `write:`), `external_object:` (`read:` and `write:`) and `object:` (`read:` only) sections specify metadata subsets that are matched in the read and write processes. The metadata values may use glob syntax, in which case matching is done against the glob. The corresponding `use:` sections contain metadata that is used to update the call metadata before the file access is attempted. For reads, a `cache:` may be specified directly, in which case it will be used without any further lookup.
-
-If a write is carried out to a data product where no such `data_product:` entry exists, then a new data product is created with that name in the local namespace, or the patch version of an existing data product is suitably incremented. The level of incrementation or version number can be explicitly defined by `version:`. If a write is carried out to an object that is not a data product and no such `external_object:` entry exists, then a new object is created with no associated external object or data product, and an issue is raised with the object to note the absence of an appropriate reference, referencing the name given in the write API call.
+- `read:` and `write:` provide references to data:
+  - `data_product:` (within `read:` and `write:`), `external_object:` (`read:` and `write:`) and `object:` (`read:` only) specify metadata subsets that are matched in the read and write processes. The metadata values may use glob syntax, in which case matching is done against the glob.
+  - The corresponding `use:` sections contain metadata that is used to update the call metadata before the file access is attempted.
+  - For reads, a `cache:` may be specified directly, in which case it will be used without any further lookup.
+  - If a write is carried out to a data product where no such `data_product:` entry exists, then a new data product is created with that name in the local namespace, or the patch version of an existing data product is suitably incremented. The level of incrementation or version number can be explicitly defined by `version:`.
+  - If a write is carried out to an object that is not a data product and no such `external_object:` entry exists, then a new object is created with no associated external object or data product, and an issue is raised with the object to note the absence of an appropriate reference, referencing the name given in the write API call.
+  
+- `version:` can be specified explicitly (*e.g.* `0.1.0` or `0.20210414.0`), by reference (*e.g.* `{VERSION_DATE}`, meaning `0.20210414.0`), or by increment (*i.e.* `{MAJOR}`, `{MINOR}`, or `{PATCH}`). If no version is specified, it will be incremented by patch, by default.
 
 <span style="font-size:14pt; color:red">Note that: at the moment, we haven't ensured that any write will already have its objects synced to the local registry, so we may not know what the current version is. Either we need to say that you have to add writes to the config.yaml file, or you need to allow a special version called "patch", "minor" and "major" in the local registry (or "+0.0.1", "+0.1", "+1", so that you can then allow "+2", "+2.0.1", etc.).</span>
 
@@ -110,11 +115,11 @@ write:
     data_product: scotland/human/outbreak-timeseries
 - data_product: human/outbreak/simulation_run
   use:
-    data_product: human/outbreak/simulation_run-{run_id}
+    data_product: human/outbreak/simulation_run-{RUN_ID}
 ```
 
-Any part of a `use:` statement may contain the string `{run_id}`, which will be replaced with the run id.
-- `run_id` specifies the run id to be used, otherwise a hash of the config contents and the date will be used.
+Any part of a `use:` statement may contain the string `{RUN_ID}`, which will be replaced with the run id.
+- `{RUN_ID}` specifies the run id to be used, otherwise a hash of the config contents and the date will be used.
 
 ## Use of the pipeline
 
@@ -190,18 +195,18 @@ register:
   unique_name: Scottish deaths involving COVID19  # or doi
   product_name: records/SARS-CoV-2/scotland/human-mortality
   file_type: csv
-  release_date: {DATETIME}    
-  version: {VERSION}             
+  release_date: {RELEASE_DATE}    
+  version: {DATE_VERSION}             
   primary: True
   accessibility: open        # Other option is "closed"
   
 write:
 - data_product: records/SARS-CoV-2/scotland/human-mortality
   description: human mortality data
-  version: {VERSION}
+  version: {DATE_VERSION}
 ```
 
-Note that `{VERSION}` will be converted to something like `0.20210414.0` in the working `config.yaml` file, likewise `{DATETIME}` will be `2021-04-14 11:34:37` and `{CONFIG_PATH}` will be the location of the working `config.yaml` file.
+Note that `{DATE_VERSION}` will be converted to something like `0.20210414.0` in the working `config.yaml` file, likewise `{RELEASE_DATE}` will be `2021-04-14 11:34:37` and `{CONFIG_DIR}` will be the directory within which the working `config.yaml` file resides.
 
 Then the python script:
 
@@ -230,7 +235,7 @@ run_metadata:
   default_data_store: /datastore/
   local_repo: /Users/johnsmith/git/myproject/
   script: # Points to the R script, below (relative to local_repo)
-    R -f path/submission_script.R {CONFIG_PATH}
+    R -f path/submission_script.R {CONFIG_DIR}
 
 read: 
 - external_object: time-series
@@ -278,7 +283,7 @@ run_metadata:
   default_input_namespace: SCRC
   local_repo: /Users/johnsmith/git/myproject
   script: | # addresses are relative to local_repo
-    julia -f path/submission_script.jl {CONFIG_PATH}
+    julia -f path/submission_script.jl {CONFIG_DIR}
 
 read:
 - data_product: human/infection/SARS-CoV-2
