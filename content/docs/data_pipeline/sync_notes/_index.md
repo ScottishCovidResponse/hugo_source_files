@@ -74,14 +74,6 @@ On a related note to above, the specialised `config-working.yaml` file should ha
 
 Going back to the lack of internet connectivity though, generating the working yaml file doesn't require an internet connection though. It's just saying "*given the current state of the local registry, what does this* `config.yaml` *file really mean in practice if I use it?*".
 
-***
-
-If `fdp pull` creates a new `working-config.yaml` and saves it in the data registry, how then does `initialise()` in `fdp run` know where to find it?
-
-One possibility is the `fdp run` creates the file and passes it as an environment variable or command line argument to the submission script. The other is that `fdp pull` does it and has to return the path to the file or somesuch, and then `fdp run` has to be passed the new file as its argument.
-
-I think `fdp run` should create the file, since analyses may occur offline and therefore it might not always make sense to `fdp pull`. I'll store it in $wconfig for now..
-
 ## Local data storage
 
 How about this? You setup a new local registry, go to /Users/johnsmith/datastore and run `fdp config "johnsmith"` to set this directory as your data store. This will generate an API token for the local registry and add an entry to `.scrc/.users` noting the fact that the johnsmith username / namespace is associated with /Users/johnsmith/datastore... or do something fancier to specify the local registry url, or even set passwords? Your `config.yaml` now contains a username / namespace rather than a list of defaults associated with your account.
