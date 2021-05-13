@@ -198,6 +198,8 @@ finalise(h)
 - find the input or output reference (in the handle) that the issue is associated with
 - note that issues can also be associated with scripts, etc. (I've not gone near this yet)
 - record issue metadata in the handle
+- NOTE that in the above example, `issue_with_component()` takes an `index` that references an object recorded in the handle, alternatively it may take a `dataproduct`, `component`, and `version` as identifiers
+- NOTE that `issue_with_component()` is but one of a series of functions including `inssue_with_dataproduct()`, `issue_with_externalobject()`, and `issue_with_script()`; it might make more sense for you to write a generic `raise_issue()` function depending on language constraints
 
 ## `finalise()`
 
