@@ -153,7 +153,7 @@ array <- some_processing(data)
 index <- write_array(array, 
                      handle, 
                      data_product = "data_product_name", 
-                     component = "component",
+                     component = "component_name",
                      dimension_names = list(location = rownames(array),
                                             date = colnames(array)))
 issue_with_component(index,
@@ -161,7 +161,7 @@ issue_with_component(index,
                      issue,
                      severity)
 
-finalise(h)
+finalise(handle)
 ```
 
 ## `initialise()`

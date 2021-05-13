@@ -55,7 +55,7 @@ run_metadata:
 read:
 - data_product: human/population
   use:
-    namespace: eera
+    namespace: johnsmith
     data_product: scotland/human/population
 
 write:
@@ -79,23 +79,25 @@ library(SCRCdataAPI)
 # the environment directly or from a command line argument
 handle <- initialise(Sys.getenv("FDP_CONFIG_DIR"))
 
-# Return location of file stored in the pipeline
-input_path <- read_link(handle, "raw-mortality-data")
+# Read data product
+data <- read_array("human/population")
 
 # Process raw data and write data product
-data <- read.csv(input_path)
 array <- some_processing(data)
-index <- write_array(array, 
-                     handle, 
-                     data_product = "data_product_name", 
-                     component = "component",
-                     dimension_names = list(location = rownames(array),
-                                            date = colnames(array)))
-issue_with_component(index,
-                     handle,
-                     issue,
-                     severity)
+write_array(array, 
+            handle, 
+            data_product = "human/outbreak-timeseries", 
+            component = "component_name",
+            dimension_names = list(location = rownames(array),
+                                   date = colnames(array)))
 
-finalise(h)
+results <- more_processing(array)
+write_array(results, 
+            handle, 
+            data_product = "human/outbreak/simulation_run", 
+            component = "component_name",
+            dimension_names = list(location = rownames(results),
+                                   date = colnames(results)))
+
+finalise(handle)
 ```
-
