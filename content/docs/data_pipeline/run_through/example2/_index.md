@@ -101,3 +101,14 @@ write_array(results,
 
 finalise(handle)
 ```
+
+### Data product naming
+
+- `read_array()` is responsible for reading the correct data product (*i.e.* *scotland/human/population*), which at this point has been downloaded from the remote data store by `fdp pull`
+- `write_array()` is responsible for allocating the correct data product name (*i.e.* *scotland/human/outbreak-timeseries* and *human/outbreak/simulation_run-{run_id}*, where `{run_id}` is replaced with an appropriate index) to the data
+
+### Data product versioning
+
+- Note that `version` has been omitted from the *config.yaml* file)
+- `read_array()` should by default read the latest version of the data, which at this point has been downloaded from the remote data store by `fdp pull`
+- `write_array()` should by default increment the data product by PATCH if none is specified
