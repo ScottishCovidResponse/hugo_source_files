@@ -3,7 +3,9 @@ weight: 30
 title: "Read data product, process, and write data product (with aliases)"
 ---
 
-# Data Pipeline API Example 2
+# Read data product, process, and write data product (with aliases)
+
+In the following example the working *config.yaml* file is pretty much identical to the original *config.yaml* file.
 
 ## *config.yaml*
 

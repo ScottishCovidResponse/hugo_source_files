@@ -3,7 +3,7 @@ weight: 20
 title: "Register external object, process, and write data product"
 ---
 
-# Data Pipeline API Example 1
+# Register external object, process, and write data product
 
 ## *config.yaml*
 
