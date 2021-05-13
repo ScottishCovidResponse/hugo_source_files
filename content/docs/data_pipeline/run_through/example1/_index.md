@@ -19,7 +19,7 @@ run_metadata:
   default_data_store: /Users/SoniaM/datastore/
   local_repo: /Users/Soniam/Desktop/git/SCRC/SCRCdata
   script: |- 
-    R -f inst/SCRC/scotgov_management/submission_script.R {CONFIG_PATH}
+    R -f inst/SCRC/scotgov_management/submission_script.R {CONFIG_DIR}
 register:
 - external_object: management-data
   source_name: Scottish Government Open Data Repository
