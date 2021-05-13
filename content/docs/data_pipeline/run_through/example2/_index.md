@@ -26,7 +26,7 @@ run_metadata:
 read:
 - data_product: human/population
   use:
-    namespace: eera
+    namespace: johnsmith
     data_product: scotland/human/population
 
 write:
