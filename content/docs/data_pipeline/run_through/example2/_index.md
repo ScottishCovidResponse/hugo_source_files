@@ -5,8 +5,6 @@ title: "Read data product, process, and write data product (with aliases)"
 
 # Read data product, process, and write data product (with aliases)
 
-In the following example the working *config.yaml* file is pretty much identical to the original *config.yaml* file.
-
 ## *config.yaml*
 
 `fdp pull` and `fdp run` require a *config.yaml* file to be supplied by the user.
@@ -40,7 +38,7 @@ write:
 
 ## Working *config.yaml*
 
-`fdp run` should create a working *config.yaml* file, which is read by the Data Pipeline API.
+`fdp run` should create a working *config.yaml* file, which is read by the Data Pipeline API. In this example, the working *config.yaml* file is pretty much identical to the original *config.yaml* file, only `{CONFIG_DIR}` is replaced by the directory in which the working *config.yaml* file resides.
 
 ```yaml
 run_metadata:
