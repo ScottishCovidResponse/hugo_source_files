@@ -1,6 +1,6 @@
 ---
 weight: 30
-title: "DP API Example 2"
+title: "Read data product, process, and write data product (with aliases)"
 ---
 
 # Data Pipeline API Example 2
