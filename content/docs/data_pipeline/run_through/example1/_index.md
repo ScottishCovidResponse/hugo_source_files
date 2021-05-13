@@ -1,6 +1,6 @@
 ---
 weight: 20
-title: "DP API Example 1"
+title: "Register external object, process, and write data product"
 ---
 
 # Data Pipeline API Example 1
