@@ -11,12 +11,12 @@ The data pipeline is moving towards this new structure:
 
 The API is accessed as a *session*, which corresponds in the registry to a *code run*. All reads and writes are logged directly to a local registry as the session progresses, as is the script which generates that i/o. Files are identified by their metadata, though the metadata is different for reads (where the files must exist) and writes (where they must not). The metadata is also different for *files in core pipeline data formats*, where a significant amounts of metadata are recorded, and *other arbitrary files*, where only a limited amount of data can be collected. Either type of file can be used for input or output, giving a total of four different interactions, two for input and two for output. These differences are described in more detail below.
 
-The underlying data to which the API refers is determined by the interaction between a yaml configuration file (referred to here as a `config.yaml` file, and described below) provided at initialisation and the state of the remote registry at the time of processing of the `config.yaml` by the download synchronisation script (which is considered to contain the definitive version of all data at that time). The specific remote registry used is itself defined in the `config.yaml` file.
+The underlying data to which the API refers is determined by the interaction between a yaml configuration file (referred to here as a *config.yaml* file, and described below) provided at initialisation and the state of the remote registry at the time of processing of the *config.yaml* by the download synchronisation script (which is considered to contain the definitive version of all data at that time). The specific remote registry used is itself defined in the *config.yaml* file.
 
-This interaction between the configuration file and the remote registry defines the “*local filesystem data repository*” that the local pipeline interacts with. The data directory can be automatically created by a *download synchronisation script* [(currently found here)](https://github.com/ScottishCovidResponse/data_pipeline_api/tree/master/data_pipeline_api/registry) which reads the `config.yaml` file, queries the appropriate remote registry, downloads appropriate data, and populates the local registry with the relevant metadata for those data.
+This interaction between the configuration file and the remote registry defines the “*local filesystem data repository*” that the local pipeline interacts with. The data directory can be automatically created by a *download synchronisation script* [(currently found here)](https://github.com/ScottishCovidResponse/data_pipeline_api/tree/master/data_pipeline_api/registry) which reads the *config.yaml* file, queries the appropriate remote registry, downloads appropriate data, and populates the local registry with the relevant metadata for those data.
 
 When a model or script is run (as a *session* / “*code run*”), any output files are written to the data directory, and those outputs are logged in the local registry, which has itself been created (or updated) by the *download synchronisation script*. The local registry can be queried to determine whether the data generated is as intended, and if so it can then by synchronised back to the remote registry. This can be carried out automatically using an *upload synchronisation script* [(currently here)](https://github.com/ScottishCovidResponse/data_pipeline_api/tree/master/data_pipeline_api/registry). When the *session* is initialised a “*run id*” is created to uniquely identify that *code run*. It is constructed by forming the SHA1 hash of the configuration file content, plus the date time string.
-## config.yaml file format
+## *config.yaml* file format
 
 The config file lets users specify metadata to be used during file lookup for read or write, and configure overall API behaviour.
 
@@ -90,7 +90,7 @@ write:
 
 ### Example: Flexible inputs and outputs
 
-The following example describes an analysis which typically reads `human/population` and writes `human/outbreak-timeseries`. Instead, a test model is run using Scottish data, whereby `scotland/human/population` is read from the `eera` namespace, rather than `human/population`. Likewise, the output is written as `scotland/human/outbreak-timeseries` rather than `human/outbreak-timeseries`.
+The following example describes an analysis which typically reads *human/population* and writes *human/outbreak-timeseries*. Instead, a test model is run using Scottish data, whereby *scotland/human/population* is read from the *eera* namespace, rather than *human/population*. Likewise, the output is written as *scotland/human/outbreak-timeseries* rather than *human/outbreak-timeseries*.
 
 ```yaml
 fail_on_hash_mismatch: True
@@ -135,7 +135,7 @@ To achieve this, run the following from the command line:
 tdp run config.yaml
 ```
 
-That is, assuming a `config.yaml` file already exists. The yaml file, should specify where the external object comes from and the aliases that will be used in the submission script:
+That is, assuming a *config.yaml* file already exists. The yaml file, should specify where the external object comes from and the aliases that will be used in the submission script:
 
 ```yaml
 run_metadata:
@@ -206,7 +206,7 @@ write:
   version: {DATE_VERSION}
 ```
 
-Note that `{DATE_VERSION}` will be converted to something like `0.20210414.0` in the working `config.yaml` file, likewise `{RELEASE_DATE}` will be `2021-04-14 11:34:37` and `{CONFIG_DIR}` will be the directory within which the working `config.yaml` file resides.
+Note that `{DATE_VERSION}` will be converted to something like `0.20210414.0` in the working *config.yaml* file, likewise `{RELEASE_DATE}` will be `2021-04-14 11:34:37` and `{CONFIG_DIR}` will be the directory within which the working *config.yaml* file resides.
 
 Then the python script:
 
@@ -275,7 +275,7 @@ finalise(handle)
 Since we're now working with external objects, we use `link_read()` and `link_write()` to read and write objects, rather than the standard API `read_xxx()` and `write_xxx()` calls.
 ### Example: Read then write a data product component
 
-Now that the pipeline is populated, one of the simplest possible use cases is just to read in a value, calculate a new value from it, and write out the new value. Again, we need to write a `config.yaml` file:
+Now that the pipeline is populated, one of the simplest possible use cases is just to read in a value, calculate a new value from it, and write out the new value. Again, we need to write a *config.yaml* file:
 
 ```yaml
 run_metadata: 
@@ -293,9 +293,9 @@ write:
   component: doubled-infectious-period
 ```
 
-Here, a submission script is stored in `local_repo:` (the root of a local repository). Alternatively, a `remote_repo:` can be provided, corresponding to the root of a remote repository. Note that only one of these is necessary. If `local_repo` is omitted, a clone of `remote_repo` will be created by `initialise()`. If `local_repo` is included, `initialise()` will check whether or not the local repository is clean. The submission script itself (usually, a single line of code that points to the processing / analysis script) should either be written in `script` or stored in a text file in `script_path`, which can be absolute or relative to the root of the repo.
+Here, a submission script is stored in `local_repo:` (the root of a local repository). `fdp run` will check whether or not the local repository is clean. The submission script itself (usually, a single line of code that points to the processing / analysis script) should either be written in `script` or stored in a text file in `script_path`, which can be absolute or relative to the root of the repo.
 
-The download sync using this yaml file will look in the `default_input_namespace` of the remote registry (`remote_data_registry_url:`, SCRC's by default) for the latest version of the `human/infection/SARS-CoV-2` data product and download it, syncing all of the associated metadata into the local registry.
+The download sync using this yaml file will look in the `default_input_namespace` of the remote registry (`remote_data_registry_url:`, SCRC's by default) for the latest version of the *human/infection/SARS-CoV-2* data product and download it, syncing all of the associated metadata into the local registry.
 
 The Julia script (found in `local_repo`/path/submission_script.jl) will do the work:
 
@@ -321,4 +321,4 @@ write_estimate(handle, double_period,
 finalise(handle)
 ```
 
-This script will find the latest version of the `human/infection/SARS-CoV-2` data product in the local registry, read the file and find the `infectious-duration` component. It will then double it and save the new value to disk as the `doubled-infectious-period` component of the `human/infection/SARS-CoV-2/doubled` data product, and record its existence in the local registry. When saving the metadata to the registry, that will include its provenance -- that it depends on the old value and was generated by the script being executed.
+This script will find the latest version of the *human/infection/SARS-CoV-2* data product in the local registry, read the file and find the *infectious-duration* component. It will then double it and save the new value to disk as the *doubled-infectious-period* component of the *human/infection/SARS-CoV-2/doubled* data product, and record its existence in the local registry. When saving the metadata to the registry, that will include its provenance -- that it depends on the old value and was generated by the script being executed.
