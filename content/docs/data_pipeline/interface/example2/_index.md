@@ -69,7 +69,7 @@ write:
     data_product: human/outbreak/simulation_run-{RUN_ID}
 ```
 
-## Example: Read and write an external object
+## Read and write an external object
 
 A script to read and write an external object (*i.e.* something not in a core data pipeline format) in R. First, the yaml file, that gives the `doi_or_unique_name` and `title` of the external objects being read and written, and the aliases that will be used in the submission script:
 
@@ -106,7 +106,7 @@ write:
 ...
 ```
 
-## Example: Read then write a data product component
+## Read then write a data product component
 
 Now that the pipeline is populated, one of the simplest possible use cases is just to read in a value, calculate a new value from it, and write out the new value. Again, we need to write a *config.yaml* file:
 
