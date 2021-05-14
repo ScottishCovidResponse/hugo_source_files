@@ -11,7 +11,7 @@ The Data Pipeline API hinges on a *config.yaml* file, which lets users specify m
 
 ## Simple inputs and outputs
 
-The following example reads various pieces of data and writes an [external object]({{% ref "/docs/data_pipeline/jargon_buster/#e" %}}).
+The following example reads various pieces of data and writes an external object.
 
 ```yaml
 fail_on_hash_mismatch: True

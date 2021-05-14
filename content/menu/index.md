@@ -12,10 +12,11 @@ headless: true
 
 - **SCRC data pipeline**
   - [Introduction]({{< relref "/docs/data_pipeline/introduction" >}})
-  - [Config file and API Interface]({{< relref "/docs/data_pipeline/interface" >}})
   - [API Interface]({{< relref "/docs/data_pipeline/interface" >}})
-    - [FDP functions]({{< relref "/docs/data_pipeline/interface/fdp" >}})
-    - [DP API Example 1]({{< relref "/docs/data_pipeline/interface/example1" >}})
+    - [User written config file]({{< relref "/docs/data_pipeline/interface/config" >}})
+    - [Core FDP functionality]({{< relref "/docs/data_pipeline/interface/fdp" >}})
+    - [Working example (with Data Pipeline API functionality)]({{< relref "/docs/data_pipeline/interface/example1" >}})
+    - [Additional examples]({{< relref "/docs/data_pipeline/interface/example2" >}})
   - [Local registry]({{< relref "/docs/data_pipeline/local_registry" >}})
   - [Notes on synchronisation]({{< relref "/docs/data_pipeline/sync_notes" >}})
   - [API]({{< relref "/docs/data_pipeline/API" >}})
