@@ -146,7 +146,7 @@ write:
 
 ## *submission_script.R*
 
-A submission script should be supplied by the user. In the above example, this script is located in *<local_repo>/inst/SCRC/scotgov_management/submission_script.R*.
+A submission script should be supplied by the user, which in this case registers an external object, reads it in, and then writes it back to the pipeline as a data product component. In the above example, this script is located in *<local_repo>/inst/SCRC/scotgov_management/submission_script.R*.
 
 ```R
 library(SCRCdataAPI)
@@ -175,8 +175,6 @@ issue_with_component(index,
 
 finalise(handle)
 ```
-
-This registers an external object, reads it in, and then writes it back to the pipeline as a data product component.
 
 ### `initialise()`
 
