@@ -1,13 +1,25 @@
 ---
 weight: 20
-title: "Register external object, process, and write data product"
+title: "Working example (with Data Pipeline API functionality)"
 ---
 
-# Register external object, process, and write data product
+<span style="font-size:12pt; color:red">Note that this is a living document and the following is subject to change. For reference, my R code lives [here](https://github.com/ScottishCovidResponse/SCRCdataAPI/tree/implement_yaml). Please post any questions on Zulip.</span>
 
-## *config.yaml*
+# Working example (with Data Pipeline API functionality)
 
-`fdp pull` and `fdp run` require a *config.yaml* file to be supplied by the user.
+The following example downloads some data from outside the pipeline, does some processing in R (for example), and records the original file and the resultant data product into the pipeline.
+
+In this simple example, the user should run the following from the terminal:
+
+```bash
+fdp pull config.yaml
+fdp run config.yaml
+fdp push config.yaml
+```
+
+These functions require a *config.yaml* file to be supplied by the user. This file should specify various metadata associated with the code run, including where external objects comes from and the aliases that will be used in the submission script, data objects to be read and written, and the submission scipt location.
+
+## User written *config.yaml*
 
 ```yaml
 run_metadata:
@@ -54,41 +66,41 @@ register:
   unique_name: COVID-19 management information
   product_name: records/SARS-CoV-2/scotland/cases-and-management
   file_type: csv
-  release_date: {RELEASE_DATE}
-  version: {VERSION_DATE}
+  release_date: {DATETIME}
+  version: 0.{DATETIME}.0
   primary: True
   accessibility: open
 
 write:
 - data_product: records/SARS-CoV-2/scotland/cases-and-management/ambulance
   description: Ambulance data
-  version: {VERSION_DATE}
+  version: 0.{DATETIME}.0
 - data_product: records/SARS-CoV-2/scotland/cases-and-management/calls
   description: Calls data
-  version: {VERSION_DATE}
+  version: 0.{DATETIME}.0
 - data_product: records/SARS-CoV-2/scotland/cases-and-management/carehomes
   description: Care homes data
-  version: {VERSION_DATE}
+  version: 0.{DATETIME}.0
 - data_product: records/SARS-CoV-2/scotland/cases-and-management/hospital
   description: Hospital data
-  version: {VERSION_DATE}
+  version: 0.{DATETIME}.0
 - data_product: records/SARS-CoV-2/scotland/cases-and-management/mortality
   description: Mortality data
-  version: {VERSION_DATE}
+  version: 0.{DATETIME}.0
 - data_product: records/SARS-CoV-2/scotland/cases-and-management/nhsworkforce
   description: NHS workforce data
-  version: {VERSION_DATE}
+  version: 0.{DATETIME}.0
 - data_product: records/SARS-CoV-2/scotland/cases-and-management/schools
   description: Schools data
-  version: {VERSION_DATE}
+  version: 0.{DATETIME}.0
 - data_product: records/SARS-CoV-2/scotland/cases-and-management/testing
   description: Testing data
-  version: {VERSION_DATE}
+  version: 0.{DATETIME}.0
 ```
 
 ## Working *config.yaml*
 
-`fdp run` should create a working *config.yaml* file, which is read by the Data Pipeline API.
+`fdp run` should create a working *config.yaml* file, which is then read by the Data Pipeline API.
 
 ```yaml
 run_metadata:
@@ -108,33 +120,33 @@ read:
 write:
 - data_product: records/SARS-CoV-2/scotland/cases-and-management/ambulance
   description: Ambulance data
-  version: {VERSION_DATE}
+  version: 0.{DATETIME}.0
 - data_product: records/SARS-CoV-2/scotland/cases-and-management/calls
   description: Calls data
-  version: {VERSION_DATE}
+  version: 0.{DATETIME}.0
 - data_product: records/SARS-CoV-2/scotland/cases-and-management/carehomes
   description: Care homes data
-  version: {VERSION_DATE}
+  version: 0.{DATETIME}.0
 - data_product: records/SARS-CoV-2/scotland/cases-and-management/hospital
   description: Hospital data
-  version: {VERSION_DATE}
+  version: 0.{DATETIME}.0
 - data_product: records/SARS-CoV-2/scotland/cases-and-management/mortality
   description: Mortality data
-  version: {VERSION_DATE}
+  version: 0.{DATETIME}.0
 - data_product: records/SARS-CoV-2/scotland/cases-and-management/nhsworkforce
   description: NHS workforce data
-  version: {VERSION_DATE}
+  version: 0.{DATETIME}.0
 - data_product: records/SARS-CoV-2/scotland/cases-and-management/schools
   description: Schools data
-  version: {VERSION_DATE}
+  version: 0.{DATETIME}.0
 - data_product: records/SARS-CoV-2/scotland/cases-and-management/testing
   description: Testing data
-  version: {VERSION_DATE}
+  version: 0.{DATETIME}.0
 ```
 
 ## *submission_script.R*
 
-A submission script should be supplied by the user. In the above example, the location of this script is referenced in `run_metadata: script:`.
+A submission script should be supplied by the user. In the above example, this script is located in *<local_repo>/inst/SCRC/scotgov_management/submission_script.R*.
 
 ```R
 library(SCRCdataAPI)
@@ -145,26 +157,28 @@ library(SCRCdataAPI)
 handle <- initialise(Sys.getenv("FDP_CONFIG_DIR"))
 
 # Return location of file stored in the pipeline
-input_path <- read_link(handle, "raw-mortality-data")
+input_path <- link_read(handle, "raw-mortality-data")
 
 # Process raw data and write data product
 data <- read.csv(input_path)
 array <- some_processing(data)
 index <- write_array(array, 
                      handle, 
-                     data_product = "data_product_name", 
-                     component = "component_name",
+                     data_product = "human/mortality", 
+                     component = "mortality_data",
                      dimension_names = list(location = rownames(array),
                                             date = colnames(array)))
 issue_with_component(index,
                      handle,
-                     issue,
-                     severity)
+                     issue = "this data is bad",
+                     severity = 7)
 
 finalise(handle)
 ```
 
-## `initialise()`
+This registers an external object, reads it in, and then writes it back to the pipeline as a data product component.
+
+### `initialise()`
 
 - read the working *config.yaml* file
 - return a `handle` containing:
@@ -172,7 +186,7 @@ finalise(handle)
   - the object id for this file
   - the object id for the submission script file
 
-## `read_link()`
+### `link_read()`
 
 - this function returns the path of an external object in the local data store
 - if the alias is already recorded in the handle, return the path
@@ -181,27 +195,85 @@ finalise(handle)
   - note that the alias is not recorded in the data registry, rather, it's a means to reference external objects in the *config.yaml*)
 - store metadata associated with the external object
 
-## `write_array()`
+### `read_array()`
 
-- write an array as a component to an hdf5 file
-- if the component is already recorded in the handle, return the index of this handle reference invisibly
-- otherwise
-  - if this is the first component to be written set a save location, otherwise reference the save location from the handle
+- responsible for reading the correct data product, which at this point has been downloaded from the remote data store by `fdp pull`
+- should by default read the latest version of the data, which at this point has been downloaded from the remote data store by `fdp pull`
+
+### `link_write()`
+
+- when writing external objects, we use `link_read()` and `link_write()` to read and write objects, rather than the standard API `read_xxx()` and `write_xxx()` calls.
+
+### `write_array()`
+
+- responsible for writing an array as a component to an hdf5 file
+- should allocate the correct data product name to the data (*e.g.* for *human/outbreak/simulation_run-{RUN_ID}*, `{RUN_ID}` is replaced with an appropriate index)
+- should by default increment the data product version by PATCH if none is specified
+- if the **component** is already recorded in the handle, return the index of this handle reference invisibly
+- otherwise:
+  - if this is the first component to be written, record the save location in the handle, conversely, if this is not the first component to be written, reference the save location from the handle
   - write the component to the hdf5 file
   - determine the correct version number to be associated with the new data product
   - update the `handle` with the component that was written and its location in the data store
 
-## `issue_with_component()`
+### `issue_with_component()`
 
-**this is very much a work in progress**
+- **this is very much a work in progress**
 - find the input or output reference (in the handle) that the issue is associated with
 - note that issues can also be associated with scripts, etc. (I've not gone near this yet)
 - record issue metadata in the handle
 - NOTE that in the above example, `issue_with_component()` takes an `index` that references an object recorded in the handle, alternatively it may take a `dataproduct`, `component`, and `version` as identifiers
 - NOTE that `issue_with_component()` is but one of a series of functions including `inssue_with_dataproduct()`, `issue_with_externalobject()`, and `issue_with_script()`; it might make more sense for you to write a generic `raise_issue()` function depending on language constraints
 
-## `finalise()`
+### `finalise()`
 
 - rename the data product as *<hash>.h5*
 - record data product metadata (*e.g.* location, components, various descriptions, issues) in the data registry
 - record the code run in the data registry
+
+## *submission_script.py*
+
+Alternatively, the submission script may be written in Python.
+
+```python
+from data_pipeline_api.standard_api import StandardAPI
+
+with StandardAPI.from_config("config.yaml") as api:
+  matrix = read(api.link_read("raw-mortality-data"))
+  api.write_array("human/mortality", "mortality_data", matrix)
+  api.issue_with_component("human/mortality", "mortality_data", "this data is bad", "7")
+  api.finalise()
+```
+
+## *submission_script.jl*
+
+Alternatively, the submission script may be written in Julia.
+
+```julia
+using DataPipeline
+
+# Open the connection to the local registry with a given config file
+handle = initialise("config.yaml") 
+
+# Return location of file stored in the pipeline
+input_path = link_read(handle)
+
+# Process raw data and write data product
+data = read_csv(input_path)
+array = some_processing(data)
+index = write_estimate(array, 
+                       handle, 
+                       data_product = "human/mortality", 
+                       component = "mortality_data")
+
+issue_with_component(index,
+                     handle,
+                     issue = "this data is bad",
+                     severity = 7)
+
+finalise(handle)
+```
+
+## C++
+
+## Java
